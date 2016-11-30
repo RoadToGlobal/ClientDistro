@@ -1,0 +1,12 @@
+{
+  "name": "client-distro",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "nodemon -L app/app.js"
+  },
+  "dependencies": {
+    "express": "~4.9.0",
+    "debug": "~2.0.0"
+  }
+}
