@@ -1,15 +1,14 @@
-FROM node:0.10.38
+FROM node:7
 
-RUN mkdir /src
+RUN mkdir -p /src/app
 
 RUN npm install nodemon -g
 
-WORKDIR /src
-ADD package.json /src/package.json
+WORKDIR /src/app
+COPY package.json /src/app/
 RUN npm install
 
-ADD nodemon.json /src/nodemon.json
+ADD nodemon.json /src/app/nodemon.json
 
 EXPOSE 8000
-
 CMD npm start

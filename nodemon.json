@@ -1,6 +1,16 @@
 {
+  "restartable": "rs",
+  "ignore": [
+    ".git",
+    "./app",
+    "node_modules/**/node_modules"
+  ],
+  "watch": [
+    "./server.js",
+    "./webpack.config.js",
+    "./webpack.production.config.js"
+  ],
   "env": {
     "NODE_ENV": "development"
-  },
-  "ext": "js json hjs"
+  }
 }
