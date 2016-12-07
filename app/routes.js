@@ -9,7 +9,7 @@ import ActivityStatus from './views/ActivityStatus';
 
 export default (
   <Route path="/" component={App}>
-    <IndexRoute path="/LandingForm" component={LandingForm} />
+    <IndexRoute component={LandingForm} />
     <Route path="/activitystatus" component={ActivityStatus} />
     <Route path="/group" component={Group} />
   </Route>
