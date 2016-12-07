@@ -1,19 +1,22 @@
 import { routerReducer as routing } from 'react-router-redux';
 import { combineReducers } from 'redux';
 
-import * as types from '../actions/types';
-
-const filter = (state = '', action) => {
-  switch (action.type) {
-    case types.FILTER:
-      return action.filter;
-    default:
-      return state;
-  }
-};
+import Activities from './Activities.js';
+import CurrentActivity from './CurrentActivity.js';
+import CurrentGroup from './CurrentGroup.js';
+import CurrentGroupSearch from './CurrentGroupSearch.js';
+import CurrentUser from './CurrentUser.js';
+import Props from './Props.js';
+import Reqs from './Reqs.js';
 
 const rootReducer = combineReducers({
-  filter,
+  Activities,
+  CurrentActivity,
+  CurrentGroup,
+  CurrentGroupSearch,
+  CurrentUser,
+  Props,
+  Reqs,
   routing,
 });
 
