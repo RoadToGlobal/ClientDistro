@@ -18,11 +18,9 @@ const fakeInitialState = [
 
 export default function reqs(state = fakeInitialState, action) {
   switch (action.type) {
-    case 'EXAMPLE':
-      return {
-        ...state,
-        data: action.data,
-      };
+    case 'REQS_EXAMPLE':
+      console.log(action.data);
+      return [...state];
     default:
       return state;
   }

@@ -14,10 +14,10 @@ const fakeInitialState = {
 
 export default function CurrentActivity(state = fakeInitialState, action) {
   switch (action.type) {
-    case 'EXAMPLE':
+    case 'CURRENT_ACTIVITY_EXAMPLE':
+      console.log(action.data);
       return {
         ...state,
-        data: action.data,
       };
     default:
       return state;

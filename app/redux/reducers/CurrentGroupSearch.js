@@ -20,10 +20,10 @@ const fakeInitialState = {
 
 export default function CurrentGroupSearch(state = fakeInitialState, action) {
   switch (action.type) {
-    case 'EXAMPLE':
+    case 'CURRENT_GROUP_SEARCH_EXAMPLE':
+      console.log(action.data);
       return {
         ...state,
-        data: action.data,
       };
     default:
       return state;

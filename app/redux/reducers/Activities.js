@@ -12,11 +12,9 @@ const fakeInitialState = [
 
 export default function Activities(state = fakeInitialState, action) {
   switch (action.type) {
-    case 'EXAMPLE':
-      return {
-        ...state,
-        data: action.data,
-      };
+    case 'ACTIVITY_EXAMPLE':
+      console.log(action.data);
+      return [...state];
     default:
       return state;
   }

@@ -10,10 +10,10 @@ const fakeInitialState = {
 
 export default function CurrentUser(state = fakeInitialState, action) {
   switch (action.type) {
-    case 'EXAMPLE':
+    case 'CURRENT_USER_EXAMPLE':
+      console.log(action.data);
       return {
         ...state,
-        data: action.data,
       };
     default:
       return state;
