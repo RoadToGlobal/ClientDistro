@@ -1,16 +1,13 @@
 import React from 'react';
-
-import { FFFWindow } from '../DynamicStyles/common';
+import GroupMembers from '../containers/GroupMembers';
+import { FFFContainer } from '../DynamicStyles/common';
 
 export default class Group extends React.Component {
   render() {
     return (
-      <div style={new FFFWindow}>
-        <p>
-          placeholder
-        </p>
+      <div style={new FFFContainer}>
+          <GroupMembers />
       </div>
    );
   }
 }
-
