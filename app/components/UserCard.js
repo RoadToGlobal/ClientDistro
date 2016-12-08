@@ -1,13 +1,12 @@
 import React from 'react';
 
-class userCard {
-  display = 'inline-block';
+class MemberCard {
   margin = '10px';
   width = '10em';
   borderStyle = 'solid';
   borderColor = '#000';
 }
-class profileImage {
+class ProfileImage {
   width = '8em';
   height = 'auto';
 }
@@ -15,9 +14,9 @@ class profileImage {
 class UserCard extends React.Component {
   render() {
     return (
-      <div style={new userCard}>
+      <div style={new MemberCard}>
         <img
-          style={new profileImage}
+          style={new ProfileImage}
           src={this.props.member.globalProps.imgUrl}
         />
         <p> Name: {this.props.member.globalProps.name}</p>
