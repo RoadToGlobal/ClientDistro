@@ -1,6 +1,5 @@
 import React from 'react';
 
-import { FFFWindow } from '../DynamicStyles/common';
 import { FFFContainer } from '../DynamicStyles/common';
 import GroupSearchForm from '../containers/GroupSearchFrom';
 
