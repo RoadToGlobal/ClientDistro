@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 
-import {FFFWindow, verticalContainer, horizontalContainer} from '../DynamicStyles/common';
+import { verticalContainer, horizontalContainer } from '../DynamicStyles/common';
 
 const App = ({ children }) =>
   <div style={new globalContainer}>
@@ -14,21 +14,13 @@ const App = ({ children }) =>
       <header style={{paddingLeft: '1em'}}>
         <Link to="/"><h1>GroupApp!</h1></Link>
       </header>
-      <div style={new FFFContainer}>
-        { children }
-      </div>
+      { children }
     </div>
   </div>;
 
 App.propTypes = {
   children: PropTypes.object,
 };
-
-class FFFContainer extends verticalContainer {
-  alignItems = 'center';
-  marginRight = 'auto';
-  marginLeft = 'auto';
-}
 
 class globalContainer extends horizontalContainer {
   minHeight = '100vh';

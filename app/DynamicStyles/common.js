@@ -15,6 +15,12 @@ export class horizontalContainer extends container {
   justifyContent = 'flex-start';
 }
 
+export class FFFContainer extends verticalContainer {
+  alignItems = 'center';
+  marginRight = 'auto';
+  marginLeft = 'auto';
+}
+
 export class FFFWindow {
   backgroundColor = 'white';
   margin = '0.5em';
