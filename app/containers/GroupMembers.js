@@ -6,6 +6,7 @@ import {FFFWindow} from '../DynamicStyles/common';
 
 class GroupMembersContainer extends FFFWindow {
   margin = '0';
+  display = 'flex';
 }
 class GroupMembersHeader {
   backgroundColor = '#9c9c9c';
@@ -51,7 +52,7 @@ class GroupMembers extends React.Component {
   }
 
   render() {
-    const stateStyle = this.state.active ? styles.active : styles.inactive;
+    const stateStyle = this.state.active ? styles.inactive : styles.active;
     return (
       <div>
         <div style={new GroupMembersHeader}>
@@ -60,7 +61,7 @@ class GroupMembers extends React.Component {
             <a
               style={new ToggleButton}
               onClick={this.toggleVisibility}>
-              {this.state.active ? '-' : '+'}
+              {this.state.active ? ' +' : ' -'}
             </a>
           </h1>
         </div>
