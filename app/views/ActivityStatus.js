@@ -10,7 +10,7 @@ export default class Group extends React.Component {
           placeholder
         </p>
       </div>
-   );
+   	);
   }
 }
 
