@@ -24,18 +24,7 @@ class globalContainer extends horizontalContainer {
 }
 
 class mainContainer extends verticalContainer {
-  flex = 22;
-}
-
-class sidebarStyle extends verticalContainer {
-  flex = 1
-  minWidth = '10em';
-  color = '#aaa';
-  backgroundColor = '#666';
-  borderWidth = 0;
-  borderRightWidth = 2;
-  borderColor = 'black';
-  borderStyle = 'solid';
+  flex = 1;
 }
 
 export default App;
