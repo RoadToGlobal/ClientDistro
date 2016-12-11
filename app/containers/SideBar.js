@@ -6,8 +6,7 @@ import SideBarLinks from '../components/SideBarLinks';
 import { verticalContainer } from '../DynamicStyles/common';
 
 class sidebarStyle extends verticalContainer {
-  flex = 1;
-  minWidth = '10em';
+  flexShrink = 1;
   color = '#000';
   backgroundColor = '#fff';
 }
