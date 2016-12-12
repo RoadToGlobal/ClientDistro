@@ -3,6 +3,9 @@ import React, { PropTypes } from 'react';
 class SideBarIcon extends React.Component {
   static propTypes = {
     activity: PropTypes.object,
+    hoverStatus: PropTypes.bool,
+    toggleHover: PropTypes.func,
+    removeHover: PropTypes.func,
   };
 
   constructor(props) {

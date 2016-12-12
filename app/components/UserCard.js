@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 
 const MemberCard = {
   margin: '10px',
@@ -6,6 +6,7 @@ const MemberCard = {
   borderColor: '#000',
   flexShrink: '1',
 };
+
 const ProfileImage = {
   width: '8em',
   height: 'auto',
@@ -25,5 +26,9 @@ class UserCard extends React.Component {
     );
   }
 }
+
+UserCard.propTypes = {
+  member: PropTypes.array,
+};
 
 export default UserCard;

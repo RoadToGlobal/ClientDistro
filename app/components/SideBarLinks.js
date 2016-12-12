@@ -1,4 +1,6 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+// Use this import when you're going to use proptypes
+// import React, { PropTypes } from 'react';
 
 class SideBarLinks extends React.Component {
   static propTypes = {

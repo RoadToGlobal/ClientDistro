@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import {connect} from 'react-redux';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+// Uncomment this import when you're going to use ReactCSSTransitionGroup
+// import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 import UserCard from '../components/UserCard';
 import {FFFWindow} from '../DynamicStyles/common';
@@ -29,10 +30,6 @@ const GroupMembersHeader = {
 };
 const GroupMembersTitle = {
   margin: '0',
-};
-const MembersContainer = {
-  display: 'flex',
-  justifyContent: 'center',
 };
 const ToggleButton = {
   cursor: 'pointer',
