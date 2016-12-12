@@ -3,8 +3,8 @@ import {connect} from 'react-redux';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 import UserCard from '../components/UserCard';
-// import {FFFWindow} from '../DynamicStyles/common';
-// ska extenda FFFWindow
+import {FFFWindow} from '../DynamicStyles/common';
+
 const GroupMembersContainer = {
   margin: '0',
   display: 'flex',
@@ -14,12 +14,9 @@ const GroupMembersContainer = {
   justifyContent: 'space-around',
 };
 
-const FFFWindow = {
-  backgroundColor: 'white',
-  padding: '1em',
-  width: '40em',
+const extendedFFFWindow = {
+  ...FFFWindow,
   height: '20em',
-  color: '#333',
   margin: '0',
   display: 'flex',
   transition: 'height 0.5s',
@@ -27,20 +24,19 @@ const FFFWindow = {
   overflow: 'hidden',
 };
 
-class GroupMembersHeader {
-  backgroundColor = '#9c9c9c';
-  // width = '42em';
-}
-class GroupMembersTitle {
-  margin = '0';
-}
-class MembersContainer {
-  display = 'flex';
-  justifyContent = 'center';
-}
-class ToggleButton {
-  cursor = 'pointer';
-}
+const GroupMembersHeader = {
+  backgroundColor: '#9c9c9c',
+};
+const GroupMembersTitle = {
+  margin: '0',
+};
+const MembersContainer = {
+  display: 'flex',
+  justifyContent: 'center',
+};
+const ToggleButton = {
+  cursor: 'pointer',
+};
 
 class GroupMembers extends React.Component {
   static propTypes = {
@@ -62,12 +58,12 @@ class GroupMembers extends React.Component {
 
   render() {
     return (
-      <div style={this.state.maximized ? FFFWindow : {...FFFWindow, height: '2em'}}>
-        <header style={new GroupMembersHeader}>
-          <h1 style={new GroupMembersTitle}>
+      <div style={this.state.maximized ? extendedFFFWindow : {...extendedFFFWindow, height: '2em'}}>
+        <header style={GroupMembersHeader}>
+          <h1 style={GroupMembersTitle}>
             Members
             <a
-              style={new ToggleButton}
+              style={ToggleButton}
               onClick={() => this.toggleVisibility()}>
               {this.state.maximized ? ' +' : ' -'}
             </a>
