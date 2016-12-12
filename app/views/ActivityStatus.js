@@ -5,7 +5,7 @@ import { FFFWindow } from '../DynamicStyles/common';
 export default class Group extends React.Component {
   render() {
     return (
-      <div style={new FFFWindow}>
+      <div style={FFFWindow}>
         <p>
           placeholder
         </p>
@@ -13,4 +13,3 @@ export default class Group extends React.Component {
    );
   }
 }
-
