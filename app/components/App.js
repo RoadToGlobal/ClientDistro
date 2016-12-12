@@ -4,13 +4,13 @@ import { Link } from 'react-router';
 import { verticalContainer, horizontalContainer } from '../DynamicStyles/common';
 
 const App = ({ children }) =>
-  <div style={new globalContainer}>
-    <aside style={new sidebarStyle}>
+  <div style={globalContainer}>
+    <aside style={sidebarStyle}>
       <Link to="/">Home</Link>
       <Link to="/activitystatus">ActivityStatus</Link>
       <Link to="/group">Group</Link>
     </aside>
-    <div style={new mainContainer}>
+    <div style={mainContainer}>
       <header style={{paddingLeft: '1em'}}>
         <Link to="/"><h1>GroupApp!</h1></Link>
       </header>
@@ -22,23 +22,26 @@ App.propTypes = {
   children: PropTypes.object,
 };
 
-class globalContainer extends horizontalContainer {
-  minHeight = '100vh';
-}
+const globalContainer = {
+  ...horizontalContainer,
+  minHeight: '100vh',
+};
 
-class mainContainer extends verticalContainer {
-  flex = 5;
-}
+const mainContainer = {
+  ...verticalContainer,
+  flex: '5',
+};
 
-class sidebarStyle extends verticalContainer {
-  flex = 1
-  minWidth = '10em';
-  color = '#aaa';
-  backgroundColor = '#666';
-  borderWidth = 0;
-  borderRightWidth = 2;
-  borderColor = 'black';
-  borderStyle = 'solid';
-}
+const sidebarStyle = {
+  ...verticalContainer,
+  flex: 1,
+  minWidth: '10em',
+  color: '#aaa',
+  backgroundColor: '#666',
+  borderWidth: 0,
+  borderRightWidth: 2,
+  borderColor: 'black',
+  borderStyle: 'solid',
+};
 
 export default App;

@@ -5,7 +5,7 @@ import { FFFContainer } from '../DynamicStyles/common';
 export default class Group extends React.Component {
   render() {
     return (
-      <div style={new FFFContainer}>
+      <div style={FFFContainer}>
           <GroupMembers />
       </div>
    );

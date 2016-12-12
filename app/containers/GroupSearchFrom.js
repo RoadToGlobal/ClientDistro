@@ -15,7 +15,7 @@ class GroupSearchForm extends React.Component {
 
   render() {
     return (
-      <div style={new FFFWindow}>
+      <div style={FFFWindow}>
         <h1>GroupSearchForm</h1>
         <p>
           Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
