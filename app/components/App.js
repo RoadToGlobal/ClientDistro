@@ -27,6 +27,6 @@ const globalContainer = {
 const mainContainer = {
   ...verticalContainer,
   flex: '1',
-}
+};
 
 export default App;

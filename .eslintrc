@@ -119,7 +119,7 @@
       { "SwitchCase": 1 }
     ],                              // http://eslint.org/docs/rules/indent
     "brace-style": [
-      2,
+      1,
       "1tbs", {
         "allowSingleLine": true
       }
@@ -176,15 +176,15 @@
     "react/jsx-sort-props": 0,
     "react/jsx-uses-react": 1,
     "react/jsx-uses-vars": 1,
-    "react/no-did-mount-set-state": [2, "allow-in-func"],
-    "react/no-did-update-set-state": 2,
-    "react/no-multi-comp": 2,
-    "react/no-unknown-property": 2,
+    "react/no-did-mount-set-state": [1, "allow-in-func"],
+    "react/no-did-update-set-state": 1,
+    "react/no-multi-comp": 1,
+    "react/no-unknown-property": 1,
     "react/prop-types": 1,
-    "react/react-in-jsx-scope": 2,
-    "react/self-closing-comp": 2,
-    "react/sort-comp": 2,
-    "react/wrap-multilines": 2
+    "react/react-in-jsx-scope": 1,
+    "react/self-closing-comp": 1,
+    "react/sort-comp": 1,
+    "react/wrap-multilines": 1
   },
   "plugins": [
     "react"

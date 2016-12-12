@@ -5,11 +5,12 @@ import SideBarIcon from '../components/SideBarIcon';
 import SideBarLinks from '../components/SideBarLinks';
 import { verticalContainer } from '../DynamicStyles/common';
 
-class sidebarStyle extends verticalContainer {
-  flexShrink = 1;
-  color = '#000';
-  backgroundColor = '#fff';
-}
+const sidebarStyle = {
+  ...verticalContainer,
+  flexShrink: '1',
+  color: '#000',
+  backgroundColor: '#fff',
+};
 
 class SideBar extends React.Component {
   static propTypes = {
@@ -31,7 +32,7 @@ class SideBar extends React.Component {
 
   render() {
     return (
-      <aside style={new sidebarStyle}>
+      <aside style={sidebarStyle}>
         <h1><a href="#"> LOGGA </a></h1>
         {this.props.Activities.map((activity, index) => (
           <SideBarIcon
