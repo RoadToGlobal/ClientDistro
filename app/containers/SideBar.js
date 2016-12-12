@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import { Link } from 'react-router';
 import { connect } from 'react-redux';
 
 import SideBarIcon from '../components/SideBarIcon';
@@ -31,8 +32,13 @@ class SideBar extends React.Component {
 
   render() {
     return (
+<<<<<<< Updated upstream
       <aside style={new sidebarStyle}>
         <h1><a href="#"> LOGGA </a></h1>
+=======
+      <aside style={sidebarStyle}>
+        <h1><Link to="/">Logo</Link></h1>
+>>>>>>> Stashed changes
         {this.props.Activities.map((activity, index) => (
           <SideBarIcon
             key={activity.name}

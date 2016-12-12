@@ -21,6 +21,7 @@ export class FFFContainer extends verticalContainer {
   marginLeft = 'auto';
 }
 
+<<<<<<< Updated upstream
 export class FFFWindow {
   backgroundColor = 'white';
   margin = '0.5em';
@@ -29,3 +30,13 @@ export class FFFWindow {
   minHeight = '20em';
   color = '#333';
 }
+=======
+export const FFFWindow = {
+  backgroundColor: 'white',
+  margin: 0.5,
+  padding: '1em',
+  width: '40em',
+  color: '#333',
+  // minHeight should be added
+};
+>>>>>>> Stashed changes
