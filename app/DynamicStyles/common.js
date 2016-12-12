@@ -29,6 +29,6 @@ export const FFFWindow = {
   margin: '0.5em',
   padding: '1em',
   width: '40em',
+  minHeight: '20em',
   color: '#333',
-  // minHeight should be added
 };

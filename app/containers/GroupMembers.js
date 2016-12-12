@@ -17,7 +17,7 @@ const GroupMembersContainer = {
 const extendedFFFWindow = {
   ...FFFWindow,
   height: '20em',
-  margin: '0',
+  //margin: '0',
   display: 'flex',
   transition: 'height 0.5s',
   flexDirection: 'column',

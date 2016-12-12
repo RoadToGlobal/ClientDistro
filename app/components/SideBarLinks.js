@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import { Link } from 'react-router';
 
 class SideBarLinks extends React.Component {
   static propTypes = {
@@ -11,9 +12,9 @@ class SideBarLinks extends React.Component {
   render() {
     return (
       <div>
-        <a href="#"><h1>About</h1></a>
-        <a href="#"><h1>Group</h1></a>
-        <a href="#"><h1>More</h1></a>
+        <h1>About</h1>
+        <h1><Link to="/group">Group</Link></h1>
+        <h1>More</h1>
       </div>
     );
   }
