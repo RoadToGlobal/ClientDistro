@@ -15,6 +15,15 @@ const fakeInitialState = {
         SR: 2400,
       },
     },
+    {
+      id: '1dasdasdas',
+      token: 'exampleToken',
+      globalProps: {
+        name: 'Frasse',
+        age: 30,
+        imgUrl: 'https://pbs.twimg.com/profile_images/1876758845/image.jpg',
+      },
+    },
   ],
   chatRoom: [
     {
