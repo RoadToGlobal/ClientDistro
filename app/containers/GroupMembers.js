@@ -1,16 +1,35 @@
 import React, { PropTypes } from 'react';
 import {connect} from 'react-redux';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 import UserCard from '../components/UserCard';
-import {FFFWindow} from '../DynamicStyles/common';
+// import {FFFWindow} from '../DynamicStyles/common';
+// ska extenda FFFWindow
+const GroupMembersContainer = {
+  margin: '0',
+  display: 'flex',
+  opacity: '1',
+  transition: 'opacity 0.4s',
+  flexDirection: 'row',
+  justifyContent: 'space-around',
+};
 
-class GroupMembersContainer extends FFFWindow {
-  margin = '0';
-  display = 'flex';
-}
+const FFFWindow = {
+  backgroundColor: 'white',
+  padding: '1em',
+  width: '40em',
+  height: '20em',
+  color: '#333',
+  margin: '0',
+  display: 'flex',
+  transition: 'height 0.5s',
+  flexDirection: 'column',
+  overflow: 'hidden',
+};
+
 class GroupMembersHeader {
   backgroundColor = '#9c9c9c';
-  width = '42em';
+  // width = '42em';
 }
 class GroupMembersTitle {
   margin = '0';
@@ -23,15 +42,6 @@ class ToggleButton {
   cursor = 'pointer';
 }
 
-const styles = {
-  active: {
-    display: 'inherit'
-  },
-  inactive: {
-    display: 'none'
-  }
-};
-
 class GroupMembers extends React.Component {
   static propTypes = {
     CurrentGroup: PropTypes.object,
@@ -40,44 +50,40 @@ class GroupMembers extends React.Component {
   constructor() {
     super();
     this.state = {
-      active: false
+      maximized: true
     };
-    this.toggleVisibility = this.toggleVisibility.bind(this);
   }
 
   toggleVisibility() {
     this.setState({
-      active: !this.state.active
+      maximized: !this.state.maximized
     });
   }
 
   render() {
-    const stateStyle = this.state.active ? styles.inactive : styles.active;
     return (
-      <div>
-        <div style={new GroupMembersHeader}>
+      <div style={this.state.maximized ? FFFWindow : {...FFFWindow, height: '2em'}}>
+        <header style={new GroupMembersHeader}>
           <h1 style={new GroupMembersTitle}>
             Members
             <a
               style={new ToggleButton}
-              onClick={this.toggleVisibility}>
-              {this.state.active ? ' +' : ' -'}
+              onClick={() => this.toggleVisibility()}>
+              {this.state.maximized ? ' +' : ' -'}
             </a>
           </h1>
-        </div>
-        <div style={stateStyle}>
-          <div style={new GroupMembersContainer}>
-            <div style={new MembersContainer}>
-              {
-                this.props.CurrentGroup.members.map((member) => (
-                  <UserCard
-                    key={member.name}
-                    member={member}
-                  />
-                ))
-              }
-              {this.props.CurrentGroup.members.length === 0 ? <p>No members to show</p> : null}
-            </div>
+        </header>
+        <div style={this.state.maximized ? GroupMembersContainer : {...GroupMembersContainer, opacity: '0'}}>
+          <div style={{display: 'flex'}}>
+            {
+              this.props.CurrentGroup.members.map((member) => (
+                <UserCard
+                  key={member.name}
+                  member={member}
+                />
+              ))
+            }
+            {this.props.CurrentGroup.members.length === 0 ? <p>No members to show</p> : null}
           </div>
         </div>
       </div>
