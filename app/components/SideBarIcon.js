@@ -16,9 +16,8 @@ class SideBarIcon extends React.Component {
     const icon = {
       marginBottom: 10.5,
       cursor: 'pointer',
-      backgroundColor: this.props.activity.customization.backgroundColor,
+      borderLeft: '5px solid ' + this.props.activity.customization.backgroundColor,
     };
-
     const iconItem = {
       ...icon,
       opacity: 0.5,

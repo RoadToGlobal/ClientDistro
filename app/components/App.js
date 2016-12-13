@@ -9,7 +9,7 @@ const App = ({ children }) =>
     <SideBar />
     <div style={mainContainer}>
       <header style={{paddingLeft: '1em'}}>
-        <Link to="/"><h1>GroupApp!</h1></Link>
+        <Link to="/" style={brandName}><h1>GroupApp!</h1></Link>
       </header>
       { children }
     </div>
@@ -27,6 +27,11 @@ const globalContainer = {
 const mainContainer = {
   ...verticalContainer,
   flex: '1',
+};
+const brandName = {
+  textDecoration: 'none',
+  fontWeight: '600',
+  color: '#3c4959',
 };
 
 export default App;

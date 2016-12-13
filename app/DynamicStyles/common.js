@@ -1,6 +1,8 @@
 export const container = {
-  backgroundColor: 'lightGrey',
+  backgroundColor: '#9ae3d8',
   color: '#333',
+  fontFamily: 'PT Sans',
+  boxShadow: '1px 1px 10px #888888',
 };
 
 export const verticalContainer = {
@@ -26,7 +28,6 @@ export const FFFContainer = {
 
 export const FFFWindow = {
   backgroundColor: 'white',
-  margin: '0.5em',
   padding: '1em',
   width: '40em',
   color: '#333',

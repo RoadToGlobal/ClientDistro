@@ -26,7 +26,7 @@ const extendedFFFWindow = {
 };
 
 const GroupMembersHeader = {
-  backgroundColor: '#9c9c9c',
+  borderBottom: '1px solid #dddddd',
 };
 const GroupMembersTitle = {
   margin: '0',
