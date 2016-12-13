@@ -9,10 +9,23 @@ import { verticalContainer } from '../DynamicStyles/common';
 const sidebarStyle = {
   ...verticalContainer,
   flexShrink: '1',
-  color: '#000',
-  backgroundColor: '#fff',
+  display: 'flex',
+  color: '#ffffff',
+  backgroundColor: '#3c4959',
+  width: '5em',
+  fontWeight: '300',
 };
+const logotype = {
+  width: '55%',
+};
+const logotypeContainer = {
+  textAlign: 'center',
+  marginBottom: '0.8em',
+  marginTop: '0.8em',
+};
+const SideBarIconContainer = {
 
+};
 class SideBar extends React.Component {
   static propTypes = {
     Activities: PropTypes.array,
@@ -34,7 +47,8 @@ class SideBar extends React.Component {
   render() {
     return (
       <aside style={sidebarStyle}>
-        <h1><Link to="/">Logo</Link></h1>
+        <Link style={logotypeContainer} to="/"><img style={logotype} src="http://eigentaste.berkeley.edu/img/home_icon.png"/></Link>
+        <div style={SideBarIconContainer}>
         {this.props.Activities.map((activity, index) => (
           <SideBarIcon
             key={activity.name}
@@ -44,6 +58,7 @@ class SideBar extends React.Component {
             removeHover={() => this.toggleHover(false)}
           />
         ))}
+        </div>
         <SideBarLinks />
       </aside>
     );

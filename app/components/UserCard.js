@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 
 const MemberCard = {
   margin: '10px',
-  borderStyle: 'solid',
-  borderColor: '#000',
+  padding: '1em',
+  boxShadow: '1px 1px 6px #888888',
+  borderRadius: '3px',
   flexShrink: '1',
 };
+
 const ProfileImage = {
   width: '8em',
   height: 'auto',
@@ -19,11 +21,15 @@ class UserCard extends React.Component {
           style={ProfileImage}
           src={this.props.member.globalProps.imgUrl}
         />
-        <p> Name: {this.props.member.globalProps.name}</p>
-        <p> Age: {this.props.member.globalProps.age}</p>
+        <p><b>Name:</b> {this.props.member.globalProps.name}</p>
+        <p><b>Age:</b> {this.props.member.globalProps.age}</p>
       </div>
     );
   }
 }
+
+UserCard.propTypes = {
+  member: PropTypes.array,
+};
 
 export default UserCard;
