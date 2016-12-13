@@ -2,7 +2,6 @@ export const container = {
   backgroundColor: '#9ae3d8',
   color: '#333',
   fontFamily: 'PT Sans',
-  boxShadow: '1px 1px 10px #888888',
 };
 
 export const verticalContainer = {
@@ -31,5 +30,7 @@ export const FFFWindow = {
   padding: '1em',
   width: '40em',
   color: '#333',
+  marginBottom: '2em',
+  boxShadow: '1px 1px 10px #888888',
   // minHeight should be added
 };
