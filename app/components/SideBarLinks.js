@@ -9,7 +9,6 @@ const footerLinks = {
 const linksContainer = {
   backgroundColor: '#3c4959',
   width: '5em',
-  // marginTop: '200px',
   position: 'fixed',
   bottom: '0px',
   textAlign: 'center',

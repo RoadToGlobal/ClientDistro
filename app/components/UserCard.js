@@ -3,7 +3,6 @@ import React, { PropTypes } from 'react';
 const MemberCard = {
   margin: '10px',
   padding: '1em',
-  // border: '1px solid #000',
   boxShadow: '1px 1px 6px #888888',
   borderRadius: '3px',
   flexShrink: '1',
