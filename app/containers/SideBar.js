@@ -4,10 +4,11 @@ import { connect } from 'react-redux';
 
 import SideBarIcon from '../components/SideBarIcon';
 import SideBarLinks from '../components/SideBarLinks';
-import { verticalContainer } from '../DynamicStyles/common';
+import { verticalContainer, shadowCaster } from '../DynamicStyles/common';
 
 const sidebarStyle = {
   ...verticalContainer,
+  ...shadowCaster,
   flexShrink: '1',
   display: 'flex',
   color: '#ffffff',
