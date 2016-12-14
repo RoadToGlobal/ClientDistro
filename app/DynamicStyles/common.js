@@ -34,5 +34,7 @@ export const FFFWindow = {
   padding: '1em',
   width: '40em',
   color: '#333',
+  marginBottom: '2em',
+  boxShadow: '1px 1px 10px #888888',
   // minHeight should be added
 };
