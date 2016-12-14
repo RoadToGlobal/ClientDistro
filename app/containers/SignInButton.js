@@ -18,4 +18,4 @@ export default class SignInButton extends React.Component {
 }
 const logInLink = {
   textDecoration: 'none',
-}
+};
