@@ -28,11 +28,15 @@ export const FFFContainer = {
   marginLeft: 'auto',
 };
 
-export const FFFWindow = {
+export const FFFWindowStyle = {
   ...shadowCaster,
   backgroundColor: 'white',
   padding: '1em',
   width: '40em',
-  minHeight: '20em',
   color: '#333',
+  marginBottom: '2em',
+  display: 'flex',
+  transition: 'height 0.5s',
+  flexDirection: 'column',
+  overflow: 'hidden',
 };

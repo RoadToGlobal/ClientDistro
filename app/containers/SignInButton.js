@@ -1,7 +1,7 @@
 import React from 'react';
 import Button from '../components/Button';
 import { Link } from 'react-router';
-import {FFFWindow} from '../DynamicStyles/common';
+import {FFFWindowStyle} from '../DynamicStyles/common';
 
 export default class SignInButton extends React.Component {
 
@@ -19,8 +19,7 @@ const logInLink = {
   textDecoration: 'none',
 };
 const buttonContainer = {
-  ...FFFWindow,
-  boxShadow: 'none',
+  ...FFFWindowStyle,
   backgroundColor: 'transparent',
-  paddingTop: '0',
+  padding: '0',
 };
