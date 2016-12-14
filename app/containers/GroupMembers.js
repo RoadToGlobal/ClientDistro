@@ -7,7 +7,6 @@ import UserCard from '../components/UserCard';
 import {FFFWindow} from '../DynamicStyles/common';
 
 const GroupMembersContainer = {
-  margin: '0',
   display: 'flex',
   opacity: '1',
   transition: 'opacity 0.4s',
@@ -18,7 +17,6 @@ const GroupMembersContainer = {
 const extendedFFFWindow = {
   ...FFFWindow,
   height: '20em',
-  //margin: '0',
   display: 'flex',
   transition: 'height 0.5s',
   flexDirection: 'column',
