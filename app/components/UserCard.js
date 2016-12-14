@@ -29,7 +29,7 @@ class UserCard extends React.Component {
 }
 
 UserCard.propTypes = {
-  member: PropTypes.array,
+  member: PropTypes.object,
 };
 
 export default UserCard;

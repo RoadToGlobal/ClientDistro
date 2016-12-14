@@ -5,7 +5,7 @@ export const container = {
 
 export const shadowCaster = {
   boxShadow: '0px 5px 30px rgba(0,0,0,0.4)',
-}
+};
 
 export const verticalContainer = {
   ...container,
@@ -35,6 +35,10 @@ export const FFFWindow = {
   width: '40em',
   color: '#333',
   marginBottom: '2em',
-  boxShadow: '1px 1px 10px #888888',
+  // boxShadow: '1px 1px 10px #888888',
+  display: 'flex',
+  transition: 'height 0.5s',
+  flexDirection: 'column',
+  overflow: 'hidden',
   // minHeight should be added
 };
