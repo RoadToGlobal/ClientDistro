@@ -20,7 +20,6 @@ const logInLink = {
 };
 const buttonContainer = {
   ...FFFWindow,
-  boxShadow: 'none',
   backgroundColor: 'transparent',
-  paddingTop: '0',
+  padding: '0',
 };
