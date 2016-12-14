@@ -23,16 +23,16 @@ App.propTypes = {
 
 const headerContainer = {
   ...verticalContainer,
+  boxShadow: 'none',
 };
-
 const globalContainer = {
   ...horizontalContainer,
   minHeight: '100vh',
 };
-
 const mainContainer = {
   ...verticalContainer,
   flex: '1',
+  boxShadow: 'none',
 };
 const brandName = {
   textDecoration: 'none',

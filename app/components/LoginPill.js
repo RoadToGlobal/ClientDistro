@@ -1,38 +1,64 @@
 import React, { PropTypes } from 'react';
-import { Link } from 'react-router';
 
 import { FFFWindow, horizontalContainer } from '../DynamicStyles/common';
 
 const pillContainer = {
-  ...FFFWindow,
-  flex: 1,
+  display: 'flex',
+  flexDirection: 'row',
+  justifyContent: 'flex-start',
 
-  ...horizontalContainer,
-  margin: 'auto',
-  padding: '1em',
-  backgroundColor: '#fff',
+  flex: 1,
 };
+const pillItemText = {
+  textAlign: 'center',
+  padding: 5,
 
-const pillItems = {
   flex: 1,
-  //border: '1px solid #000'
+};
+const pillItemContainer = {
+  backgroundColor: '#3c4959',
+  border: '3px solid #3c4959',
+  borderRadius: 20,
+  padding: 5,
+  marginRight: 5,
+  textAlign: 'center',
+  cursor: 'pointer',
+
+  flex: 1,
+};
+const pillItemLink = {
+  color: '#fff',
+  textDecoration: 'none',
 };
 
 class LoginPill extends React.Component {
   static propTypes = {
-
+    clickPill: PropTypes.func,
   }
-  constructor() {
-    super();
+
+  constructor(props) {
+    super(props);
   }
 
   render() {
     return (
       <div style={pillContainer}>
-        <h2 style={pillItems}>Login with:</h2>
-        <h2 style={pillItems}><a href="">Group app</a></h2>
-        <h2 style={pillItems}><a href="">Google+</a></h2>
-        <h2 style={pillItems}><a href="">Facebook</a></h2>
+        <h2 style={pillItemText}>Login with:</h2>
+        <h2
+          style={pillItemContainer}
+          onClick={this.props.clickPill}>
+            <a style={pillItemLink} href="#">Group app</a>
+        </h2>
+        <h2
+          style={pillItemContainer}
+          onClick={this.props.clickPill}>
+            <a style={pillItemLink} href="#">Google+</a>
+        </h2>
+        <h2
+          style={pillItemContainer}
+          onClick={this.props.clickPill}>
+            <a style={pillItemLink} href="#">Facebook</a>
+        </h2>
       </div>
     );
   }

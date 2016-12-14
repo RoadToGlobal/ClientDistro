@@ -1,20 +1,19 @@
 import React, { PropTypes } from 'react';
-import { Link } from 'react-router';
 
-import {FFFWindow, horizontalContainer} from '../DynamicStyles/common';
+import { FFFWindow } from '../DynamicStyles/common';
 
 const windowContainer = {
-  ...FFFWindow,
   flex: 1,
 
-  ...horizontalContainer,
-  alignItems: 'center',
+  display: 'flex',
+  flexDirection: 'row',
   justifyContent: 'center',
-  margin: 'auto',
-  padding: '1em',
-  backgroundColor: '#fff',
-};
+  alignItems: 'center',
 
+  margin: 'auto',
+  backgroundColor: '#fff',
+  minHeight: 0,
+};
 const windowItem = {
   backgroundColor: 'grey',
   color: '#fff',
@@ -25,6 +24,7 @@ class LoginWindow extends React.Component {
   static propTypes = {
 
   }
+
   constructor() {
     super();
   }
