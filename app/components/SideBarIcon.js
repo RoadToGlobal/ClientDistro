@@ -1,9 +1,14 @@
 import React, { PropTypes } from 'react';
 
+/* ToDo:
+*  - Add more links and "connect" to views
+*/
+
 const icon = {
   marginBottom: 10.5,
   cursor: 'pointer',
-  // borderLeft: '5px solid #000',
+  borderLeftWidth: '5px',
+  borderLeftStyle: 'solid',
 };
 const iconItem = {
   ...icon,
@@ -50,17 +55,10 @@ class SideBarIcon extends React.Component {
   }
 
   render() {
-    let containerStyle;
-
-    if(this.props.hoverStatus) {
-      containerStyle = iconItemHover;
-    }else{
-      containerStyle = iconItem;
-    }
-
     return (
       <div
-        style={{...containerStyle, borderLeft: '5px solid ' + this.props.activity.customization.backgroundColor}}
+        style={this.props.hoverStatus ? {...iconItemHover, borderLeftColor: this.props.activity.customization.backgroundColor}
+          : {...iconItem, borderLeftColor: this.props.activity.customization.backgroundColor}}
         onMouseOver={this.props.toggleHover}
         onMouseLeave={this.props.removeHover}
       >

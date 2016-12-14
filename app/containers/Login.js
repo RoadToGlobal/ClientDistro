@@ -3,14 +3,19 @@ import { connect } from 'react-redux';
 
 import LoginPill from '../components/LoginPill';
 import LoginWindow from '../components/LoginWindow';
-import { FFFWindow, verticalContainer } from '../DynamicStyles/common';
+import { FFFWindowStyle, verticalContainer } from '../DynamicStyles/common';
+
+/* ToDo:
+*  - Animate the login
+*  - Change "Close" link to design
+*/
 
 const loginContainer = {
   ...verticalContainer,
   boxShadow: 'none',
 };
 const loginStyle = {
-  ...FFFWindow,
+  ...FFFWindowStyle,
   margin: 'auto',
   minHeight: 'initial',
   boxShadow: '1px 1px 10px #888888',
@@ -48,7 +53,7 @@ class Login extends React.Component {
   }
 
   clickPill() {
-    if(this.state.showLoginPills === true) {
+    if(this.state.showLoginPills) {
       this.setState({
         showLoginButton: this.state.showLoginPills,
       });
@@ -57,21 +62,22 @@ class Login extends React.Component {
 
   render() {
     return (
-      <div style={loginContainer}>
+      <div style={this.state.showLoginPills ? {...loginContainer, marginBottom: '2em'} : loginContainer}>
         <h2 style={loginBox}>
           <a
             style={loginLink}
             href="#"
             onClick={() => this.clickLogin()}>
-              {this.state.showLoginPills ? 'Close' : 'Login'}
+            {this.state.showLoginPills ? 'Close' : 'Login'}
           </a>
         </h2>
-        {this.state.showLoginPills ?
-        <div style={loginStyle}>
-          <LoginPill clickPill={() => this.clickPill()} />
+        <div style={this.state.showLoginPills ? loginStyle : {display: 'none'}}>
+          <LoginPill
+            showPills={this.state.showLoginPills}
+            clickPill={() => this.clickPill()}
+          />
           {this.state.showLoginButton ? <LoginWindow /> : null}
         </div>
-        : null}
       </div>
     );
   }

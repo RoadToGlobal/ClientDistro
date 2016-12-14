@@ -6,6 +6,11 @@ import SideBarIcon from '../components/SideBarIcon';
 import SideBarLinks from '../components/SideBarLinks';
 import { verticalContainer, shadowCaster } from '../DynamicStyles/common';
 
+/* ToDo:
+*  - Icon pagination
+*  - Connect icons to groups
+*/
+
 const sidebarStyle = {
   ...verticalContainer,
   ...shadowCaster,
@@ -27,6 +32,7 @@ const logotypeContainer = {
 const SideBarIconContainer = {
 
 };
+
 class SideBar extends React.Component {
   static propTypes = {
     Activities: PropTypes.array,

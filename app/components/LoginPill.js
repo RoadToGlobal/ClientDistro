@@ -31,6 +31,7 @@ const pillItemLink = {
 
 class LoginPill extends React.Component {
   static propTypes = {
+    showPills: PropTypes.bool,
     clickPill: PropTypes.func,
   }
 
