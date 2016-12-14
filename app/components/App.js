@@ -21,6 +21,8 @@ App.propTypes = {
 
 const globalContainer = {
   ...horizontalContainer,
+  backgroundColor: '#9ae3d8',
+  background: 'linear-gradient(to bottom, rgba(153,242,227,1) 0%, rgba(116,207,190,1) 42%, rgba(89,179,173,1) 77%, rgba(66,153,149,1) 100%)',
   minHeight: '100vh',
 };
 
