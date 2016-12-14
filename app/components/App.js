@@ -2,14 +2,16 @@ import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 
 import SideBar from '../containers/SideBar';
+import Login from '../containers/Login';
 import { verticalContainer, horizontalContainer } from '../DynamicStyles/common';
 
 const App = ({ children }) =>
   <div style={globalContainer}>
     <SideBar />
     <div style={mainContainer}>
-      <header style={{paddingLeft: '1em'}}>
+      <header style={headerContainer}>
         <Link to="/" style={brandName}><h1>GroupApp!</h1></Link>
+        <Login />
       </header>
       { children }
     </div>
@@ -19,14 +21,18 @@ App.propTypes = {
   children: PropTypes.object,
 };
 
+const headerContainer = {
+  ...verticalContainer,
+  boxShadow: 'none',
+};
 const globalContainer = {
   ...horizontalContainer,
   minHeight: '100vh',
 };
-
 const mainContainer = {
   ...verticalContainer,
   flex: '1',
+  boxShadow: 'none',
 };
 const brandName = {
   textDecoration: 'none',
