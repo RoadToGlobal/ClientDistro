@@ -28,7 +28,7 @@ export const FFFContainer = {
   marginLeft: 'auto',
 };
 
-export const FFFWindow = {
+export const FFFWindowStyle = {
   ...shadowCaster,
   backgroundColor: 'white',
   padding: '1em',

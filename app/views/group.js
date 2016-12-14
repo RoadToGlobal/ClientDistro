@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import GroupMembers from '../containers/GroupMembers';
 import SignInButton from '../containers/SignInButton';
-import FFFWindowBox from '../containers/FFFWindowBox';
+import FFFWindow from '../containers/FFFWindow';
 import { FFFContainer } from '../DynamicStyles/common';
 
 class Group extends React.Component {
@@ -14,9 +14,9 @@ class Group extends React.Component {
   render() {
     return (
       <div style={FFFContainer}>
-        <FFFWindowBox title={"Members"} header={Boolean(true)}>
+        <FFFWindow title={"Members"} header={Boolean(true)}>
           <GroupMembers />
-        </FFFWindowBox>
+        </FFFWindow>
         { this.props.CurrentUser.token === 'exampleToken' ?
           <SignInButton />
          : null }

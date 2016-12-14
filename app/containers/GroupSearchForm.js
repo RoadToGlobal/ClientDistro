@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 
-import { FFFWindow } from '../DynamicStyles/common';
+import { FFFWindowStyle } from '../DynamicStyles/common';
 
 class GroupSearchForm extends React.Component {
   static propTypes = {
@@ -15,7 +15,7 @@ class GroupSearchForm extends React.Component {
 
   render() {
     return (
-      <div style={FFFWindow}>
+      <div style={FFFWindowStyle}>
         <h1>GroupSearchForm</h1>
         <p>
           Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
