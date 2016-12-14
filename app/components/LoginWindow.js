@@ -1,7 +1,5 @@
 import React, { PropTypes } from 'react';
 
-import { FFFWindow } from '../DynamicStyles/common';
-
 const windowContainer = {
   flex: 1,
 
@@ -22,8 +20,7 @@ const windowItem = {
 
 class LoginWindow extends React.Component {
   static propTypes = {
-
-  }
+  };
 
   constructor() {
     super();

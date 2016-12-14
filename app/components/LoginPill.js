@@ -1,7 +1,5 @@
 import React, { PropTypes } from 'react';
 
-import { FFFWindow, horizontalContainer } from '../DynamicStyles/common';
-
 const pillContainer = {
   display: 'flex',
   flexDirection: 'row',

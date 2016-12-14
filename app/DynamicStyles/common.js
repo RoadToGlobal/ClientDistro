@@ -5,7 +5,7 @@ export const container = {
 
 export const shadowCaster = {
   boxShadow: '0px 5px 30px rgba(0,0,0,0.4)',
-}
+};
 
 export const verticalContainer = {
   ...container,

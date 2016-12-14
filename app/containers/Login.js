@@ -5,7 +5,6 @@ import LoginPill from '../components/LoginPill';
 import LoginWindow from '../components/LoginWindow';
 import { FFFWindow, verticalContainer } from '../DynamicStyles/common';
 
-
 const loginContainer = {
   ...verticalContainer,
   boxShadow: 'none',
@@ -30,7 +29,9 @@ const loginLink = {
 
 class Login extends React.Component {
   static propTypes = {
+    CurrentUser: PropTypes.object,
   };
+
   constructor() {
     super();
     this.state = {
@@ -78,6 +79,7 @@ class Login extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
+    CurrentUser: state.CurrentUser,
   };
 };
 

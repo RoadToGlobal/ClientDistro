@@ -3,7 +3,7 @@ import React, { PropTypes } from 'react';
 const icon = {
   marginBottom: 10.5,
   cursor: 'pointer',
-  borderLeft: '5px solid ' + this.props.activity.customization.backgroundColor,
+  // borderLeft: '5px solid #000',
 };
 const iconItem = {
   ...icon,
@@ -50,9 +50,17 @@ class SideBarIcon extends React.Component {
   }
 
   render() {
+    let containerStyle;
+
+    if(this.props.hoverStatus) {
+      containerStyle = iconItemHover;
+    }else{
+      containerStyle = iconItem;
+    }
+
     return (
       <div
-        style={this.props.hoverStatus ? iconItemHover : iconItem}
+        style={{...containerStyle, borderLeft: '5px solid ' + this.props.activity.customization.backgroundColor}}
         onMouseOver={this.props.toggleHover}
         onMouseLeave={this.props.removeHover}
       >
