@@ -15,7 +15,7 @@ class Chat extends React.Component {
     return (
       <div style={chatContainer}>
         <div style={chatWindow}>
-          <p><b>Mr.Miagi: </b> hehe, ching chong</p>
+          <p><b>Mr.Miagi: </b> Ryū ga waga teki wo kurau! </p>
           <p><b>Frasse: </b> Öh, va saru!?</p>
         </div>
       </div>

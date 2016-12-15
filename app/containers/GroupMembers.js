@@ -12,7 +12,7 @@ class GroupMembers extends React.Component {
 
   render() {
     return (
-      <div style={{display: 'flex', alignSelf: 'center'}}>
+      <div style={{display: 'flex', justifyContent: 'center'}}>
         {
           this.props.CurrentGroup.members.map((member) => (
             <UserCard
