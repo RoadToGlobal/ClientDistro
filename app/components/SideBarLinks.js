@@ -28,6 +28,7 @@ class SideBarLinks extends React.Component {
       <div style={linksContainer}>
         <a href="#" style={footerLinks}><h3>About</h3></a>
         <a href="#" style={footerLinks}><h3><Link to="/group">Group</Link></h3></a>
+        <a href="#" style={footerLinks}><h3><Link to="/createactivity">Create Activity</Link></h3></a>
         <a href="#" style={footerLinks}><h3>More</h3></a>
       </div>
     );
