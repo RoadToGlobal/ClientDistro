@@ -1,7 +1,6 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 
-import Button from '../components/Button';
 import { verticalContainer, horizontalContainer } from '../DynamicStyles/common';
 
 const fakeColorIcon = {
@@ -101,7 +100,8 @@ class CustomizeTheme extends React.Component {
             <div style={{...fakeColorIcon, ...margR}}></div>
             <div>
               <label style={margR}>Opacity:</label>
-              <input style={inputSmall} type="text"/>
+              <input style={{...inputSmall, marginRight: 10}} type="text"/>
+              <span style={{fontWeight: 700}}>%</span>
             </div>
           </div>
         </div>

@@ -14,10 +14,10 @@ class CreateActivity extends React.Component {
   render() {
     return (
       <div style={FFFContainer}>
-        <FFFWindow title={"Register new Activity:"} header={Boolean(true)} specStyle={{height: 'inherit'}}>
+        <FFFWindow title={"Register new Activity"} header={Boolean(true)} specStyle={{height: 'inherit'}}>
           <RegisterActivity />
         </FFFWindow>
-        <FFFWindow title={"Customize theme:"} header={Boolean(true)} specStyle={{height: 'inherit'}}>
+        <FFFWindow title={"Customize theme"} header={Boolean(true)} specStyle={{height: 'inherit'}}>
           <CustomizeTheme />
         </FFFWindow>
       </div>

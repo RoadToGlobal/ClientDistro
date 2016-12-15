@@ -1,8 +1,11 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 
-import Button from '../components/Button';
 import { verticalContainer, horizontalContainer } from '../DynamicStyles/common';
+
+/* ToDo:
+*  - Toggle CustomizeTheme
+*/
 
 const margR = {
   marginRight: 20,
