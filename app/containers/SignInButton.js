@@ -21,5 +21,6 @@ const logInLink = {
 const buttonContainer = {
   ...FFFWindowStyle,
   backgroundColor: 'transparent',
+  height: 'inherit',
   padding: '0',
 };

@@ -50,7 +50,10 @@ export default class FFFWindow extends React.Component {
             </h1>
           </header>
         : null }
-        <div style={this.state.maximized ? contentStyle : {...contentStyle, opacity: '0'}}>
+        {/* TODO: Make the animation work with the previous style object as shown below.
+          <div style={this.state.maximized ? contentStyle : {...contentStyle, opacity: '0'}}>
+        */}
+        <div>
           {this.props.children}
         </div>
       </div>
