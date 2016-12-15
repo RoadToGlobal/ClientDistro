@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 
 import LoginPill from '../components/LoginPill';
 import LoginWindow from '../components/LoginWindow';
-import { FFFWindowStyle, verticalContainer } from '../DynamicStyles/common';
+import FFFWindow from '../containers/FFFWindow';
+import { verticalContainer } from '../DynamicStyles/common';
 
 /* ToDo:
 *  - Animate the login
@@ -15,10 +16,8 @@ const loginContainer = {
   boxShadow: 'none',
 };
 const loginStyle = {
-  ...FFFWindowStyle,
   margin: 'auto',
   minHeight: 'initial',
-  boxShadow: '1px 1px 10px #888888',
 };
 const loginBox = {
   margin: 5,
@@ -71,13 +70,19 @@ class Login extends React.Component {
             {this.state.showLoginPills ? 'Close' : 'Login'}
           </a>
         </h2>
-        <div style={this.state.showLoginPills ? loginStyle : {display: 'none'}}>
-          <LoginPill
-            showPills={this.state.showLoginPills}
-            clickPill={() => this.clickPill()}
-          />
-          {this.state.showLoginButton ? <LoginWindow /> : null}
-        </div>
+
+        {this.state.showLoginPills ?
+          <div style={loginStyle}>
+            <FFFWindow title="yo" header={Boolean(false)} specStyle={{height: 'inherit'}}>
+                <LoginPill
+                  showPills={this.state.showLoginPills}
+                  clickPill={() => this.clickPill()}
+                />
+                {this.state.showLoginButton ? <LoginWindow /> : null}
+            </FFFWindow>
+          </div>
+          : null}
+
       </div>
     );
   }

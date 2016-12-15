@@ -1,10 +1,25 @@
 import React, { PropTypes } from 'react';
 import {connect} from 'react-redux';
+
+import MemberPanel from '../components/MemberPanel';
+import Chat from '../components/Chat';
+import SendLine from '../components/SendLine';
 // Uncomment this import when you're going to use ReactCSSTransitionGroup
 // import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
-import UserCard from '../components/UserCard';
 
-class GroupMembers extends React.Component {
+const chatLeft = {
+  display: 'flex',
+  flex: '1',
+  flexDirection: 'column',
+  height: '18em',
+};
+const chatRight = {
+  display: 'flex',
+  flexDirection: 'column',
+  flex: '5',
+};
+
+class GroupChat extends React.Component {
   static propTypes = {
     CurrentGroup: PropTypes.object,
     fetchMembers: PropTypes.func,
@@ -12,16 +27,17 @@ class GroupMembers extends React.Component {
 
   render() {
     return (
-      <div style={{display: 'flex', justifyContent: 'center'}}>
-        {
-          this.props.CurrentGroup.members.map((member) => (
-            <UserCard
-              key={member.name}
-              member={member}
-            />
-          ))
-        }
-        {this.props.CurrentGroup.members.length === 0 ? <p>No members to show</p> : null}
+      <div style={{display: 'flex'}}>
+
+        <div style={chatLeft}>
+          <MemberPanel chatMembers={this.props.CurrentGroup.members}/>
+        </div>
+
+        <div style={chatRight}>
+          <Chat />
+          <SendLine />
+        </div>
+
       </div>
     );
   }
@@ -45,4 +61,4 @@ const mapDispatchToProps = (dispatch) => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(GroupMembers);
+)(GroupChat);

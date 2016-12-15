@@ -11,11 +11,6 @@ const contentStyle = {
   justifyContent: 'space-around',
 };
 
-const extendedFFFWindow = {
-  ...FFFWindowStyle,
-  height: '20em',
-};
-
 const FFFWindowHeader = {
   borderBottom: '1px solid #dddddd',
 };
@@ -42,7 +37,7 @@ export default class FFFWindow extends React.Component {
 
   render() {
     return (
-      <div style={this.state.maximized ? extendedFFFWindow : {...extendedFFFWindow, height: '2em'}}>
+      <div style={this.state.maximized ? {...FFFWindowStyle, ...this.props.specStyle} : {...FFFWindowStyle, height: '2em'}}>
         {this.props.header ?
           <header style={FFFWindowHeader}>
             <h1 style={FFFWindowTitle}>
@@ -55,7 +50,10 @@ export default class FFFWindow extends React.Component {
             </h1>
           </header>
         : null }
-        <div style={this.state.maximized ? contentStyle : {...contentStyle, opacity: '0'}}>
+        {/* TODO: Make the animation work with the previous style object as shown below.
+          <div style={this.state.maximized ? contentStyle : {...contentStyle, opacity: '0'}}>
+        */}
+        <div>
           {this.props.children}
         </div>
       </div>
@@ -65,5 +63,6 @@ export default class FFFWindow extends React.Component {
 FFFWindow.propTypes = {
   header: PropTypes.bool,
   title: PropTypes.string,
+  specStyle: PropTypes.object,
   children: PropTypes.object,
 };

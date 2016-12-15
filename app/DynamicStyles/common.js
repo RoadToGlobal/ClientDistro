@@ -31,6 +31,7 @@ export const FFFContainer = {
 export const FFFWindowStyle = {
   ...shadowCaster,
   backgroundColor: 'white',
+  height: '20em',
   padding: '1em',
   width: '40em',
   color: '#333',
