@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import GroupMembers from '../containers/GroupMembers';
 import SignInButton from '../containers/SignInButton';
+import GroupChat from '../containers/GroupChat';
 import FFFWindow from '../containers/FFFWindow';
 import { FFFContainer } from '../DynamicStyles/common';
 
@@ -20,6 +21,9 @@ class Group extends React.Component {
         { this.props.CurrentUser.token === 'exampleToken' ?
           <SignInButton />
          : null }
+        <FFFWindow title={"Group Chat"} header={Boolean(true)}>
+          <GroupChat />
+        </FFFWindow>
       </div>
    );
   }
