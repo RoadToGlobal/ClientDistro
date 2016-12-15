@@ -11,11 +11,6 @@ const contentStyle = {
   justifyContent: 'space-around',
 };
 
-const extendedFFFWindow = {
-  ...FFFWindowStyle,
-  height: '20em',
-};
-
 const FFFWindowHeader = {
   borderBottom: '1px solid #dddddd',
 };
@@ -42,7 +37,7 @@ export default class FFFWindow extends React.Component {
 
   render() {
     return (
-      <div style={this.state.maximized ? extendedFFFWindow : {...extendedFFFWindow, height: '2em'}}>
+      <div style={this.state.maximized ? {...FFFWindowStyle, ...this.props.specStyle} : {...FFFWindowStyle, height: '2em'}}>
         {this.props.header ?
           <header style={FFFWindowHeader}>
             <h1 style={FFFWindowTitle}>
@@ -65,5 +60,6 @@ export default class FFFWindow extends React.Component {
 FFFWindow.propTypes = {
   header: PropTypes.bool,
   title: PropTypes.string,
+  specStyle: PropTypes.object,
   children: PropTypes.object,
 };
