@@ -7,10 +7,11 @@ const sendLineContainer = {
 
 const sendBtn = {
   flex: '1',
-}
+};
 const sendInput = {
   flex: '6',
-}
+};
+
 class SendLine extends React.Component {
   render() {
     return (
