@@ -11,7 +11,7 @@ const generalButton = {
   padding: '8px 16px',
   textAlign: 'center',
   textDecoration: 'none',
-  fontSize: '16px',
+  fontSize: '1em',
   fontWeight: 700,
   cursor: 'pointer',
 };

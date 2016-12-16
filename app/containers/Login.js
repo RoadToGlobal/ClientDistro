@@ -1,10 +1,10 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 
+import GeneralButton from '../components/GeneralButton';
 import LoginPill from '../components/LoginPill';
 import LoginWindow from '../components/LoginWindow';
 import FFFWindow from '../containers/FFFWindow';
-import CloseButton from '../components/CloseButton';
 import { verticalContainer } from '../DynamicStyles/common';
 
 // TODO: Animate the login
@@ -27,6 +27,17 @@ const loginBox = {
 const loginLink = {
   color: '#3c4959',
   textDecoration: 'none',
+};
+const closeButton = {
+  float: 'right',
+  cursor: 'pointer',
+  color: '#fff',
+  borderRadius: 30,
+  background: '#3c4959',
+  fontSize: 31,
+  fontWeight: 700,
+  lineHeight: 0,
+  padding: '8px',
 };
 
 class Login extends React.Component {
@@ -65,7 +76,11 @@ class Login extends React.Component {
             style={loginLink}
             href="#"
             onClick={() => this.clickLogin()}>
-            {this.state.showLoginPills ? <CloseButton buttonContent='×' /> : 'Login'}
+            {this.state.showLoginPills ?
+              <GeneralButton
+                buttonContent={'×'}
+                buttonStyle={closeButton} />
+              : 'Login'}
           </a>
         </h2>
 
