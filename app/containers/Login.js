@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import LoginPill from '../components/LoginPill';
 import LoginWindow from '../components/LoginWindow';
 import FFFWindow from '../containers/FFFWindow';
+import CloseButton from '../components/CloseButton';
 import { verticalContainer } from '../DynamicStyles/common';
 
 /* ToDo:
@@ -67,7 +68,7 @@ class Login extends React.Component {
             style={loginLink}
             href="#"
             onClick={() => this.clickLogin()}>
-            {this.state.showLoginPills ? 'Close' : 'Login'}
+            {this.state.showLoginPills ? <CloseButton buttonContent='×' /> : 'Login'}
           </a>
         </h2>
 
