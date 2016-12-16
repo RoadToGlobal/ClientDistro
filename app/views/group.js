@@ -6,6 +6,7 @@ import SignInButton from '../containers/SignInButton';
 import GroupChat from '../containers/GroupChat';
 import ActivityShare from '../containers/ActivityShare';
 import ActivityStatusMini from '../containers/ActivityStatusMini';
+import NotificationSettings from '../containers/NotificationSettings';
 import FFFWindow from '../containers/FFFWindow';
 import { FFFContainer } from '../DynamicStyles/common';
 
@@ -27,6 +28,9 @@ class Group extends React.Component {
           <GroupChat />
         </FFFWindow>
         <ActivityShare />
+        <FFFWindow title={""} header={Boolean(false)} specStyle={{width: '50%'}}>
+          <NotificationSettings />
+        </FFFWindow>
         <FFFWindow title={"Activity Status"} header={Boolean(true)} specStyle={{height: '10em'}}>
           <ActivityStatusMini />
         </FFFWindow>
