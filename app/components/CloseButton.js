@@ -1,5 +1,7 @@
 import React, { PropTypes } from 'react';
 
+// Pretty much only works with "small sign characters" else it'll look wierd
+
 const closeButton = {
   float: 'right',
   cursor: 'pointer',
@@ -12,7 +14,7 @@ const closeButton = {
   lineHeight: 0,
   padding: '14px 6px',
 };
-// Pretty much only works with "small sign characters" else it'll look wierd
+
 class CloseButton extends React.Component {
   static propTypes = {
     buttonContent: PropTypes.string,
