@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 
+import GeneralButton from '../components/GeneralButton';
 import { verticalContainer, horizontalContainer } from '../DynamicStyles/common';
 
 // TODO: Toggle CustomizeTheme
@@ -49,8 +50,15 @@ class RegisterActivity extends React.Component {
           </select>
         </div>
         <div style={{...horizontalContainer, justifyContent: 'center', flex: 1}}>
-          <button onClick={this.props.toggleCustomize} style={{...margR, height: 40}}>Customize Colors</button>
-          <button style={{height: 40}}>Create</button>
+          <GeneralButton
+            onClick={this.props.toggleCustomize}
+            buttonContent={'Customize Theme'}
+            buttonStyle={margR}
+          />
+          <GeneralButton
+            onClick={this.props.toggleCustomize}
+            buttonContent={'Create'}
+          />
         </div>
       </div>
     );

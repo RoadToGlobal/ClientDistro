@@ -22,7 +22,6 @@ class CreateActivity extends React.Component {
     this.setState({
       showCustomize: !this.state.showCustomize
     });
-    console.log(this.state.showCustomize);
   }
 
   render() {
@@ -55,10 +54,6 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchUser: (user) => dispatch(({
-      type: 'CURRENT_USER_EXAMPLE',
-      data: 'current user action triggered',
-    }))
   };
 };
 
