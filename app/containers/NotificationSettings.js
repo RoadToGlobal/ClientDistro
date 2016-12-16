@@ -12,7 +12,6 @@ const settingsParagraph = {
 };
 const notificationSelectStyle = {
   marginLeft: '10px',
-  border: 'none',
 };
 
 class NotificationSettings extends React.Component {

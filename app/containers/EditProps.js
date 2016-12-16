@@ -8,7 +8,6 @@ const editContainer = {
 
 const editSelectStyle = {
   marginLeft: '10px',
-  border: 'none',
 };
 
 export default class EditProps extends React.Component {
