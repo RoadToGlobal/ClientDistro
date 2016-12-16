@@ -33,7 +33,7 @@ const SideBarIconContainer = {
 
 class SideBar extends React.Component {
   static propTypes = {
-    Activities: PropTypes.array,
+    Activities: PropTypes.object,
   };
 
   constructor() {
@@ -52,17 +52,22 @@ class SideBar extends React.Component {
   render() {
     return (
       <aside style={sidebarStyle}>
-        <Link style={logotypeContainer} to="/"><img style={logotype} src="http://eigentaste.berkeley.edu/img/home_icon.png"/></Link>
+        <Link style={logotypeContainer} to="/">
+          <img style={logotype} src="http://eigentaste.berkeley.edu/img/home_icon.png"/>
+        </Link>
         <div style={SideBarIconContainer}>
-        {this.props.Activities.map((activity, index) => (
-          <SideBarIcon
-            key={activity.name}
-            activity={activity}
-            hoverStatus={this.state.hover === index}
-            toggleHover={() => this.toggleHover(index)}
-            removeHover={() => this.toggleHover(false)}
-          />
-        ))}
+          {
+            !this.props.Activities.error && !this.props.Activities.isLoading ?
+            this.props.Activities.found.map((activity, index) => (
+              <SideBarIcon
+                key={activity.name}
+                activity={activity}
+                hoverStatus={this.state.hover === index}
+                toggleHover={() => this.toggleHover(index)}
+                removeHover={() => this.toggleHover(false)}
+              />
+            )) : <p> Spinner </p>
+          }
         </div>
         <SideBarLinks />
       </aside>

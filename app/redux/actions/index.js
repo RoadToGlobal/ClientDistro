@@ -1,8 +1,10 @@
-import * as types from './types';
+// import * as users      from './users';
+// import * as groups     from './groups';
+import * as activities from './activities';
+// import * as auth       from './auth';
 
-export function filterTable(filter) {
-  return {
-    type: types.FILTER,
-    filter,
-  };
-}
+// export { users, groups, activities, auth };
+export {
+  activities,
+};
+
