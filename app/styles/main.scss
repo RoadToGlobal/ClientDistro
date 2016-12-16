@@ -10,3 +10,9 @@ footer {
     padding: 5px 10px 5px 0;
   }
 }
+
+// prefix for chrome
+.no-border-radius {
+  -webkit-appearance: none;
+  -webkit-border-radius: 0px;
+}

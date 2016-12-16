@@ -6,8 +6,10 @@ import SignInButton from '../containers/SignInButton';
 import GroupChat from '../containers/GroupChat';
 import ActivityShare from '../containers/ActivityShare';
 import ActivityStatusMini from '../containers/ActivityStatusMini';
+import NotificationSettings from '../containers/NotificationSettings';
+import EditProps from '../containers/EditProps';
 import FFFWindow from '../containers/FFFWindow';
-import { FFFContainer } from '../DynamicStyles/common';
+import { FFFContainer, horizontalContainer } from '../DynamicStyles/common';
 
 class Group extends React.Component {
   static propTypes = {
@@ -27,6 +29,14 @@ class Group extends React.Component {
           <GroupChat />
         </FFFWindow>
         <ActivityShare />
+        <div style={settingsContainer}>
+          <FFFWindow title={""} header={Boolean(false)} specStyle={{width: 'inherit', marginRight: '2em'}}>
+            <NotificationSettings />
+          </FFFWindow>
+          <FFFWindow title={""} header={Boolean(false)} specStyle={{width: 'inherit'}}>
+            <EditProps />
+          </FFFWindow>
+        </div>
         <FFFWindow title={"Activity Status"} header={Boolean(true)} specStyle={{height: '10em'}}>
           <ActivityStatusMini />
         </FFFWindow>
@@ -34,6 +44,11 @@ class Group extends React.Component {
    );
   }
 }
+
+const settingsContainer = {
+  ...horizontalContainer,
+  width: '42em',
+};
 
 const mapStateToProps = (state) => {
   return {
