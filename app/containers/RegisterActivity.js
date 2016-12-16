@@ -3,9 +3,7 @@ import { connect } from 'react-redux';
 
 import { verticalContainer, horizontalContainer } from '../DynamicStyles/common';
 
-/* ToDo:
-*  - Toggle CustomizeTheme
-*/
+// TODO: Toggle CustomizeTheme
 
 const margR = {
   marginRight: 20,

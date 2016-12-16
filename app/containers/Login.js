@@ -7,9 +7,7 @@ import FFFWindow from '../containers/FFFWindow';
 import CloseButton from '../components/CloseButton';
 import { verticalContainer } from '../DynamicStyles/common';
 
-/* ToDo:
-*  - Animate the login
-*/
+// TODO: Animate the login
 
 const loginContainer = {
   ...verticalContainer,

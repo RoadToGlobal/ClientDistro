@@ -6,10 +6,8 @@ import SideBarIcon from '../components/SideBarIcon';
 import SideBarLinks from '../components/SideBarLinks';
 import { verticalContainer, shadowCaster } from '../DynamicStyles/common';
 
-/* ToDo:
-*  - Icon pagination
-*  - Connect icons to groups
-*/
+// TODO: Icon pagination
+// TODO: Connect icons to groups
 
 const sidebarStyle = {
   ...verticalContainer,

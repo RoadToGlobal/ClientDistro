@@ -1,8 +1,6 @@
 import React, { PropTypes } from 'react';
 
-/* ToDo:
-*  - Add more links and "connect" to views
-*/
+// TODO: Add more links and "connect" to view
 
 const icon = {
   marginBottom: 10.5,
