@@ -12,7 +12,7 @@ const closeButton = {
   lineHeight: 0,
   padding: '14px 6px',
 };
-//Pretty much only works with "small sign characters" else it'll look wierd
+// Pretty much only works with "small sign characters" else it'll look wierd
 class CloseButton extends React.Component {
   static propTypes = {
     buttonContent: PropTypes.string,
@@ -23,7 +23,6 @@ class CloseButton extends React.Component {
   }
 
   render() {
-    console.log(this.props.buttonContent);
     return (
       <div style={closeButton}>{this.props.buttonContent}</div>
     );

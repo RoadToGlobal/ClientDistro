@@ -9,7 +9,6 @@ import { verticalContainer } from '../DynamicStyles/common';
 
 /* ToDo:
 *  - Animate the login
-*  - Change "Close" link to design
 */
 
 const loginContainer = {
