@@ -57,14 +57,14 @@ class SideBarIcon extends React.Component {
   render() {
     return (
       <div
-        style={this.props.hoverStatus ? {...iconItemHover, borderLeftColor: this.props.activity.customization.backgroundColor}
-          : {...iconItem, borderLeftColor: this.props.activity.customization.backgroundColor}}
+        style={this.props.hoverStatus ? {...iconItemHover, borderLeftColor: this.props.activity.style.backgroundColor}
+          : {...iconItem, borderLeftColor: this.props.activity.style.backgroundColor}}
         onMouseOver={this.props.toggleHover}
         onMouseLeave={this.props.removeHover}
       >
         <img
           style={this.props.hoverStatus ? iconImgHover : iconImg}
-          src={this.props.activity.customization.icon}
+          src={this.props.activity.style.icon}
          />
         <span
           style={this.props.hoverStatus ? iconTxtHover : iconTxt}
