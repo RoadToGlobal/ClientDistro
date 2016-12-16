@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import {verticalContainer, horizontalContainer} from '../DynamicStyles/common';
+import {verticalContainer} from '../DynamicStyles/common';
 
 const notificationContainer = {
   ...verticalContainer,

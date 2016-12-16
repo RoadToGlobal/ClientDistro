@@ -1,6 +1,5 @@
-import React, { PropTypes } from 'react';
-import { connect } from 'react-redux';
-import {verticalContainer, horizontalContainer} from '../DynamicStyles/common';
+import React from 'react';
+import {verticalContainer} from '../DynamicStyles/common';
 
 const editContainer = {
   ...verticalContainer,
@@ -12,10 +11,7 @@ const editSelectStyle = {
   border: 'none',
 };
 
-class EditProps extends React.Component {
-  static propTypes = {
-    CurrentGroupSearch: PropTypes.object,
-  };
+export default class EditProps extends React.Component {
 
   render() {
     return (
@@ -68,23 +64,3 @@ class EditProps extends React.Component {
     );
   }
 }
-
-const mapStateToProps = (state) => {
-  return {
-    CurrentGroupSearch: state.CurrentGroupSearch,
-  };
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    fetchSettings: (settings) => (dispatch({
-      type: 'CURRENT_GROUP_SEARCH_EXAMPLE',
-      data: 'current group search action triggered',
-    })),
-  };
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(EditProps);
