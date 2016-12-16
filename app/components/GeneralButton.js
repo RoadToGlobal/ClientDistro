@@ -1,7 +1,5 @@
 import React, { PropTypes } from 'react';
 
-// Pretty much only works with "small sign characters" else it'll look wierd
-
 const generalButton = {
   display: 'inline-block',
   height: 40,
@@ -16,7 +14,7 @@ const generalButton = {
   cursor: 'pointer',
 };
 
-class CloseButton extends React.Component {
+class GeneralButton extends React.Component {
   static propTypes = {
     buttonContent: PropTypes.string,
     buttonStyle: PropTypes.object,
@@ -34,4 +32,4 @@ class CloseButton extends React.Component {
   }
 }
 
-export default CloseButton;
+export default GeneralButton;

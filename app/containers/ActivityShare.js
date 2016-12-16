@@ -3,8 +3,6 @@ import { Link } from 'react-router';
 
 import GeneralButton from '../components/GeneralButton';
 import ShareLine from '../components/ShareLine';
-import FacebookIntegration from '../components/FacebookIntegration';
-import DiscordIntegration from '../components/DiscordIntegration';
 import {FFFWindowStyle} from '../DynamicStyles/common';
 
 export default class ActivityShare extends React.Component {

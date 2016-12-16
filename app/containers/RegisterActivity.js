@@ -4,8 +4,6 @@ import { connect } from 'react-redux';
 import GeneralButton from '../components/GeneralButton';
 import { verticalContainer, horizontalContainer } from '../DynamicStyles/common';
 
-// TODO: Toggle CustomizeTheme
-
 const margR = {
   marginRight: 20,
 };
