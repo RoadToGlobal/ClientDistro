@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import GroupMembers from '../containers/GroupMembers';
 import SignInButton from '../containers/SignInButton';
 import GroupChat from '../containers/GroupChat';
+import ActivityShare from '../containers/ActivityShare';
 import FFFWindow from '../containers/FFFWindow';
 import { FFFContainer } from '../DynamicStyles/common';
 
@@ -24,6 +25,7 @@ class Group extends React.Component {
         <FFFWindow title={"Group Chat"} header={Boolean(true)}>
           <GroupChat />
         </FFFWindow>
+        <ActivityShare />
       </div>
    );
   }
