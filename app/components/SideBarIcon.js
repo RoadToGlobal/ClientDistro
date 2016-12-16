@@ -64,7 +64,7 @@ class SideBarIcon extends React.Component {
       >
         <img
           style={this.props.hoverStatus ? iconImgHover : iconImg}
-          src={this.props.activity.style.icon}
+          src='https://maxcdn.icons8.com/Color/PNG/512/Logos/overwatch-512.png'
          />
         <span
           style={this.props.hoverStatus ? iconTxtHover : iconTxt}

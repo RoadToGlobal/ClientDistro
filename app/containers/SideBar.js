@@ -33,7 +33,7 @@ const SideBarIconContainer = {
 
 class SideBar extends React.Component {
   static propTypes = {
-    Activities: PropTypes.object,
+    CurrentUser: PropTypes.object,
   };
 
   constructor() {
@@ -57,11 +57,11 @@ class SideBar extends React.Component {
         </Link>
         <div style={SideBarIconContainer}>
           {
-            !this.props.Activities.error && !this.props.Activities.isLoading ?
-            this.props.Activities.found.map((activity, index) => (
+            !this.props.CurrentUser.error && !this.props.CurrentUser.isLoading ?
+            this.props.CurrentUser.groupSearches.map((groupSearch, index) => (
               <SideBarIcon
-                key={activity.name}
-                activity={activity}
+                key={groupSearch.activity.name}
+                activity={groupSearch.activity}
                 hoverStatus={this.state.hover === index}
                 toggleHover={() => this.toggleHover(index)}
                 removeHover={() => this.toggleHover(false)}
@@ -77,7 +77,7 @@ class SideBar extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    Activities: state.Activities,
+    CurrentUser: state.CurrentUser,
   };
 };
 

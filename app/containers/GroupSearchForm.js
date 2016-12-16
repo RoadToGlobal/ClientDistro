@@ -5,7 +5,7 @@ import * as actions from '../redux/actions';
 
 class GroupSearchForm extends React.Component {
   static propTypes = {
-    Activities: PropTypes.object,
+    foundActivities: PropTypes.object,
     Props: PropTypes.array,
     Reqs: PropTypes.array,
     SearchActivities: PropTypes.func,
@@ -21,30 +21,39 @@ class GroupSearchForm extends React.Component {
           tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At
           vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren,
           no sea takimata sanctus est Lorem ipsum dolor sit amet.
-        </p>
-        <button
-          onClick={this.props.SearchProps}
-        >
-          SearchProps
-        </button>
-        <button
-          onClick={this.props.SearchReqs}
-        >
-          SearchReqs
-        </button>
-        <button
-          onClick={this.props.indexActivities}
-        >
-          SearchActivities
-        </button>
-      </div>
+      </p>
+      <button
+        onClick={this.props.SearchProps}
+      >
+        SearchProps
+      </button>
+      <button
+        onClick={this.props.SearchReqs}
+      >
+        SearchReqs
+      </button>
+      <button
+        onClick={this.props.indexActivities}
+      >
+        SearchActivities
+      </button>
+      <ul>
+        { this.props.foundActivities.isLoading ? <li>loading...</li> :
+          this.props.foundActivities.results.map((activity) => {
+            return (
+              <li>{activity.prefix} {activity.name}</li>
+            );
+          })
+        }
+      </ul>
+    </div>
     );
   }
 }
 
 const mapStateToProps = (state) => {
   return {
-    Activities: state.Activities,
+    foundActivities: state.foundActivities,
     Props: state.Props,
     Reqs: state.Reqs,
   };

@@ -16,7 +16,7 @@ const fakeInitialState = [
   },
 ];
 
-export default function reqs(state = fakeInitialState, action) {
+export default function foundReqs(state = fakeInitialState, action) {
   switch (action.type) {
     case 'REQS_EXAMPLE':
       // console.log(action.data);
