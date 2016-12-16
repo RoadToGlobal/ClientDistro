@@ -18,10 +18,11 @@ const selectHeight = {
 class RegisterActivity extends React.Component {
   static propTypes = {
     CurrentUser: PropTypes.object,
+    toggleCustomize: PropTypes.func,
   };
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
   }
 
   render() {
@@ -48,7 +49,7 @@ class RegisterActivity extends React.Component {
           </select>
         </div>
         <div style={{...horizontalContainer, justifyContent: 'center', flex: 1}}>
-          <button style={{...margR, height: 40}}>Customize Colors</button>
+          <button onClick={this.props.toggleCustomize} style={{...margR, height: 40}}>Customize Colors</button>
           <button style={{height: 40}}>Create</button>
         </div>
       </div>

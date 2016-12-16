@@ -11,14 +11,36 @@ class CreateActivity extends React.Component {
     CurrentUser: PropTypes.object.isRequired,
   };
 
+  constructor() {
+    super();
+    this.state = {
+      showCustomize: false,
+    };
+  }
+
+  toggleCustomize() {
+    this.setState({
+      showCustomize: !this.state.showCustomize
+    });
+    console.log(this.state.showCustomize);
+  }
+
   render() {
     return (
       <div style={FFFContainer}>
-        <FFFWindow title={"Register new Activity"} header={Boolean(true)} specStyle={{height: 'inherit'}}>
-          <RegisterActivity />
+        <FFFWindow
+          title={"Register new Activity"}
+          header={Boolean(true)}
+          specStyle={{height: 'inherit'}}>
+          <RegisterActivity toggleCustomize={() => this.toggleCustomize()} />
         </FFFWindow>
-        <FFFWindow title={"Customize theme"} header={Boolean(true)} specStyle={{height: 'inherit'}}>
-          <CustomizeTheme />
+        <FFFWindow
+          title={"Customize theme"}
+          header={Boolean(true)}
+          specStyle={{height: 'inherit'}}>
+          {this.state.showCustomize ?
+          <CustomizeTheme toggleCustomize={() => this.toggleCustomize()} />
+          : null}
         </FFFWindow>
       </div>
    );

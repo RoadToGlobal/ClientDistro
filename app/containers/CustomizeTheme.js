@@ -37,10 +37,11 @@ const margR = {
 class CustomizeTheme extends React.Component {
   static propTypes = {
     CurrentUser: PropTypes.object,
+    toggleCustomize: PropTypes.func,
   };
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
   }
 
   render() {
@@ -106,7 +107,11 @@ class CustomizeTheme extends React.Component {
           </div>
         </div>
         <div style={{...horizontalContainer, justifyContent: 'center', ...subTitle}}>
-          <button style={{height: 40, backgroundColor: 'green', color: 'white'}}>Done</button>
+          <button
+            style={{height: 40, backgroundColor: 'green', color: 'white'}}
+            onClick={this.props.toggleCustomize}>
+            Done
+          </button>
         </div>
       </div>
     );
