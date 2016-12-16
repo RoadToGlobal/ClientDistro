@@ -20,8 +20,8 @@ const loginStyle = {
   minHeight: 'initial',
 };
 const loginBox = {
-  margin: 5,
-  width: '40em',
+  margin: '0 auto 5px auto',
+  width: '28em',
   marginBottom: 5,
   textAlign: 'right',
   flex: 1,
