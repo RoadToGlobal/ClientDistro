@@ -13,7 +13,7 @@ export default (
   <Route path="/" component={App}>
     <IndexRoute component={LandingForm} />
     <Route path="/activitystatus" component={ActivityStatus} />
-    <Route path="/group" component={Group} />
+    <Route path="/group/:groupId" component={Group} />
     <Route path="/createactivity" component={CreateActivity} />
   </Route>
 );

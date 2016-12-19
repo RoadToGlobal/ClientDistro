@@ -26,10 +26,10 @@ class SideBarLinks extends React.Component {
   render() {
     return (
       <div style={linksContainer}>
-        <a href="#" style={footerLinks}><h3>About</h3></a>
-        <a href="#" style={footerLinks}><h3><Link to="/group">Group</Link></h3></a>
-        <a href="#" style={footerLinks}><h3><Link to="/createactivity">Create Activity</Link></h3></a>
-        <a href="#" style={footerLinks}><h3>More</h3></a>
+        <h3 style={footerLinks}>About</h3>
+        <Link to="/group/1234"><h3 style={footerLinks}>Group</h3></Link>
+        <Link to="/createactivity"><h3 style={footerLinks}>Create Activity</h3></Link>
+        <h3 style={footerLinks}>More</h3>
       </div>
     );
   }
