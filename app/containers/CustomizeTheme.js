@@ -43,6 +43,7 @@ class CustomizeTheme extends React.Component {
   static propTypes = {
     CurrentUser: PropTypes.object,
     toggleCustomize: PropTypes.func,
+    showCustomize: PropTypes.bool,
   };
 
   constructor(props) {
@@ -114,7 +115,7 @@ class CustomizeTheme extends React.Component {
         <div style={{...horizontalContainer, justifyContent: 'center', margin: '10px 10px 0 10px'}}>
           <GeneralButton
             onClick={this.props.toggleCustomize}
-            buttonContent={'Done'}
+            buttonContent={'Save customization'}
             buttonStyle={doneButton}
           />
         </div>
