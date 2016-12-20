@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 
 import * as actions from '../redux/actions';
+import GeneralSpinner from '../components/GeneralSpinner';
 
 class GroupSearchForm extends React.Component {
   static propTypes = {
@@ -38,7 +39,7 @@ class GroupSearchForm extends React.Component {
         SearchActivities
       </button>
       <ul>
-        { this.props.foundActivities.isLoading ? <li>loading...</li> :
+        { this.props.foundActivities.isLoading ? <GeneralSpinner /> :
           this.props.foundActivities.results.map((activity) => {
             return (
               <li>{activity.prefix} {activity.name}</li>
