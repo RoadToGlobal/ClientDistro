@@ -1,7 +1,36 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-
 import * as actions from '../redux/actions';
+
+const suggestionList = {
+  backgroundColor: 'white',
+  listStyle: 'none',
+  border: '1px solid #dfdfdf',
+  margin: '0',
+  padding: '0',
+  position: 'absolute',
+  width: '20em',
+};
+
+const userInputContainer = {
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'center',
+};
+
+const singleRowContainer = {
+  display: 'flex',
+  flexDirection: 'row',
+};
+
+const toggleFilterDisplay = {
+  show: {
+    display: 'block',
+  },
+  hide: {
+    display: 'none',
+  }
+};
 
 class GroupSearchForm extends React.Component {
   static propTypes = {
@@ -13,40 +42,88 @@ class GroupSearchForm extends React.Component {
     SearchReqs: PropTypes.func,
   };
 
+  constructor() {
+    super();
+    this.state = {
+      userInput: '',
+      selectedActivity: false,
+      toggleShow: false,
+    };
+  }
+
+  handleOnChange = (event) => {
+    this.props.indexActivities(event.currentTarget.value);
+    this.setState({userInput: event.currentTarget.value});
+    if(event.currentTarget.value === '') {
+      this.setState({toggleShow: false});
+    } else {
+      this.setState({toggleShow: true});
+    }
+  }
+
   render() {
     return (
       <div>
         <p>
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
-          tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At
-          vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren,
-          no sea takimata sanctus est Lorem ipsum dolor sit amet.
-      </p>
-      <button
-        onClick={this.props.SearchProps}
-      >
-        SearchProps
-      </button>
-      <button
-        onClick={this.props.SearchReqs}
-      >
-        SearchReqs
-      </button>
-      <button
-        onClick={this.props.indexActivities}
-      >
-        SearchActivities
-      </button>
-      <ul>
-        { this.props.foundActivities.isLoading ? <li>loading...</li> :
-          this.props.foundActivities.results.map((activity) => {
-            return (
-              <li>{activity.prefix} {activity.name}</li>
-            );
-          })
-        }
-      </ul>
-    </div>
+          Fill the empty fields below and tur sadipscing elitr, sed diam nonumy eirmod
+          tempor invidunt ut labore et dolore dancing in the moonlight for fun, sed diam voluptua. At
+          vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren. Join us today and meet strangers.
+        </p>
+        <div style={singleRowContainer}>
+          <p>I want to: </p>
+          <div style={{...userInputContainer, width: '20em', marginLeft: '10px'}}>
+            <div style={userInputContainer}>
+              {
+                this.state.selectedActivity ?
+                  <input
+                    value={this.state.selectedActivity.prefix + ' ' + this.state.selectedActivity.name}
+                    onChange={() => this.setState({selectedActivity: false})}
+                  />
+                :
+                  <input onChange={this.handleOnChange} />
+              }
+            </div>
+            <div>
+              <ul
+                style={
+                  this.state.toggleShow ?
+                  {...suggestionList, ...toggleFilterDisplay.show}
+                  :
+                  {...suggestionList, ...toggleFilterDisplay.hide}
+                }
+               >
+                { this.props.foundActivities.isLoading ? <li>loading...</li> :
+                  this.props.foundActivities.results.map((activity) => {
+                    return (
+                      <li
+                        onClick={() => this.setState({selectedActivity: activity})}
+                        key={activity._id}
+                      >
+                        {activity.prefix} {activity.name}
+                      </li>
+                    );
+                  })
+                }
+              </ul>
+            </div>
+          </div>
+        </div>
+        <button
+          onClick={this.props.SearchProps}
+        >
+          SearchProps
+        </button>
+        <button
+          onClick={this.props.SearchReqs}
+        >
+          SearchReqs
+        </button>
+        <button
+          onClick={this.props.indexActivities}
+        >
+          SearchActivities
+        </button>
+      </div>
     );
   }
 }
@@ -62,22 +139,5 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = {
   indexActivities: actions.activities.index,
 };
-
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     SearchActivities: (searchText) => (dispatch({
-//       type: 'ACTIVITY_EXAMPLE',
-//       data: 'activities search action triggered',
-//     })),
-//     SearchReqs: (searchText) => (dispatch({
-//       type: 'REQS_EXAMPLE',
-//       data: 'Reqs search action triggered',
-//     })),
-//     SearchProps: (searchText) => (dispatch({
-//       type: 'PROPS_EXAMPLE',
-//       data: 'Props search action triggered',
-//     })),
-//   };
-// };
 
 export default connect(mapStateToProps, mapDispatchToProps)(GroupSearchForm);
