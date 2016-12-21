@@ -1,7 +1,6 @@
 import fetch from 'isomorphic-fetch';
 
 export const index = (filter) => {
-  console.log('bajsmacka', filter);
   return (dispatch, getState) => {
     dispatch(indexActivitiesRequest());
     let url = 'http://127.0.0.1:8080/activities';
@@ -30,7 +29,6 @@ const indexActivitiesRequest = () => {
 };
 
 const indexActivitiesSuccess = (res) => {
-  console.log('suck', res);
   return {
     type: 'indexActivitiesSuccess',
     activities: res,
@@ -38,7 +36,6 @@ const indexActivitiesSuccess = (res) => {
 };
 
 const indexActivitiesError = (res) => {
-  console.log('murra', res);
   let error = res || true;
 
   return {
@@ -76,7 +73,6 @@ const joinActivityRequest = () => {
 }
 
 const joinActivitySuccess = (res) => {
-  console.log(res);
   return {
     type: 'joinActivitySuccess',
     payload: res,
