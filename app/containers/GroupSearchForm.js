@@ -119,9 +119,14 @@ class GroupSearchForm extends React.Component {
           SearchReqs
         </button>
         <button
-          onClick={this.props.indexActivities}
+          onClick={() => this.props.indexActivities()}
         >
           SearchActivities
+        </button>
+        <button
+          onClick={() => this.props.joinActivity({activity: this.state.selectedActivity, requirements: {}, localProps: {} })}
+        >
+          JoinActivity
         </button>
       </div>
     );
@@ -133,11 +138,13 @@ const mapStateToProps = (state) => {
     foundActivities: state.foundActivities,
     Props: state.Props,
     Reqs: state.Reqs,
+    CurrentActivity: state.CurrentActivity,
   };
 };
 
 const mapDispatchToProps = {
   indexActivities: actions.activities.index,
+  joinActivity: actions.activities.join,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(GroupSearchForm);
