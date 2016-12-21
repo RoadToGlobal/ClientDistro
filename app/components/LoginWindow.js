@@ -23,10 +23,15 @@ class LoginWindow extends React.Component {
     showGroupAppLogin: PropTypes.bool,
     showGoogleLogin: PropTypes.bool,
     showFacebookLogin: PropTypes.bool,
+    userLoginInput: PropTypes.func,
   };
 
   constructor() {
     super();
+    this.state = {
+      username: '',
+      password: '',
+    }
   }
 
   render() {
@@ -34,11 +39,18 @@ class LoginWindow extends React.Component {
       <div>
         {this.props.showGroupAppLogin ?
           <div style={windowContainer}>
-            <div style={windowItem}><label>Username:</label><input type="text"/></div>
-            <div style={windowItem}><label>Password:</label><input type="text"/></div>
+            <div style={windowItem}>
+              <label>Username:</label>
+              <input onChange={(event) => this.setState({username: event.currentTarget.value})} type="text"/>
+            </div>
+            <div style={windowItem}>
+              <label>Password:</label>
+              <input onChange={(event) => this.setState({password: event.currentTarget.value})} type="text"/>
+            </div>
             <GeneralButton
               buttonStyle={windowItem}
               buttonContent={'Submit'}
+              onClick={ () => this.props.userLoginInput(this.state.username, this.state.password) }
             />
           </div>
           : null}

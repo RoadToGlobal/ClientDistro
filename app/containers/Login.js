@@ -98,6 +98,9 @@ class Login extends React.Component {
       });
     }
   }
+  userLoginInput(usr, pass) {
+    console.log(usr, pass);
+  }
 
   render() {
     return (
@@ -129,6 +132,7 @@ class Login extends React.Component {
                     showGroupAppLogin={this.state.showGroupAppLogin}
                     showGoogleLogin={this.state.showGoogleLogin}
                     showFacebookLogin={this.state.showFacebookLogin}
+                    userLoginInput={this.userLoginInput}
                   />
                   : null}
             </FFFWindow>
