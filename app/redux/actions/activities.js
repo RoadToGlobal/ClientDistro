@@ -39,7 +39,52 @@ const indexActivitiesError = (res) => {
   let error = res || true;
 
   return {
-    type: 'indexActivitiesSuccess',
+    type: 'indexActivitiesError',
+    error,
+  };
+}
+
+export const join = (groupSearch) => {
+  return (dispatch, getState) => {
+    dispatch(joinActivityRequest());
+    let url = `http://127.0.0.1:8080/activities/${groupSearch.activity._id}/userPool`;
+    return fetch(url, {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': 'Basic ' + btoa('Marta98:123')
+      },
+      body: JSON.stringify({
+        localProps: groupSearch.props,
+        requirements: groupSearch.requirements,
+      }),
+    })
+    .then(raw => raw.json())
+    .then(res => dispatch(joinActivitySuccess(res)))
+    .catch(res => dispatch(joinActivityError(res)))
+  };
+}
+
+const joinActivityRequest = () => {
+  return {
+    type: `joinActivityRequest`,
+  };
+}
+
+const joinActivitySuccess = (res) => {
+  console.log(res);
+  return {
+    type: 'joinActivitySuccess',
+    payload: res,
+  };
+}
+
+const joinActivityError = (res) => {
+  let error = res || true;
+
+  return {
+    type: 'joinActivityError',
     error,
   };
 }
