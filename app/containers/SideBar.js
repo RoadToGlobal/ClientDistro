@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 
+import GeneralSpinner from '../components/GeneralSpinner';
 import SideBarIcon from '../components/SideBarIcon';
 import SideBarLinks from '../components/SideBarLinks';
 import { verticalContainer, shadowCaster } from '../DynamicStyles/common';
@@ -12,6 +13,7 @@ import { verticalContainer, shadowCaster } from '../DynamicStyles/common';
 const sidebarStyle = {
   ...verticalContainer,
   ...shadowCaster,
+
   flexShrink: '1',
   display: 'flex',
   color: '#ffffff',
@@ -66,7 +68,7 @@ class SideBar extends React.Component {
                 toggleHover={() => this.toggleHover(index)}
                 removeHover={() => this.toggleHover(false)}
               />
-            )) : <p> Spinner </p>
+            )) : <GeneralSpinner />
           }
         </div>
         <SideBarLinks />

@@ -30,17 +30,23 @@ class CreateActivity extends React.Component {
         <FFFWindow
           title={"Register new Activity"}
           header={Boolean(true)}
-          specStyle={{height: 'inherit'}}>
-          <RegisterActivity toggleCustomize={() => this.toggleCustomize()} />
+          specStyle={{height: '18em'}}>
+          <RegisterActivity
+            showCustomize={this.state.showCustomize}
+            toggleCustomize={() => this.toggleCustomize()}
+          />
         </FFFWindow>
+        {this.state.showCustomize ?
         <FFFWindow
           title={"Customize theme"}
           header={Boolean(true)}
-          specStyle={{height: 'inherit'}}>
-          {this.state.showCustomize ?
-          <CustomizeTheme toggleCustomize={() => this.toggleCustomize()} />
-          : null}
+          specStyle={{height: '44em'}}>
+          <CustomizeTheme
+            showCustomize={this.state.showCustomize}
+            toggleCustomize={() => this.toggleCustomize()}
+          />
         </FFFWindow>
+        : null}
       </div>
    );
   }

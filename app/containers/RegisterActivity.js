@@ -13,11 +13,22 @@ const inputHeight = {
 const selectHeight = {
   height: 32,
 };
+const saveButton = {
+  backgroundColor: 'green',
+  color: '#fff',
+};
+const fadedButton = {
+  backgroundColor: 'grey',
+  color: '#fff',
+  opacity: '0.5',
+  cursor: 'not-allowed',
+};
 
 class RegisterActivity extends React.Component {
   static propTypes = {
     CurrentUser: PropTypes.object,
     toggleCustomize: PropTypes.func,
+    showCustomize: PropTypes.bool,
   };
 
   constructor(props) {
@@ -48,15 +59,27 @@ class RegisterActivity extends React.Component {
           </select>
         </div>
         <div style={{...horizontalContainer, justifyContent: 'center', flex: 1}}>
-          <GeneralButton
-            onClick={this.props.toggleCustomize}
-            buttonContent={'Customize Theme'}
-            buttonStyle={margR}
-          />
-          <GeneralButton
-            onClick={this.props.toggleCustomize}
-            buttonContent={'Create'}
-          />
+          {!this.props.showCustomize ?
+            <GeneralButton
+              onClick={this.props.toggleCustomize}
+              buttonContent={'Customize Theme'}
+              buttonStyle={margR}
+            />
+          : <GeneralButton
+              onClick={this.props.toggleCustomize}
+              buttonContent={'Save customization'}
+              buttonStyle={{...margR, ...saveButton}}
+            />
+          }
+          {!this.props.showCustomize ?
+            <GeneralButton
+              buttonContent={'Create'}
+            />
+          : <GeneralButton
+              buttonContent={'Create'}
+              buttonStyle={fadedButton}
+            />
+          }
         </div>
       </div>
     );

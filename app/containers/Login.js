@@ -50,6 +50,9 @@ class Login extends React.Component {
     this.state = {
       showLoginPills: false,
       showLoginButton: false,
+      showGroupAppLogin: false,
+      showGoogleLogin: false,
+      showFacebookLogin: false,
     };
   }
 
@@ -57,13 +60,41 @@ class Login extends React.Component {
     this.setState({
       showLoginPills: !this.state.showLoginPills,
       showLoginButton: false,
+      showGroupAppLogin: false,
+      showGoogleLogin: false,
+      showFacebookLogin: false,
     });
   }
 
-  clickPill() {
+  clickGroupAppPill() {
     if(this.state.showLoginPills) {
       this.setState({
-        showLoginButton: this.state.showLoginPills,
+        showLoginButton: true,
+        showGroupAppLogin: !this.state.showGroupAppLogin,
+        showGoogleLogin: false,
+        showFacebookLogin: false,
+      });
+    }
+  }
+
+  clickGooglePill() {
+    if(this.state.showLoginPills) {
+      this.setState({
+        showLoginButton: true,
+        showGroupAppLogin: false,
+        showGoogleLogin: !this.state.showGoogleLogin,
+        showFacebookLogin: false,
+      });
+    }
+  }
+
+  clickFacebookPill() {
+    if(this.state.showLoginPills) {
+      this.setState({
+        showLoginButton: true,
+        showGroupAppLogin: false,
+        showGoogleLogin: false,
+        showFacebookLogin: !this.state.showFacebookLogin,
       });
     }
   }
@@ -86,12 +117,20 @@ class Login extends React.Component {
 
         {this.state.showLoginPills ?
           <div style={loginStyle}>
-            <FFFWindow title="yo" header={Boolean(false)} specStyle={{height: 'inherit'}}>
+            <FFFWindow title="" header={Boolean(false)} specStyle={{height: 'inherit'}}>
                 <LoginPill
                   showPills={this.state.showLoginPills}
-                  clickPill={() => this.clickPill()}
+                  clickGroupApp={() => this.clickGroupAppPill()}
+                  clickGoogle={() => this.clickGooglePill()}
+                  clickFacebook={() => this.clickFacebookPill()}
                 />
-                {this.state.showLoginButton ? <LoginWindow /> : null}
+                {this.state.showLoginButton ?
+                  <LoginWindow
+                    showGroupAppLogin={this.state.showGroupAppLogin}
+                    showGoogleLogin={this.state.showGoogleLogin}
+                    showFacebookLogin={this.state.showFacebookLogin}
+                  />
+                  : null}
             </FFFWindow>
           </div>
           : null}

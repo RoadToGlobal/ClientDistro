@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../redux/actions';
+import GeneralSpinner from '../components/GeneralSpinner';
 
 const suggestionList = {
   backgroundColor: 'white',

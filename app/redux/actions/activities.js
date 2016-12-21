@@ -1,9 +1,10 @@
 import fetch from 'isomorphic-fetch';
 
 export const index = (filter) => {
+  console.log('bajsmacka', filter);
   return (dispatch, getState) => {
     dispatch(indexActivitiesRequest());
-    let url = `http://127.0.0.1:8080/activities`;
+    let url = 'http://127.0.0.1:8080/activities';
     if (filter) {
       url = `http://127.0.0.1:8080/activities/?filter=${filter}`;
     }
@@ -18,24 +19,26 @@ export const index = (filter) => {
     })
     .then(raw => raw.json())
     .then(res => dispatch(indexActivitiesSuccess(res)))
-    .catch(res => dispatch(indexActivitiesError(res)))
+    .catch(res => dispatch(indexActivitiesError(res)));
   };
-}
+};
 
 const indexActivitiesRequest = () => {
   return {
-    type: `indexActivitiesRequest`,
+    type: 'indexActivitiesRequest',
   };
-}
+};
 
 const indexActivitiesSuccess = (res) => {
+  console.log('suck', res);
   return {
     type: 'indexActivitiesSuccess',
     activities: res,
   };
-}
+};
 
 const indexActivitiesError = (res) => {
+  console.log('murra', res);
   let error = res || true;
 
   return {
@@ -87,4 +90,4 @@ const joinActivityError = (res) => {
     type: 'joinActivityError',
     error,
   };
-}
+};
