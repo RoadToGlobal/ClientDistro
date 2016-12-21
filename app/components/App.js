@@ -37,6 +37,7 @@ const mainContainer = {
   boxShadow: 'none',
 };
 const brandName = {
+  marginLeft: '2em',
   textDecoration: 'none',
   fontWeight: '600',
   color: '#3c4959',

@@ -32,7 +32,9 @@ const pillItemLink = {
 class LoginPill extends React.Component {
   static propTypes = {
     showPills: PropTypes.bool,
-    clickPill: PropTypes.func,
+    clickGroupApp: PropTypes.func,
+    clickGoogle: PropTypes.func,
+    clickFacebook: PropTypes.func,
   }
 
   constructor(props) {
@@ -45,18 +47,18 @@ class LoginPill extends React.Component {
         <h2 style={pillItemText}>Login with:</h2>
         <h2
           style={pillItemContainer}
-          onClick={this.props.clickPill}>
-            <a style={pillItemLink} href="#">Group app</a>
+          onClick={this.props.clickGroupApp}>
+            <span style={pillItemLink}>Group app</span>
         </h2>
         <h2
           style={pillItemContainer}
-          onClick={this.props.clickPill}>
-            <a style={pillItemLink} href="#">Google+</a>
+          onClick={this.props.clickGoogle}>
+            <span style={pillItemLink}>Google+</span>
         </h2>
         <h2
           style={pillItemContainer}
-          onClick={this.props.clickPill}>
-            <a style={pillItemLink} href="#">Facebook</a>
+          onClick={this.props.clickFacebook}>
+            <span style={pillItemLink}>Facebook</span>
         </h2>
       </div>
     );
