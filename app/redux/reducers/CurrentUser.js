@@ -28,10 +28,11 @@ const fakeInitialState = {
 
 export default function CurrentUser(state = fakeInitialState, action) {
   switch (action.type) {
-    case 'CURRENT_USER_EXAMPLE':
+    case 'joinActivitySuccess':
       // console.log(action.data);
       return {
         ...state,
+        groupSearches: action.payload.userPatch.groupSearches,
       };
     default:
       return state;
