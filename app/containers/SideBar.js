@@ -77,66 +77,6 @@ class SideBar extends React.Component {
               />
             )) : null
           }
-           {
-            this.props.CurrentUser.groupSearches ?
-            this.props.CurrentUser.groupSearches.map((groupSearch, index) => (
-              <SideBarIcon
-                key={groupSearch.activity.name}
-                activity={groupSearch.activity}
-                hoverStatus={this.state.hover === index}
-                toggleHover={() => this.toggleHover(index)}
-                removeHover={() => this.toggleHover(false)}
-              />
-            )) : null
-          }
-           {
-            this.props.CurrentUser.groupSearches ?
-            this.props.CurrentUser.groupSearches.map((groupSearch, index) => (
-              <SideBarIcon
-                key={groupSearch.activity.name}
-                activity={groupSearch.activity}
-                hoverStatus={this.state.hover === index}
-                toggleHover={() => this.toggleHover(index)}
-                removeHover={() => this.toggleHover(false)}
-              />
-            )) : null
-          }
-           {
-            this.props.CurrentUser.groupSearches ?
-            this.props.CurrentUser.groupSearches.map((groupSearch, index) => (
-              <SideBarIcon
-                key={groupSearch.activity.name}
-                activity={groupSearch.activity}
-                hoverStatus={this.state.hover === index}
-                toggleHover={() => this.toggleHover(index)}
-                removeHover={() => this.toggleHover(false)}
-              />
-            )) : null
-          }
-           {
-            this.props.CurrentUser.groupSearches ?
-            this.props.CurrentUser.groupSearches.map((groupSearch, index) => (
-              <SideBarIcon
-                key={groupSearch.activity.name}
-                activity={groupSearch.activity}
-                hoverStatus={this.state.hover === index}
-                toggleHover={() => this.toggleHover(index)}
-                removeHover={() => this.toggleHover(false)}
-              />
-            )) : null
-          }
-           {
-            this.props.CurrentUser.groupSearches ?
-            this.props.CurrentUser.groupSearches.map((groupSearch, index) => (
-              <SideBarIcon
-                key={groupSearch.activity.name}
-                activity={groupSearch.activity}
-                hoverStatus={this.state.hover === index}
-                toggleHover={() => this.toggleHover(index)}
-                removeHover={() => this.toggleHover(false)}
-              />
-            )) : null
-          }
           {this.props.CurrentUser.isLoading ? <GeneralSpinner /> : null}
           </div>
         </div>
