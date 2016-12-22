@@ -9,28 +9,34 @@ import { verticalContainer, shadowCaster } from '../DynamicStyles/common';
 
 // TODO: Icon pagination
 // TODO: Connect icons to groups
-
 const sidebarStyle = {
   ...verticalContainer,
   ...shadowCaster,
 
-  flexShrink: '1',
   display: 'flex',
+  fontWeight: '300',
   color: '#ffffff',
   backgroundColor: '#3c4959',
   width: '5em',
-  fontWeight: '300',
 };
 const logotype = {
   width: '55%',
 };
 const logotypeContainer = {
+  maxHeight: '5em',
   textAlign: 'center',
   marginBottom: '0.8em',
   marginTop: '0.8em',
 };
-const SideBarIconContainer = {
-
+const sideBarIconContainer = {
+  flex: 1,
+  overflow: 'hidden',
+};
+const scrollHider = {
+  overflowY: 'scroll',
+  overflowX: 'hidden',
+  maxHeight: '100%',
+  width: '5.6em', //hides on firefox TODO: cross-browser fix hide scrollbar
 };
 
 class SideBar extends React.Component {
@@ -57,8 +63,69 @@ class SideBar extends React.Component {
         <Link style={logotypeContainer} to="/">
           <img style={logotype} src="http://eigentaste.berkeley.edu/img/home_icon.png"/>
         </Link>
-        <div style={SideBarIconContainer}>
-          {
+        <div style={sideBarIconContainer}>
+          <div style={scrollHider}>
+           {
+            this.props.CurrentUser.groupSearches ?
+            this.props.CurrentUser.groupSearches.map((groupSearch, index) => (
+              <SideBarIcon
+                key={groupSearch.activity.name}
+                activity={groupSearch.activity}
+                hoverStatus={this.state.hover === index}
+                toggleHover={() => this.toggleHover(index)}
+                removeHover={() => this.toggleHover(false)}
+              />
+            )) : null
+          }
+           {
+            this.props.CurrentUser.groupSearches ?
+            this.props.CurrentUser.groupSearches.map((groupSearch, index) => (
+              <SideBarIcon
+                key={groupSearch.activity.name}
+                activity={groupSearch.activity}
+                hoverStatus={this.state.hover === index}
+                toggleHover={() => this.toggleHover(index)}
+                removeHover={() => this.toggleHover(false)}
+              />
+            )) : null
+          }
+           {
+            this.props.CurrentUser.groupSearches ?
+            this.props.CurrentUser.groupSearches.map((groupSearch, index) => (
+              <SideBarIcon
+                key={groupSearch.activity.name}
+                activity={groupSearch.activity}
+                hoverStatus={this.state.hover === index}
+                toggleHover={() => this.toggleHover(index)}
+                removeHover={() => this.toggleHover(false)}
+              />
+            )) : null
+          }
+           {
+            this.props.CurrentUser.groupSearches ?
+            this.props.CurrentUser.groupSearches.map((groupSearch, index) => (
+              <SideBarIcon
+                key={groupSearch.activity.name}
+                activity={groupSearch.activity}
+                hoverStatus={this.state.hover === index}
+                toggleHover={() => this.toggleHover(index)}
+                removeHover={() => this.toggleHover(false)}
+              />
+            )) : null
+          }
+           {
+            this.props.CurrentUser.groupSearches ?
+            this.props.CurrentUser.groupSearches.map((groupSearch, index) => (
+              <SideBarIcon
+                key={groupSearch.activity.name}
+                activity={groupSearch.activity}
+                hoverStatus={this.state.hover === index}
+                toggleHover={() => this.toggleHover(index)}
+                removeHover={() => this.toggleHover(false)}
+              />
+            )) : null
+          }
+           {
             this.props.CurrentUser.groupSearches ?
             this.props.CurrentUser.groupSearches.map((groupSearch, index) => (
               <SideBarIcon
@@ -71,6 +138,7 @@ class SideBar extends React.Component {
             )) : null
           }
           {this.props.CurrentUser.isLoading ? <GeneralSpinner /> : null}
+          </div>
         </div>
         <SideBarLinks />
       </aside>

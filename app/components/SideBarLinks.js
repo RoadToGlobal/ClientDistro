@@ -8,9 +8,9 @@ const footerLinks = {
   textDecoration: 'none',
 };
 const linksContainer = {
+  maxHeight: '12em',
   backgroundColor: '#3c4959',
   width: '5em',
-  position: 'fixed',
   bottom: '0px',
   textAlign: 'center',
   alignItems: 'flex-start',
