@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
+import * as actions from '../redux/actions';
 
 import GeneralButton from '../components/GeneralButton';
 import LoginPill from '../components/LoginPill';
@@ -98,9 +99,6 @@ class Login extends React.Component {
       });
     }
   }
-  userLoginInput(usr, pass) {
-    console.log(usr, pass);
-  }
 
   render() {
     return (
@@ -132,7 +130,7 @@ class Login extends React.Component {
                     showGroupAppLogin={this.state.showGroupAppLogin}
                     showGoogleLogin={this.state.showGoogleLogin}
                     showFacebookLogin={this.state.showFacebookLogin}
-                    userLoginInput={this.userLoginInput}
+                    userLoginInput={this.props.readCurrentUser}
                   />
                   : null}
             </FFFWindow>
@@ -150,9 +148,8 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-  };
+const mapDispatchToProps = {
+  readCurrentUser: actions.users.readCurrentUser,
 };
 
 export default connect(

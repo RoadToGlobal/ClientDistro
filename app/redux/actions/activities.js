@@ -1,5 +1,6 @@
 import fetch from 'isomorphic-fetch';
 
+// TODO: Figure out another way to catch "fetch errors".
 export const index = (filter) => {
   return (dispatch, getState) => {
     dispatch(indexActivitiesRequest());
@@ -18,7 +19,7 @@ export const index = (filter) => {
     })
     .then(raw => raw.json())
     .then(res => dispatch(indexActivitiesSuccess(res)))
-    .catch(res => dispatch(indexActivitiesError(res)));
+    // .catch(res => dispatch(indexActivitiesError(res)));
   };
 };
 

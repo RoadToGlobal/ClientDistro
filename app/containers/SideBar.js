@@ -59,7 +59,7 @@ class SideBar extends React.Component {
         </Link>
         <div style={SideBarIconContainer}>
           {
-            !this.props.CurrentUser.error && !this.props.CurrentUser.isLoading ?
+            this.props.CurrentUser.groupSearches ?
             this.props.CurrentUser.groupSearches.map((groupSearch, index) => (
               <SideBarIcon
                 key={groupSearch.activity.name}
@@ -68,8 +68,9 @@ class SideBar extends React.Component {
                 toggleHover={() => this.toggleHover(index)}
                 removeHover={() => this.toggleHover(false)}
               />
-            )) : <GeneralSpinner />
+            )) : null
           }
+          {this.props.CurrentUser.isLoading ? <GeneralSpinner /> : null}
         </div>
         <SideBarLinks />
       </aside>
