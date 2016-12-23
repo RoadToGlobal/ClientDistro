@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import GeneralButton from '../components/GeneralButton';
 
 const pillContainer = {
   display: 'flex',
@@ -28,17 +29,28 @@ const pillItemLink = {
   color: '#fff',
   textDecoration: 'none',
 };
+const closeCross = {
+  margin: '-0.5em',
+  display: 'block',
+  padding: '1px 12px',
+  backgroundColor: 'transparent',
+  color: '#ff5b5b',
+  height: '30px',
+  fontSize: '1.5em',
+  zIndex: 9999,
+};
 
 class LoginPill extends React.Component {
   static propTypes = {
-    showPills: PropTypes.bool,
+    showLoginPills: PropTypes.bool,
     clickGroupApp: PropTypes.func,
     clickGoogle: PropTypes.func,
     clickFacebook: PropTypes.func,
-  }
+    closeLogin: PropTypes.func,
+  };
 
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
   }
 
   render() {
@@ -60,6 +72,11 @@ class LoginPill extends React.Component {
           onClick={this.props.clickFacebook}>
             <span style={pillItemLink}>Facebook</span>
         </h2>
+        <GeneralButton
+          buttonStyle={closeCross}
+          buttonContent={'✖'}
+          onClick={this.props.closeLogin}
+        />
       </div>
     );
   }

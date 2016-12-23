@@ -45,7 +45,7 @@ class LoginWindow extends React.Component {
             </div>
             <div style={windowItem}>
               <label>Password:</label>
-              <input onChange={(event) => this.setState({password: event.currentTarget.value})} type="text"/>
+              <input onChange={(event) => this.setState({password: event.currentTarget.value})} type="password"/>
             </div>
             <GeneralButton
               buttonStyle={windowItem}

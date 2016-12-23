@@ -26,7 +26,6 @@ const readCurrentUserRequest = () => {
 };
 
 const readCurrentUserSuccess = (res) => {
-  console.log(res);
   return {
     type: 'readCurrentUserSuccess',
     user: res,

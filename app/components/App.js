@@ -3,24 +3,72 @@ import { Link } from 'react-router';
 
 import SideBar from '../containers/SideBar';
 import Login from '../containers/Login';
+import GeneralButton from '../components/GeneralButton';
 import { verticalContainer, horizontalContainer } from '../DynamicStyles/common';
 
-const App = ({ children }) =>
-  <div style={globalContainer}>
-    <SideBar />
-    <div style={mainContainer}>
-      <header style={headerContainer}>
-        <Link to="/" style={brandName}><h1>GroupApp!</h1></Link>
-        <Login />
-      </header>
-      { children }
-    </div>
-  </div>;
+class App extends React.Component {
+  static propTypes = {
+    children: PropTypes.object,
+  };
 
-App.propTypes = {
-  children: PropTypes.object,
+  constructor() {
+    super();
+    this.state = {
+      showLoginPills: false,
+    }
+  }
+
+  clickLogin() {
+    this.setState({
+      showLoginPills: !this.state.showLoginPills,
+    });
+  }
+
+  render() {
+    return (
+      <div style={globalContainer}>
+        <SideBar />
+        <div style={mainContainer}>
+          <header style={horizontalContainer}>
+            <h1 style={{flex: 1}}><Link to="/" style={brandName}>GroupApp!</Link></h1>
+            <div style={{display: 'flex', justifyContent: 'flex-end', flex: 1}}>
+              {!this.state.showLoginPills ?
+              <GeneralButton
+                buttonContent={'Login'}
+                buttonStyle={loginButton}
+                onClick={() => this.clickLogin()}
+              />
+              :
+              <GeneralButton
+                buttonContent={'Close'}
+                buttonStyle={closeButton}
+                onClick={() => this.clickLogin()}
+              />
+              }
+            </div>
+          </header>
+          {this.state.showLoginPills ?
+          <Login
+            showLoginPills={this.state.showLoginPills}
+            clickLogin={() => this.clickLogin()}
+          />
+          : null}
+          { this.props.children }
+        </div>
+      </div>
+    );
+  }
+}
+
+const loginButton = {
+  margin: '1em 3em',
+  fontSize: '24px',
+  backgroundColor: 'green',
 };
-
+const closeButton = {
+  ...loginButton,
+  backgroundColor: '#ff5b5b',
+};
 const headerContainer = {
   ...verticalContainer,
   boxShadow: 'none',
@@ -38,7 +86,7 @@ const mainContainer = {
   overflowY: 'scroll',
 };
 const brandName = {
-  marginLeft: '2em',
+  marginLeft: '1em',
   textDecoration: 'none',
   fontWeight: '600',
   color: '#3c4959',
