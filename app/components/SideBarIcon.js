@@ -1,8 +1,6 @@
 import React, { PropTypes } from 'react';
 
-/* ToDo:
-*  - Add more links and "connect" to views
-*/
+// TODO: Add more links and "connect" to view
 
 const icon = {
   marginBottom: 10.5,
@@ -62,10 +60,10 @@ class SideBarIcon extends React.Component {
         onMouseOver={this.props.toggleHover}
         onMouseLeave={this.props.removeHover}
       >
-        {/* <img
+        <img
           style={this.props.hoverStatus ? iconImgHover : iconImg}
           src='https://maxcdn.icons8.com/Color/PNG/512/Logos/overwatch-512.png'
-         /> */}
+        />
         <span
           style={this.props.hoverStatus ? iconTxtHover : iconTxt}
         >

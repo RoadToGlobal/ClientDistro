@@ -3,13 +3,14 @@ import React, { PropTypes } from 'react';
 // import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import {FFFWindowStyle} from '../DynamicStyles/common';
 
-const contentStyle = {
-  display: 'flex',
-  opacity: '1',
-  transition: 'opacity 0.4s',
-  flexDirection: 'column',
-  justifyContent: 'space-around',
-};
+// TODO: This const is connected with the todo below.
+// const contentStyle = {
+//   display: 'flex',
+//   opacity: '1',
+//   transition: 'opacity 0.4s',
+//   flexDirection: 'column',
+//   justifyContent: 'space-around',
+// };
 
 const FFFWindowHeader = {
   borderBottom: '1px solid #dddddd',

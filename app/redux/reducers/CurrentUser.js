@@ -34,6 +34,29 @@ export default function CurrentUser(state = fakeInitialState, action) {
         ...state,
         groupSearches: action.payload.userPatch.groupSearches,
       };
+      break;
+    case 'readCurrentUserRequest':
+      console.log('Request');
+      return {
+        isLoading: true,
+        error: false,
+        user: {},
+      }
+      break;
+    case 'readCurrentUserSuccess':
+      return {
+        isLoading: false,
+        error: false,
+        user: action.user,
+      }
+      break;
+    case 'readCurrentUserError':
+      return {
+        isLoading: false,
+        error: action.error,
+        user: {},
+      }
+      break;
     default:
       return state;
   }

@@ -1,11 +1,8 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 
+import GeneralButton from '../components/GeneralButton';
 import { verticalContainer, horizontalContainer } from '../DynamicStyles/common';
-
-/* ToDo:
-*  - Toggle CustomizeTheme
-*/
 
 const margR = {
   marginRight: 20,
@@ -16,14 +13,26 @@ const inputHeight = {
 const selectHeight = {
   height: 32,
 };
+const saveButton = {
+  backgroundColor: 'green',
+  color: '#fff',
+};
+const fadedButton = {
+  backgroundColor: 'grey',
+  color: '#fff',
+  opacity: '0.5',
+  cursor: 'not-allowed',
+};
 
 class RegisterActivity extends React.Component {
   static propTypes = {
     CurrentUser: PropTypes.object,
+    toggleCustomize: PropTypes.func,
+    showCustomize: PropTypes.bool,
   };
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
   }
 
   render() {
@@ -50,8 +59,27 @@ class RegisterActivity extends React.Component {
           </select>
         </div>
         <div style={{...horizontalContainer, justifyContent: 'center', flex: 1}}>
-          <button style={{...margR, height: 40}}>Customize Colors</button>
-          <button style={{height: 40}}>Create</button>
+          {!this.props.showCustomize ?
+            <GeneralButton
+              onClick={this.props.toggleCustomize}
+              buttonContent={'Customize Theme'}
+              buttonStyle={margR}
+            />
+          : <GeneralButton
+              onClick={this.props.toggleCustomize}
+              buttonContent={'Save customization'}
+              buttonStyle={{...margR, ...saveButton}}
+            />
+          }
+          {!this.props.showCustomize ?
+            <GeneralButton
+              buttonContent={'Create'}
+            />
+          : <GeneralButton
+              buttonContent={'Create'}
+              buttonStyle={fadedButton}
+            />
+          }
         </div>
       </div>
     );

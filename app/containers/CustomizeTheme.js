@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 
+import GeneralButton from '../components/GeneralButton';
 import { verticalContainer, horizontalContainer } from '../DynamicStyles/common';
 
 const fakeColorIcon = {
@@ -33,14 +34,20 @@ const params = {
 const margR = {
   marginRight: 20,
 };
+const doneButton = {
+  backgroundColor: 'green',
+  color: '#fff',
+};
 
 class CustomizeTheme extends React.Component {
   static propTypes = {
     CurrentUser: PropTypes.object,
+    toggleCustomize: PropTypes.func,
+    showCustomize: PropTypes.bool,
   };
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
   }
 
   render() {
@@ -105,8 +112,12 @@ class CustomizeTheme extends React.Component {
             </div>
           </div>
         </div>
-        <div style={{...horizontalContainer, justifyContent: 'center', ...subTitle}}>
-          <button style={{height: 40, backgroundColor: 'green', color: 'white'}}>Done</button>
+        <div style={{...horizontalContainer, justifyContent: 'center', margin: '10px 10px 0 10px'}}>
+          <GeneralButton
+            onClick={this.props.toggleCustomize}
+            buttonContent={'Save customization'}
+            buttonStyle={doneButton}
+          />
         </div>
       </div>
     );

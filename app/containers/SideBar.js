@@ -2,33 +2,41 @@ import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 
+import GeneralSpinner from '../components/GeneralSpinner';
 import SideBarIcon from '../components/SideBarIcon';
 import SideBarLinks from '../components/SideBarLinks';
 import { verticalContainer, shadowCaster } from '../DynamicStyles/common';
 
 // TODO: Icon pagination
 // TODO: Connect icons to groups
-
 const sidebarStyle = {
   ...verticalContainer,
   ...shadowCaster,
-  flexShrink: '1',
+
   display: 'flex',
+  fontWeight: '300',
   color: '#ffffff',
   backgroundColor: '#3c4959',
   width: '5em',
-  fontWeight: '300',
 };
 const logotype = {
   width: '55%',
 };
 const logotypeContainer = {
+  maxHeight: '5em',
   textAlign: 'center',
   marginBottom: '0.8em',
   marginTop: '0.8em',
 };
-const SideBarIconContainer = {
-
+const sideBarIconContainer = {
+  flex: 1,
+  overflow: 'hidden',
+};
+const scrollHider = {
+  overflowY: 'scroll',
+  overflowX: 'hidden',
+  maxHeight: '100%',
+  width: '5.6em', //hides on firefox TODO: cross-browser fix hide scrollbar
 };
 
 class SideBar extends React.Component {
@@ -55,9 +63,10 @@ class SideBar extends React.Component {
         <Link style={logotypeContainer} to="/">
           <img style={logotype} src="http://eigentaste.berkeley.edu/img/home_icon.png"/>
         </Link>
-        <div style={SideBarIconContainer}>
-          {
-            !this.props.CurrentUser.error && !this.props.CurrentUser.isLoading ?
+        <div style={sideBarIconContainer}>
+          <div style={scrollHider}>
+           {
+            this.props.CurrentUser.groupSearches ?
             this.props.CurrentUser.groupSearches.map((groupSearch, index) => (
               <SideBarIcon
                 key={groupSearch.activity.name}
@@ -66,8 +75,10 @@ class SideBar extends React.Component {
                 toggleHover={() => this.toggleHover(index)}
                 removeHover={() => this.toggleHover(false)}
               />
-            )) : <p> Spinner </p>
+            )) : null
           }
+          {this.props.CurrentUser.isLoading ? <GeneralSpinner /> : null}
+          </div>
         </div>
         <SideBarLinks />
       </aside>

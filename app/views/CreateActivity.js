@@ -11,15 +11,42 @@ class CreateActivity extends React.Component {
     CurrentUser: PropTypes.object.isRequired,
   };
 
+  constructor() {
+    super();
+    this.state = {
+      showCustomize: false,
+    };
+  }
+
+  toggleCustomize() {
+    this.setState({
+      showCustomize: !this.state.showCustomize
+    });
+  }
+
   render() {
     return (
       <div style={FFFContainer}>
-        <FFFWindow title={"Register new Activity"} header={Boolean(true)} specStyle={{height: 'inherit'}}>
-          <RegisterActivity />
+        <FFFWindow
+          title={"Register new Activity"}
+          header={Boolean(true)}
+          specStyle={{height: '18em'}}>
+          <RegisterActivity
+            showCustomize={this.state.showCustomize}
+            toggleCustomize={() => this.toggleCustomize()}
+          />
         </FFFWindow>
-        <FFFWindow title={"Customize theme"} header={Boolean(true)} specStyle={{height: 'inherit'}}>
-          <CustomizeTheme />
+        {this.state.showCustomize ?
+        <FFFWindow
+          title={"Customize theme"}
+          header={Boolean(true)}
+          specStyle={{height: '44em'}}>
+          <CustomizeTheme
+            showCustomize={this.state.showCustomize}
+            toggleCustomize={() => this.toggleCustomize()}
+          />
         </FFFWindow>
+        : null}
       </div>
    );
   }
@@ -33,10 +60,6 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchUser: (user) => dispatch(({
-      type: 'CURRENT_USER_EXAMPLE',
-      data: 'current user action triggered',
-    }))
   };
 };
 

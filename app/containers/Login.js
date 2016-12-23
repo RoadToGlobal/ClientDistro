@@ -1,15 +1,14 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
+import * as actions from '../redux/actions';
 
+import GeneralButton from '../components/GeneralButton';
 import LoginPill from '../components/LoginPill';
 import LoginWindow from '../components/LoginWindow';
 import FFFWindow from '../containers/FFFWindow';
 import { verticalContainer } from '../DynamicStyles/common';
 
-/* ToDo:
-*  - Animate the login
-*  - Change "Close" link to design
-*/
+// TODO: Animate the login
 
 const loginContainer = {
   ...verticalContainer,
@@ -20,8 +19,8 @@ const loginStyle = {
   minHeight: 'initial',
 };
 const loginBox = {
-  margin: 5,
-  width: '40em',
+  margin: '0 auto 5px auto',
+  width: '28em',
   marginBottom: 5,
   textAlign: 'right',
   flex: 1,
@@ -29,6 +28,17 @@ const loginBox = {
 const loginLink = {
   color: '#3c4959',
   textDecoration: 'none',
+};
+const closeButton = {
+  float: 'right',
+  cursor: 'pointer',
+  color: '#fff',
+  borderRadius: 30,
+  background: '#3c4959',
+  fontSize: 31,
+  fontWeight: 700,
+  lineHeight: 0,
+  padding: '8px',
 };
 
 class Login extends React.Component {
@@ -41,6 +51,9 @@ class Login extends React.Component {
     this.state = {
       showLoginPills: false,
       showLoginButton: false,
+      showGroupAppLogin: false,
+      showGoogleLogin: false,
+      showFacebookLogin: false,
     };
   }
 
@@ -48,13 +61,41 @@ class Login extends React.Component {
     this.setState({
       showLoginPills: !this.state.showLoginPills,
       showLoginButton: false,
+      showGroupAppLogin: false,
+      showGoogleLogin: false,
+      showFacebookLogin: false,
     });
   }
 
-  clickPill() {
+  clickGroupAppPill() {
     if(this.state.showLoginPills) {
       this.setState({
-        showLoginButton: this.state.showLoginPills,
+        showLoginButton: true,
+        showGroupAppLogin: !this.state.showGroupAppLogin,
+        showGoogleLogin: false,
+        showFacebookLogin: false,
+      });
+    }
+  }
+
+  clickGooglePill() {
+    if(this.state.showLoginPills) {
+      this.setState({
+        showLoginButton: true,
+        showGroupAppLogin: false,
+        showGoogleLogin: !this.state.showGoogleLogin,
+        showFacebookLogin: false,
+      });
+    }
+  }
+
+  clickFacebookPill() {
+    if(this.state.showLoginPills) {
+      this.setState({
+        showLoginButton: true,
+        showGroupAppLogin: false,
+        showGoogleLogin: false,
+        showFacebookLogin: !this.state.showFacebookLogin,
       });
     }
   }
@@ -67,18 +108,31 @@ class Login extends React.Component {
             style={loginLink}
             href="#"
             onClick={() => this.clickLogin()}>
-            {this.state.showLoginPills ? 'Close' : 'Login'}
+            {this.state.showLoginPills ?
+              <GeneralButton
+                buttonContent={'×'}
+                buttonStyle={closeButton} />
+              : 'Login'}
           </a>
         </h2>
 
         {this.state.showLoginPills ?
           <div style={loginStyle}>
-            <FFFWindow title="yo" header={Boolean(false)} specStyle={{height: 'inherit'}}>
+            <FFFWindow title="" header={Boolean(false)} specStyle={{height: 'inherit'}}>
                 <LoginPill
                   showPills={this.state.showLoginPills}
-                  clickPill={() => this.clickPill()}
+                  clickGroupApp={() => this.clickGroupAppPill()}
+                  clickGoogle={() => this.clickGooglePill()}
+                  clickFacebook={() => this.clickFacebookPill()}
                 />
-                {this.state.showLoginButton ? <LoginWindow /> : null}
+                {this.state.showLoginButton ?
+                  <LoginWindow
+                    showGroupAppLogin={this.state.showGroupAppLogin}
+                    showGoogleLogin={this.state.showGoogleLogin}
+                    showFacebookLogin={this.state.showFacebookLogin}
+                    userLoginInput={this.props.readCurrentUser}
+                  />
+                  : null}
             </FFFWindow>
           </div>
           : null}
@@ -94,9 +148,8 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-  };
+const mapDispatchToProps = {
+  readCurrentUser: actions.users.readCurrentUser,
 };
 
 export default connect(
