@@ -72,6 +72,7 @@ class Login extends React.Component {
   render() {
     return (
       <div style={loginContainer}>
+        <button onClick={this.props.logoutCurrentUser}>REMOVE LOCAL STORAGE</button>
         {this.props.showLoginPills ?
         <div style={loginStyle}>
           <FFFWindow title="" header={Boolean(false)} specStyle={{height: 'inherit'}}>
@@ -83,15 +84,15 @@ class Login extends React.Component {
               clickFacebook={() => this.clickFacebookPill()}
             />
             {this.state.showLoginWindow ?
-              <LoginWindow
-                showGroupAppLogin={this.state.showGroupAppLogin}
-                showGoogleLogin={this.state.showGoogleLogin}
-                showFacebookLogin={this.state.showFacebookLogin}
-                userLoginInput={this.props.readCurrentUser}
-              />
-              : null}
-          </FFFWindow>
-        </div>
+            <LoginWindow
+              showGroupAppLogin={this.state.showGroupAppLogin}
+              showGoogleLogin={this.state.showGoogleLogin}
+              showFacebookLogin={this.state.showFacebookLogin}
+              userLoginInput={this.props.readCurrentUser}
+            />
+            : null}
+            </FFFWindow>
+          </div>
         : null}
       </div>
     );
@@ -106,6 +107,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = {
   readCurrentUser: actions.users.readCurrentUser,
+  logoutCurrentUser: actions.users.logoutCurrentUser,
 };
 
 export default connect(

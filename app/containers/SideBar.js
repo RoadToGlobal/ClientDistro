@@ -66,8 +66,8 @@ class SideBar extends React.Component {
         <div style={sideBarIconContainer}>
           <div style={scrollHider}>
            {
-            this.props.CurrentUser.groupSearches ?
-            this.props.CurrentUser.groupSearches.map((groupSearch, index) => (
+            this.props.CurrentUser.user.groupSearches ?
+            this.props.CurrentUser.user.groupSearches.map((groupSearch, index) => (
               <SideBarIcon
                 key={groupSearch.activity.name}
                 activity={groupSearch.activity}

@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
+import { connect } from 'react-redux';
 
 import SideBar from '../containers/SideBar';
 import Login from '../containers/Login';
@@ -24,6 +25,14 @@ class App extends React.Component {
     });
   }
 
+  componentWillReceiveProps(newProps) {
+    if(newProps.CurrentUser.user){
+      this.setState({
+        showLoginPills: false,
+      });
+    }
+  }
+
   render() {
     return (
       <div style={globalContainer}>
@@ -32,7 +41,9 @@ class App extends React.Component {
           <header style={horizontalContainer}>
             <h1 style={{flex: 1}}><Link to="/" style={brandName}>GroupApp!</Link></h1>
             <div style={{display: 'flex', justifyContent: 'flex-end', flex: 1}}>
-              {!this.state.showLoginPills ?
+            {this.props.CurrentUser.user ?
+              <p>Hej {this.props.CurrentUser.user.username}</p>
+              : !this.state.showLoginPills ?
               <GeneralButton
                 buttonContent={'Login'}
                 buttonStyle={loginButton}
@@ -44,15 +55,13 @@ class App extends React.Component {
                 buttonStyle={closeButton}
                 onClick={() => this.clickLogin()}
               />
-              }
+            }
             </div>
           </header>
-          {this.state.showLoginPills ?
           <Login
             showLoginPills={this.state.showLoginPills}
             clickLogin={() => this.clickLogin()}
           />
-          : null}
           { this.props.children }
         </div>
       </div>
@@ -92,4 +101,12 @@ const brandName = {
   color: '#3c4959',
 };
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    CurrentUser: state.CurrentUser,
+  };
+};
+
+export default connect(
+  mapStateToProps
+)(App);
