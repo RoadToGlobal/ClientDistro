@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 
 const generalButton = {
+  fontFamily: 'Nunito',
   display: 'inline-block',
   height: 40,
   border: 'none',

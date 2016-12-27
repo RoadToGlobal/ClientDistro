@@ -22,6 +22,8 @@ const userInputContainer = {
 const singleRowContainer = {
   display: 'flex',
   flexDirection: 'row',
+  fontSize: '24px',
+  fontWeight: '600',
 };
 
 const toggleFilterDisplay = {
@@ -66,9 +68,10 @@ class GroupSearchForm extends React.Component {
     return (
       <div>
         <p>
-          Fill the empty fields below and tur sadipscing elitr, sed diam nonumy eirmod
-          tempor invidunt ut labore et dolore dancing in the moonlight for fun, sed diam voluptua. At
-          vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren. Join us today and meet strangers.
+          Fill the empty fields below and choose what activity you want to do. You will be placed in a search pool until we find someone that meets your requirements.
+        </p>
+        <p>
+          Join us and meet strangers!
         </p>
         <div style={singleRowContainer}>
           <p>I want to: </p>

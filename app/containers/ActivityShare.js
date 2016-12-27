@@ -34,7 +34,7 @@ export default class ActivityShare extends React.Component {
 const pathBtns = {
   borderRadius: '2px',
   backgroundColor: '#00bef2',
-  border: 'none',
+  border: '1px solid #68dafc',
   fontSize: '0.8em',
   color: 'white',
   height: '2.8em',
