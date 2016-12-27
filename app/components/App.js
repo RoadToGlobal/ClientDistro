@@ -38,51 +38,53 @@ class App extends React.Component {
     return (
       <div style={globalContainer}>
         <SideBar />
-        <div style={mainContainer}>
-          <header style={horizontalContainer}>
-            <h1 style={{flex: 1}}><Link to="/" style={brandName}>GroupApp!</Link></h1>
-            <div style={{display: 'flex', justifyContent: 'flex-end', flex: 1}}>
-            {this.props.CurrentUser.user ?
-              <div style={{display: 'flex', justifyContent: 'flex-end', alignItems: 'center', flex: 1}}>
-                <span style={welcomeText}>Welcome, <span style={boldText}>{this.props.CurrentUser.user.username}</span>!</span>
-                <GeneralButton
-                  buttonContent={'Logout'}
-                  buttonStyle={logoutButton}
-                  onClick={this.props.logoutCurrentUser}
-                />
-              </div>
-              : !this.state.showLoginPills ?
+        <header style={siteHeader}>
+          <h1><Link to="/" style={brandName}>GroupApp!</Link></h1>
+          <div>
+          {this.props.CurrentUser.user ?
+            <div style={{display: 'flex', justifyContent: 'flex-end', alignItems: 'center', flex: 1}}>
+              <span style={welcomeText}>Welcome, <span style={boldText}>{this.props.CurrentUser.user.username}</span>!</span>
               <GeneralButton
-                buttonContent={'Login'}
-                buttonStyle={loginButton}
-                onClick={() => this.clickLogin()}
+                buttonContent={'Logout'}
+                buttonStyle={logoutButton}
+                onClick={this.props.logoutCurrentUser}
               />
-              :
-              <GeneralButton
-                buttonContent={'Close'}
-                buttonStyle={closeButton}
-                onClick={() => this.clickLogin()}
-              />
-            }
             </div>
-          </header>
-          <Login
-            showLoginPills={this.state.showLoginPills}
-            clickLogin={() => this.clickLogin()}
-          />
-          { this.props.children }
-        </div>
+            : !this.state.showLoginPills ?
+            <GeneralButton
+              buttonContent={'Login'}
+              buttonStyle={loginButton}
+              onClick={() => this.clickLogin()}
+            />
+            :
+            <GeneralButton
+              buttonContent={'Close'}
+              buttonStyle={closeButton}
+              onClick={() => this.clickLogin()}
+            />
+          }
+          </div>
+        </header>
+        <Login
+          showLoginPills={this.state.showLoginPills}
+          clickLogin={() => this.clickLogin()}
+        />
+        { this.props.children }
       </div>
     );
   }
 }
-
 const boldText = {
   fontWeight: 700,
 };
 const welcomeText = {
   fontSize: '24px',
   marginLeft: '1.5em',
+};
+const siteHeader = {
+  ...horizontalContainer,
+  marginLeft: '5em',
+  justifyContent: 'space-between',
 };
 const loginButton = {
   margin: '1em 3em',
@@ -103,16 +105,10 @@ const headerContainer = {
   boxShadow: 'none',
 };
 const globalContainer = {
-  ...horizontalContainer,
+  ...verticalContainer,
   backgroundColor: '#9ae3d8',
   background: 'linear-gradient(to bottom, rgba(153,242,227,1) 0%, rgba(116,207,190,1) 42%, rgba(89,179,173,1) 77%, rgba(66,153,149,1) 100%)',
-  height: '100vh',
-};
-const mainContainer = {
-  ...verticalContainer,
-  flex: '1',
-  boxShadow: 'none',
-  overflowY: 'scroll',
+  minHeight: '100vh',
 };
 const brandName = {
   fontFamily: 'Nunito',

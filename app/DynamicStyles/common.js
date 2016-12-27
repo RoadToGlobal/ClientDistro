@@ -22,22 +22,29 @@ export const horizontalContainer = {
 };
 
 export const FFFContainer = {
-  ...verticalContainer,
-  alignItems: 'center',
-  marginRight: 'auto',
-  marginLeft: 'auto',
+  ...horizontalContainer,
+  padding: '0 10vw',
+  justifyContent: 'center',
+  marginLeft: '5em',
+  flex: '1',
+  flexWrap: 'wrap',
 };
 
 export const FFFWindowStyle = {
   ...shadowCaster,
+  flexBasis: '100%',
   backgroundColor: 'white',
   height: '20em',
   padding: '1em',
-  width: '40em',
   color: '#333',
   marginBottom: '2em',
   display: 'flex',
   transition: 'height 0.5s',
   flexDirection: 'column',
   overflow: 'hidden',
+};
+
+export const FFFHalfWindowStyle = {
+  ...FFFWindowStyle,
+  flexBasis: '45%',
 };

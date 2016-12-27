@@ -43,6 +43,7 @@ const pathBtns = {
 };
 const shareContainer = {
   ...FFFWindowStyle,
+  flexShrink: '0',
   boxShadow: 'none',
   backgroundColor: 'transparent',
   height: 'inherit',
