@@ -22,18 +22,20 @@ export const horizontalContainer = {
 };
 
 export const FFFContainer = {
-  ...verticalContainer,
+  ...horizontalContainer,
   alignItems: 'center',
   marginRight: 'auto',
   marginLeft: 'auto',
+  flexWrap: 'wrap',
+  justifyContent: 'center',
 };
 
 export const FFFWindowStyle = {
   ...shadowCaster,
+  flexBasis: '70%',
   backgroundColor: 'white',
   height: '20em',
   padding: '1em',
-  width: '40em',
   color: '#333',
   marginBottom: '2em',
   display: 'flex',

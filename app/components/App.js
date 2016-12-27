@@ -30,8 +30,8 @@ class App extends React.Component {
         <SideBar />
         <div style={mainContainer}>
           <header style={horizontalContainer}>
-            <h1 style={{flex: 1}}><Link to="/" style={brandName}>GroupApp!</Link></h1>
-            <div style={{display: 'flex', justifyContent: 'flex-end', flex: 1}}>
+            <h1><Link to="/" style={brandName}>GroupApp!</Link></h1>
+            <div>
               {!this.state.showLoginPills ?
               <GeneralButton
                 buttonContent={'Login'}
@@ -77,13 +77,16 @@ const globalContainer = {
   ...horizontalContainer,
   backgroundColor: '#9ae3d8',
   background: 'linear-gradient(to bottom, rgba(153,242,227,1) 0%, rgba(116,207,190,1) 42%, rgba(89,179,173,1) 77%, rgba(66,153,149,1) 100%)',
-  height: '100vh',
+  // height: '100vh',
 };
 const mainContainer = {
-  ...verticalContainer,
+  // ...horizontalContainer,
+  marginLeft: '5em',
   flex: '1',
   boxShadow: 'none',
-  overflowY: 'scroll',
+  flexWrap: 'wrap',
+  width: '20%',
+  // overflowY: 'scroll',
 };
 const brandName = {
   marginLeft: '1em',

@@ -12,8 +12,9 @@ import { verticalContainer, shadowCaster } from '../DynamicStyles/common';
 const sidebarStyle = {
   ...verticalContainer,
   ...shadowCaster,
-
-  display: 'flex',
+  position: 'fixed',
+  height: '100vh',
+  // display: 'flex',
   fontWeight: '300',
   color: '#ffffff',
   backgroundColor: '#3c4959',
