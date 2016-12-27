@@ -115,7 +115,8 @@ const mainContainer = {
   overflowY: 'scroll',
 };
 const brandName = {
-  marginLeft: '1em',
+  fontFamily: 'Nunito',
+  marginLeft: '2em',
   textDecoration: 'none',
   fontWeight: '600',
   color: '#3c4959',

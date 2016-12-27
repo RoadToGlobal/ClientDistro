@@ -3,20 +3,16 @@ import React, { PropTypes } from 'react';
 // import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import {FFFWindowStyle} from '../DynamicStyles/common';
 
-// TODO: This const is connected with the todo below.
-// const contentStyle = {
-//   display: 'flex',
-//   opacity: '1',
-//   transition: 'opacity 0.4s',
-//   flexDirection: 'column',
-//   justifyContent: 'space-around',
-// };
-
-const FFFWindowHeader = {
-  borderBottom: '1px solid #dddddd',
+const contentStyle = {
+  display: 'flex',
+  opacity: '1',
+  flexDirection: 'column',
+  justifyContent: 'space-around',
 };
+
 const FFFWindowTitle = {
   margin: '0',
+  fontFamily: 'Nunito',
 };
 const ToggleButton = {
   cursor: 'pointer',
@@ -27,6 +23,7 @@ export default class FFFWindow extends React.Component {
     super();
     this.state = {
       maximized: true,
+      showContent: '',
     };
   }
 
@@ -34,13 +31,30 @@ export default class FFFWindow extends React.Component {
     this.setState({
       maximized: !this.state.maximized
     });
+    if(this.state.maximized) {
+      this.setState({
+        showContent: {
+          visibility: 'hidden',
+          opacity: 0,
+          transition: 'visibility 0.2s, opacity 0.2s linear',
+        }
+      });
+    } else {
+      this.setState({
+        showContent: {
+          visibility: 'visible',
+          opacity: 1,
+          transition: 'opacity 0.5s linear',
+        }
+      });
+    }
   }
 
   render() {
     return (
-      <div style={this.state.maximized ? {...FFFWindowStyle, ...this.props.specStyle} : {...FFFWindowStyle, height: '2em'}}>
+      <div style={this.state.maximized ? {...FFFWindowStyle, ...this.props.specStyle} : {...FFFWindowStyle, height: '2em', transitionDelay: '0.2s'}}>
         {this.props.header ?
-          <header style={FFFWindowHeader}>
+          <header>
             <h1 style={FFFWindowTitle}>
               {this.props.title}
               <a
@@ -51,10 +65,7 @@ export default class FFFWindow extends React.Component {
             </h1>
           </header>
         : null }
-        {/* TODO: Make the animation work with the previous style object as shown below.
-          <div style={this.state.maximized ? contentStyle : {...contentStyle, opacity: '0'}}>
-        */}
-        <div>
+        <div style={this.state.maximized ? {contentStyle, ...this.state.showContent} : {...contentStyle, ...this.state.showContent, opacity: '0'}}>
           {this.props.children}
         </div>
       </div>
