@@ -40,6 +40,7 @@ const pathBtns = {
   height: '2.8em',
   marginRight: '1em',
   fontWeight: 'inherit',
+  fontFamily: 'Nunito',
 };
 const shareContainer = {
   ...FFFWindowStyle,

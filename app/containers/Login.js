@@ -12,9 +12,10 @@ import { verticalContainer } from '../DynamicStyles/common';
 const loginContainer = {
   ...verticalContainer,
   boxShadow: 'none',
+  padding: '0 10vw',
+  marginLeft: '5em',
 };
 const loginStyle = {
-  margin: 'auto',
   minHeight: 'initial',
 };
 

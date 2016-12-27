@@ -5,13 +5,11 @@ const pillContainer = {
   display: 'flex',
   flexDirection: 'row',
   justifyContent: 'flex-start',
-
   flex: 1,
 };
 const pillItemText = {
   textAlign: 'center',
   padding: 5,
-
   flex: 1,
 };
 const pillItemContainer = {
@@ -22,7 +20,7 @@ const pillItemContainer = {
   marginRight: 5,
   textAlign: 'center',
   cursor: 'pointer',
-
+  fontFamily: 'Nunito',
   flex: 1,
 };
 const pillItemLink = {

@@ -22,7 +22,7 @@ class Group extends React.Component {
         <FFFWindow title={"Members"} header={Boolean(true)}>
           <GroupMembers />
         </FFFWindow>
-        { this.props.CurrentUser.token === 'exampleToken' ?
+        { !this.props.CurrentUser.token ?
           <SignInButton />
          : null }
         <FFFWindow title={"Group Chat"} header={Boolean(true)}>

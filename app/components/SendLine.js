@@ -7,6 +7,7 @@ const sendLineContainer = {
 
 const sendBtn = {
   flex: '1',
+  fontFamily: 'Nunito',
 };
 const sendInput = {
   flex: '6',
