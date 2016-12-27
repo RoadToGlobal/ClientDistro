@@ -14,11 +14,11 @@ const selectHeight = {
   height: 32,
 };
 const saveButton = {
-  backgroundColor: 'green',
+  backgroundColor: '#28b50e',
   color: '#fff',
 };
 const fadedButton = {
-  backgroundColor: 'grey',
+  backgroundColor: '#c2c2c2',
   color: '#fff',
   opacity: '0.5',
   cursor: 'not-allowed',

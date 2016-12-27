@@ -7,8 +7,8 @@ import { verticalContainer, horizontalContainer } from '../DynamicStyles/common'
 const fakeColorIcon = {
   width: 30,
   height: 30,
-  backgroundColor: 'blue',
-  border: '1px solid grey',
+  backgroundColor: '#006aff',
+  border: '1px solid #c2c2c2',
 };
 const inputWide = {
   height: 22,
@@ -35,7 +35,7 @@ const margR = {
   marginRight: 20,
 };
 const doneButton = {
-  backgroundColor: 'green',
+  backgroundColor: '#28b50e',
   color: '#fff',
 };
 
