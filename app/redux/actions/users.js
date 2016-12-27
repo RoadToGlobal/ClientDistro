@@ -1,9 +1,8 @@
 import fetch from 'isomorphic-fetch';
 
 // TODO: Figure out another way to catch "fetch errors".
-export const readCurrentUser = (user, password) => {
+export const readCurrentUser = (token) => {
   // TODO: Reimplement with "real token".
-  const token = btoa(user + ':' + password);
 
   return (dispatch, getState) => {
     dispatch(readCurrentUserRequest());

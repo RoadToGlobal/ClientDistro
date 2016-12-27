@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
+import * as actions from '../redux/actions';
 
 import SideBar from '../containers/SideBar';
 import Login from '../containers/Login';
@@ -42,7 +43,14 @@ class App extends React.Component {
             <h1 style={{flex: 1}}><Link to="/" style={brandName}>GroupApp!</Link></h1>
             <div style={{display: 'flex', justifyContent: 'flex-end', flex: 1}}>
             {this.props.CurrentUser.user ?
-              <p>Hej {this.props.CurrentUser.user.username}</p>
+              <div style={{display: 'flex', justifyContent: 'flex-end', alignItems: 'center', flex: 1}}>
+                <span style={welcomeText}>Welcome, <span style={boldText}>{this.props.CurrentUser.user.username}</span>!</span>
+                <GeneralButton
+                  buttonContent={'Logout'}
+                  buttonStyle={logoutButton}
+                  onClick={this.props.logoutCurrentUser}
+                />
+              </div>
               : !this.state.showLoginPills ?
               <GeneralButton
                 buttonContent={'Login'}
@@ -69,14 +77,26 @@ class App extends React.Component {
   }
 }
 
+const boldText = {
+  fontWeight: 700,
+};
+const welcomeText = {
+  fontSize: '24px',
+  marginLeft: '1.5em',
+};
 const loginButton = {
   margin: '1em 3em',
   fontSize: '24px',
-  backgroundColor: 'green',
+  backgroundColor: '#28b50e',
 };
 const closeButton = {
   ...loginButton,
   backgroundColor: '#ff5b5b',
+};
+const logoutButton = {
+  ...loginButton,
+  margin: '1em 3em 1em 1em',
+  backgroundColor: '#ff6a1f',
 };
 const headerContainer = {
   ...verticalContainer,
@@ -107,6 +127,11 @@ const mapStateToProps = (state) => {
   };
 };
 
+const mapDispatchToProps = {
+  logoutCurrentUser: actions.users.logoutCurrentUser,
+};
+
 export default connect(
-  mapStateToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(App);

@@ -50,7 +50,7 @@ class LoginWindow extends React.Component {
             <GeneralButton
               buttonStyle={windowItem}
               buttonContent={'Submit'}
-              onClick={ () => this.props.userLoginInput(this.state.username, this.state.password) }
+              onClick={ () => this.props.userLoginInput(btoa(this.state.username + ':' + this.state.password)) }
             />
           </div>
           : null}
