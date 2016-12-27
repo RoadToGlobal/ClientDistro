@@ -30,6 +30,7 @@ const buttonStyle = {
   alignItems: 'center',
   justifyContent: 'center',
   fontSize: '1.5em',
+  width: '100%',
 };
 const logInLink = {
   textDecoration: 'none',

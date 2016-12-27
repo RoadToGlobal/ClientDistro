@@ -9,7 +9,7 @@ import ActivityStatusMini from '../containers/ActivityStatusMini';
 import NotificationSettings from '../containers/NotificationSettings';
 import EditProps from '../containers/EditProps';
 import FFFWindow from '../containers/FFFWindow';
-import { FFFContainer, horizontalContainer } from '../DynamicStyles/common';
+import { FFFContainer, horizontalContainer, FFFHalfWindowStyle } from '../DynamicStyles/common';
 
 class Group extends React.Component {
   static propTypes = {
@@ -29,12 +29,14 @@ class Group extends React.Component {
           <GroupChat />
         </FFFWindow>
         <ActivityShare />
-        <FFFWindow title={""} header={Boolean(false)} specStyle={{width: 'inherit', marginRight: '2em'}}>
-          <NotificationSettings />
-        </FFFWindow>
-        <FFFWindow title={""} header={Boolean(false)} specStyle={{width: 'inherit'}}>
-          <EditProps />
-        </FFFWindow>
+        <div style={settingsContainer}>
+          <FFFWindow title={""} header={Boolean(false)} specStyle={FFFHalfWindowStyle}>
+            <NotificationSettings />
+          </FFFWindow>
+          <FFFWindow title={""} header={Boolean(false)} specStyle={FFFHalfWindowStyle}>
+            <EditProps />
+          </FFFWindow>
+        </div>
         <FFFWindow title={"Activity Status"} header={Boolean(true)} specStyle={{height: '10em'}}>
           <ActivityStatusMini />
         </FFFWindow>
@@ -45,7 +47,8 @@ class Group extends React.Component {
 
 const settingsContainer = {
   ...horizontalContainer,
-  width: '42em',
+  flexBasis: '100%',
+  justifyContent: 'space-between',
 };
 
 const mapStateToProps = (state) => {

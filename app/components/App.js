@@ -28,25 +28,25 @@ class App extends React.Component {
     return (
       <div style={globalContainer}>
         <SideBar />
-        <div style={mainContainer}>
-          <header style={horizontalContainer}>
-            <h1><Link to="/" style={brandName}>GroupApp!</Link></h1>
-            <div>
-              {!this.state.showLoginPills ?
-              <GeneralButton
-                buttonContent={'Login'}
-                buttonStyle={loginButton}
-                onClick={() => this.clickLogin()}
-              />
-              :
-              <GeneralButton
-                buttonContent={'Close'}
-                buttonStyle={closeButton}
-                onClick={() => this.clickLogin()}
-              />
-              }
-            </div>
-          </header>
+        <header style={siteHeader}>
+          <h1><Link to="/" style={brandName}>GroupApp!</Link></h1>
+          <div style={{alignSelf: 'right'}}>
+            {!this.state.showLoginPills ?
+            <GeneralButton
+              buttonContent={'Login'}
+              buttonStyle={loginButton}
+              onClick={() => this.clickLogin()}
+            />
+            :
+            <GeneralButton
+              buttonContent={'Close'}
+              buttonStyle={closeButton}
+              onClick={() => this.clickLogin()}
+            />
+            }
+          </div>
+        </header>
+        <div>
           {this.state.showLoginPills ?
           <Login
             showLoginPills={this.state.showLoginPills}
@@ -59,7 +59,11 @@ class App extends React.Component {
     );
   }
 }
-
+const siteHeader = {
+  ...horizontalContainer,
+  marginLeft: '5em',
+  justifyContent: 'space-between',
+};
 const loginButton = {
   margin: '1em 3em',
   fontSize: '24px',
@@ -74,19 +78,10 @@ const headerContainer = {
   boxShadow: 'none',
 };
 const globalContainer = {
-  ...horizontalContainer,
+  ...verticalContainer,
   backgroundColor: '#9ae3d8',
   background: 'linear-gradient(to bottom, rgba(153,242,227,1) 0%, rgba(116,207,190,1) 42%, rgba(89,179,173,1) 77%, rgba(66,153,149,1) 100%)',
-  // height: '100vh',
-};
-const mainContainer = {
-  // ...horizontalContainer,
-  marginLeft: '5em',
-  flex: '1',
-  boxShadow: 'none',
-  flexWrap: 'wrap',
-  width: '20%',
-  // overflowY: 'scroll',
+  minHeight: '100vh',
 };
 const brandName = {
   marginLeft: '1em',

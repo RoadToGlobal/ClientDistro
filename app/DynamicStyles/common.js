@@ -23,16 +23,16 @@ export const horizontalContainer = {
 
 export const FFFContainer = {
   ...horizontalContainer,
-  alignItems: 'center',
-  marginRight: 'auto',
-  marginLeft: 'auto',
-  flexWrap: 'wrap',
+  padding: '0 10vw',
   justifyContent: 'center',
+  marginLeft: '5em',
+  flex: '1',
+  flexWrap: 'wrap',
 };
 
 export const FFFWindowStyle = {
   ...shadowCaster,
-  flexBasis: '70%',
+  flexBasis: '100%',
   backgroundColor: 'white',
   height: '20em',
   padding: '1em',
@@ -42,4 +42,9 @@ export const FFFWindowStyle = {
   transition: 'height 0.5s',
   flexDirection: 'column',
   overflow: 'hidden',
+};
+
+export const FFFHalfWindowStyle = {
+  ...FFFWindowStyle,
+  flexBasis: '45%',
 };
