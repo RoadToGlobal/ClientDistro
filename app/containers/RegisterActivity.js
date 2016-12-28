@@ -2,13 +2,14 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 
 import GeneralButton from '../components/GeneralButton';
+import GeneralInput from '../components/GeneralInput';
 import { verticalContainer, horizontalContainer } from '../DynamicStyles/common';
 
 const margR = {
   marginRight: 20,
 };
 const inputHeight = {
-  height: 22,
+  height: 32,
 };
 const selectHeight = {
   height: 32,
@@ -48,7 +49,10 @@ class RegisterActivity extends React.Component {
           </div>
           <div>
             <p>Activity name</p>
-            <input style={inputHeight} type="text"/>
+            <GeneralInput
+              inputStyle={inputHeight}
+              inputType={'text'}
+            />
           </div>
         </div>
         <div style={{flex: 2}}>

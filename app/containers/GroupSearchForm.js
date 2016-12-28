@@ -1,7 +1,9 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../redux/actions';
+
 import GeneralSpinner from '../components/GeneralSpinner';
+import GeneralInput from '../components/GeneralInput';
 
 const suggestionList = {
   backgroundColor: 'white',
@@ -79,12 +81,18 @@ class GroupSearchForm extends React.Component {
             <div style={userInputContainer}>
               {
                 this.state.selectedActivity ?
-                  <input
-                    value={this.state.selectedActivity.prefix + ' ' + this.state.selectedActivity.name}
+                  <GeneralInput
+                    inputStyle={{height: '32px'}}
+                    inputValue={this.state.selectedActivity.prefix + ' ' + this.state.selectedActivity.name}
                     onChange={() => this.setState({selectedActivity: false})}
+                    inputType={'text'}
                   />
                 :
-                  <input onChange={this.handleOnChange} />
+                  <GeneralInput
+                    inputStyle={{height: '32px'}}
+                    onChange={this.handleOnChange}
+                    inputType={'text'}
+                  />
               }
             </div>
             <div>
