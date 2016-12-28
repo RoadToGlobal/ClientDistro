@@ -7,7 +7,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
     devtool: 'eval-source-map',
     entry: [
-        'webpack-dev-server/client?http://localhost:8000',
+        'webpack-dev-server/client?http://localhost',
         'webpack/hot/only-dev-server',
         'react-hot-loader/patch',
         path.join(__dirname, 'app/index.js')
