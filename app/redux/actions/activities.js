@@ -1,25 +1,16 @@
-import fetch from 'isomorphic-fetch';
+import enhancedFetch from '../../helpers/enhancedFetch';
 
-// TODO: Figure out another way to catch "fetch errors".
 export const index = (filter) => {
   return (dispatch, getState) => {
     dispatch(indexActivitiesRequest());
-    let url = 'http://127.0.0.1:8080/activities';
-    if (filter) {
-      url = `http://127.0.0.1:8080/activities/?filter=${filter}`;
-    }
 
-    return fetch(url, {
-      method: 'GET',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      }
-      // , body: JSON.stringify({}),
-    })
-    .then(raw => raw.json())
+    const url = filter ?
+    `http://127.0.0.1:8080/activities/?filter=${filter}` :
+    'http://127.0.0.1:8080/activities' ;
+
+    return enhancedFetch(url, { method: 'GET' })
     .then(res => dispatch(indexActivitiesSuccess(res)))
-    // .catch(res => dispatch(indexActivitiesError(res)));
+    .catch(err => dispatch(indexActivitiesError(err)));
   };
 };
 
@@ -36,8 +27,8 @@ const indexActivitiesSuccess = (res) => {
   };
 };
 
-const indexActivitiesError = (res) => {
-  let error = res || true;
+const indexActivitiesError = (err) => {
+  let error = err.message || true;
 
   return {
     type: 'indexActivitiesError',
@@ -48,22 +39,18 @@ const indexActivitiesError = (res) => {
 export const join = (groupSearch) => {
   return (dispatch, getState) => {
     dispatch(joinActivityRequest());
+
     let url = `http://127.0.0.1:8080/activities/${groupSearch.activity._id}/userPool`;
-    return fetch(url, {
+
+    console.log(getState().CurrentUser.token);
+
+    return enhancedFetch( url, {
       method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        'Authorization': 'Basic ' + btoa('Marta98:123')
-      },
-      body: JSON.stringify({
-        localProps: groupSearch.props,
-        requirements: groupSearch.requirements,
-      }),
+      headers: { 'Authorization': 'Basic ' + getState().CurrentUser.token },
+      body: groupSearch,
     })
-    .then(raw => raw.json())
     .then(res => dispatch(joinActivitySuccess(res)))
-    .catch(res => dispatch(joinActivityError(res)))
+    .catch(err => dispatch(joinActivityError(err)))
   };
 }
 
@@ -80,9 +67,8 @@ const joinActivitySuccess = (res) => {
   };
 }
 
-const joinActivityError = (res) => {
-  let error = res || true;
-
+const joinActivityError = (err) => {
+  let error = err.message || true;
   return {
     type: 'joinActivityError',
     error,
