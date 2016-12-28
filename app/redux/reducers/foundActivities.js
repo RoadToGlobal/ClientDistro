@@ -1,7 +1,7 @@
 const fakeInitialState = {
   isLoading: false,
   error: false,
-  results: [],
+  found: [],
 };
 
 export default function foundActivities(state = fakeInitialState, action) {
@@ -10,19 +10,19 @@ export default function foundActivities(state = fakeInitialState, action) {
       return {
         isLoading: true,
         error: false,
-        results: [],
+        found: [],
       };
     case 'indexActivitiesSuccess':
       return {
         isLoading: false,
         error: false,
-        results: action.activities,
+        found: action.activities,
       };
     case 'indexActivitiesError':
       return {
         isLoading: false,
         error: action.error,
-        results: [],
+        found: [],
       };
     default:
       return state;

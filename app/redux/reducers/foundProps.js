@@ -1,20 +1,14 @@
-const fakeInitialState = [
-  {
-    id: '1duadasdfdfd',
-    name: 'name',
-    type: 'string',
-  },
-  {
-    id: '1dfdfd',
-    name: 'aged',
-    type: 'number',
-  },
-  {
-    id: '1dfdfdhhd',
-    name: 'experience',
-    type: 'number',
-  },
-];
+const fakeInitialState = {
+  isLoading: false,
+  error: false,
+  found: [
+    { key: 'name', type: 'word' },
+    { key: 'likes', type: 'word' },
+    { key: 'language', type: 'wordMultiple' },
+    { key: 'aged', type: 'number' },
+    { key: 'years of experience', type: 'number' },
+  ]
+};
 
 export default function foundProps(state = fakeInitialState, action) {
   switch (action.type) {

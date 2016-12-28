@@ -1,39 +1,9 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
+
 import * as actions from '../redux/actions';
 import GeneralSpinner from '../components/GeneralSpinner';
-
-const suggestionList = {
-  backgroundColor: 'white',
-  listStyle: 'none',
-  border: '1px solid #dfdfdf',
-  margin: '0',
-  padding: '0',
-  position: 'absolute',
-  width: '20em',
-};
-
-const userInputContainer = {
-  display: 'flex',
-  flexDirection: 'column',
-  justifyContent: 'center',
-};
-
-const singleRowContainer = {
-  display: 'flex',
-  flexDirection: 'row',
-  fontSize: '24px',
-  fontWeight: '600',
-};
-
-const toggleFilterDisplay = {
-  show: {
-    display: 'block',
-  },
-  hide: {
-    display: 'none',
-  }
-};
+import MagicInput from '../components/MagicInput';
 
 class GroupSearchForm extends React.Component {
   static propTypes = {
@@ -73,68 +43,50 @@ class GroupSearchForm extends React.Component {
         <p>
           Join us and meet strangers!
         </p>
-        <div style={singleRowContainer}>
-          <p>I want to: </p>
-          <div style={{...userInputContainer, width: '20em', marginLeft: '10px'}}>
-            <div style={userInputContainer}>
-              {
-                this.state.selectedActivity ?
-                  <input
-                    value={this.state.selectedActivity.prefix + ' ' + this.state.selectedActivity.name}
-                    onChange={() => this.setState({selectedActivity: false})}
-                  />
-                :
-                  <input onChange={this.handleOnChange} />
-              }
-            </div>
-            <div>
-              <ul
-                style={
-                  this.state.toggleShow ?
-                  {...suggestionList, ...toggleFilterDisplay.show}
-                  :
-                  {...suggestionList, ...toggleFilterDisplay.hide}
-                }
-               >
-                { this.props.foundActivities.isLoading ? <li>loading...</li> :
-                  this.props.foundActivities.results.map((activity) => {
-                    return (
-                      <li
-                        onClick={() => this.setState({selectedActivity: activity})}
-                        key={activity._id}
-                      >
-                        {activity.prefix} {activity.name}
-                      </li>
-                    );
-                  })
-                }
-              </ul>
-            </div>
-          </div>
-        </div>
-        <button
-          onClick={this.props.SearchProps}
+        <main
+          style={styles.main}
         >
-          SearchProps
-        </button>
-        <button
-          onClick={this.props.SearchReqs}
-        >
-          SearchReqs
-        </button>
-        <button
-          onClick={() => this.props.indexActivities()}
-        >
-          SearchActivities
-        </button>
-        <button
-          onClick={() => this.props.joinActivity({activity: this.state.selectedActivity, requirements: {}, localProps: {} })}
-        >
-          JoinActivity
-        </button>
+          <MagicInput
+            prefix='I want to:'
+            search={this.props.indexActivities}
+            onSelect={(v) => console.log('selected', v)}
+            source={this.props.foundActivities.found}
+            style={{ marginBottom: '1em' }}
+          />
+          <hr style={styles.line}/>
+          <MagicInput
+            prefix='together with somone who:'
+            search={this.props.indexActivities}
+            onSelect={(v) => console.log('selected', v)}
+            source={this.props.foundActivities.found}
+            style={{ marginBottom: '1em' }}
+          />
+          <hr style={styles.line}/>
+          <MagicInput
+            prefix='I am someone who:'
+            search={this.props.indexActivities}
+            onSelect={(v) => console.log('selected', v)}
+            source={this.props.foundActivities.found}
+            style={{ marginBottom: '1em' }}
+          />
+      </main>
       </div>
     );
   }
+}
+
+const styles = {
+  main: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+  line: {
+    margin: '1em auto',
+    border: 'none',
+    borderBottom: '1px solid lightGrey',
+    width: '50%',
+  },
 }
 
 const mapStateToProps = (state) => {
