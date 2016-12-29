@@ -104,7 +104,7 @@ class GroupSearchForm extends React.Component {
                   {...suggestionList, ...toggleFilterDisplay.hide}
                 }
                >
-                { this.props.foundActivities.isLoading ? <li>loading...</li> :
+                { this.props.foundActivities.isLoading ? <li><GeneralSpinner spinnerStyle={{transform: 'scale(1)'}}/></li> :
                   this.props.foundActivities.results.map((activity) => {
                     return (
                       <li

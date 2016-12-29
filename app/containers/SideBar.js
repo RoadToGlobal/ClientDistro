@@ -78,7 +78,7 @@ class SideBar extends React.Component {
               />
             )) : null
           }
-          {this.props.CurrentUser.isLoading ? <GeneralSpinner /> : null}
+          {this.props.CurrentUser.isLoading ? <GeneralSpinner spinnerStyle={{transform: 'scale(1)'}}/> : null}
           </div>
         </div>
         <SideBarLinks />

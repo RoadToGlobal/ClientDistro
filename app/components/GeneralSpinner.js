@@ -1,13 +1,17 @@
 import React, { PropTypes } from 'react';
 // Styling in main.scss
 class GeneralSpinner extends React.Component {
+  static propTypes = {
+    spinnerStyle: PropTypes.object,
+  };
+
   constructor(props) {
     super(props);
   }
 
   render() {
     return (
-      <div id="floatingCirclesG">
+      <div style={this.props.spinnerStyle} id="floatingCirclesG">
         <div className="f_circleG" id="frotateG_01"></div>
         <div className="f_circleG" id="frotateG_02"></div>
         <div className="f_circleG" id="frotateG_03"></div>
