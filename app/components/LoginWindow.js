@@ -51,11 +51,17 @@ class LoginWindow extends React.Component {
     };
   }
 
+  handleSubmit = (event) => {
+    event.preventDefault();
+
+    this.props.userLoginInput(event, btoa(this.state.username + ':' + this.state.password));
+  }
+
   render() {
     return (
       <div>
         {this.props.showGroupAppLogin ?
-          <div style={windowContainer}>
+          <form onSubmit={this.handleSubmit} style={windowContainer}>
             <div style={windowItemContainer}>
               <GeneralInput
                 inputType={'text'}
@@ -74,12 +80,13 @@ class LoginWindow extends React.Component {
             </div>
             <div style={windowItemContainer}>
               <GeneralButton
+                buttonType={'submit'}
                 buttonStyle={loginButton}
                 buttonContent={'Sign in'}
                 onClick={ () => this.props.userLoginInput(btoa(this.state.username + ':' + this.state.password)) }
               />
             </div>
-          </div>
+          </form>
           : null}
 
         {this.props.showGoogleLogin ?

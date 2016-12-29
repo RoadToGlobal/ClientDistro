@@ -19,6 +19,8 @@ class GeneralButton extends React.Component {
   static propTypes = {
     buttonContent: PropTypes.string,
     buttonStyle: PropTypes.object,
+    buttonType: PropTypes.string,
+    onSubmit: PropTypes.func,
     onClick: PropTypes.func,
   };
 
@@ -28,7 +30,14 @@ class GeneralButton extends React.Component {
 
   render() {
     return (
-      <button onClick={this.props.onClick} style={{...generalButton, ...this.props.buttonStyle}}>{this.props.buttonContent}</button>
+      <button
+        type={this.props.buttonType}
+        onSubmit={this.props.onSubmit}
+        onClick={this.props.onClick}
+        style={{...generalButton, ...this.props.buttonStyle}}
+      >
+        {this.props.buttonContent}
+      </button>
     );
   }
 }
