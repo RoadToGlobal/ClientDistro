@@ -18,25 +18,53 @@ const fakeInitialState = {
 
 export default function CurrentActivity(state = fakeInitialState, action) {
   switch (action.type) {
+    case 'readActivityRequest':
+      return {
+        isLoading: true,
+        error: false,
+        activity: state.activity,
+      };
+      break;
+    case 'readActivitySuccess':
+      return {
+        isLoading: false,
+        error: false,
+        activity: action.activity,
+      }
+      break;
+    case 'readActivityError':
+      return {
+        isLoading: false,
+        error: true,
+        activity: {},
+      }
+      break;
     case 'joinActivityRequest':
       return {
         isLoading: true,
         error: false,
-        activity: {},
+        activity: state.activity,
       };
       break;
     case 'joinActivitySuccess':
+      let newActivity = state.activity
+      if (newActivity.groups) {
+        newActivity.groups.push(action.payload.group);
+      } else {
+        newActivity.groups = [ action.payload.group ];
+      }
+
       return {
         isLoading: false,
         error: false,
-        activity: action.payload.activity,
+        activitiy: newActivity,
       }
       break;
     case 'joinActivityError':
       return {
         isLoading: false,
         error: true,
-        activity: {},
+        activity: state.activity,
       }
       break;
     default:

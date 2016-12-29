@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import * as actions from '../redux/actions';
 import GeneralSpinner from '../components/GeneralSpinner';
+import GeneralButton from '../components/GeneralButton';
 import MagicInput from '../components/MagicInput';
 
 class GroupSearchForm extends React.Component {
@@ -36,41 +37,50 @@ class GroupSearchForm extends React.Component {
 
   render() {
     return (
-      <div>
-        <p>
-          Fill the empty fields below and choose what activity you want to do. You will be placed in a search pool until we find someone that meets your requirements.
-        </p>
-        <p>
-          Join us and meet strangers!
-        </p>
-        <main
-          style={styles.main}
-        >
-          <MagicInput
-            prefix='I want to:'
-            search={this.props.indexActivities}
-            onSelect={(v) => console.log('selected', v)}
-            source={this.props.foundActivities.found}
-            style={{ marginBottom: '1em' }}
-          />
-          <hr style={styles.line}/>
-          <MagicInput
-            prefix='together with somone who:'
-            search={this.props.indexActivities}
-            onSelect={(v) => console.log('selected', v)}
-            source={this.props.foundActivities.found}
-            style={{ marginBottom: '1em' }}
-          />
-          <hr style={styles.line}/>
-          <MagicInput
-            prefix='I am someone who:'
-            search={this.props.indexActivities}
-            onSelect={(v) => console.log('selected', v)}
-            source={this.props.foundActivities.found}
-            style={{ marginBottom: '1em' }}
-          />
+      <main
+        style={styles.main}
+      >
+        <MagicInput
+          prefix='I want to:'
+          search={this.props.indexActivities}
+          onSelect={(a) => this.props.readActivity(a._id)}
+          source={this.props.foundActivities.found}
+          style={{ marginBottom: '1em' }}
+        />
+        <hr style={styles.line}/>
+        <MagicInput
+          prefix='Together with people who is:'
+          onSelect={(v) => console.log('selected', v)}
+          source={this.props.foundReqs.found}
+          style={{ marginBottom: '1em' }}
+        />
+        <hr style={styles.line}/>
+        <MagicInput
+          prefix='I am someone who:'
+          onSelect={(v) => console.log('selected', v)}
+          source={this.props.foundProps.found}
+          style={{ marginBottom: '1em' }}
+        />
+        <GeneralButton
+          buttonContent='Do the thing!'
+          onClick={() => this.props.joinActivity({
+            activity: this.props.CurrentActivity.activity,
+            threshold: '0.2',
+            localProps: [
+              { key: 'name', value: 'rickisen'},
+              { key: 'likes', value: 'icecream'},
+              { key: 'aged', value: '30'},
+            ],
+            requirements: [{
+              name: 'aged',
+              type: 'number',
+              action: 'equals',
+              relatedProp: 'aged',
+              inputValues: ['30'],
+            }],
+          })}
+        />
       </main>
-      </div>
     );
   }
 }
@@ -80,6 +90,7 @@ const styles = {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
+    paddingTop: '2em',
   },
   line: {
     margin: '1em auto',
@@ -92,14 +103,15 @@ const styles = {
 const mapStateToProps = (state) => {
   return {
     foundActivities: state.foundActivities,
-    Props: state.Props,
-    Reqs: state.Reqs,
     CurrentActivity: state.CurrentActivity,
+    foundProps: state.foundProps,
+    foundReqs: state.foundReqs,
   };
 };
 
 const mapDispatchToProps = {
   indexActivities: actions.activities.index,
+  readActivity: actions.activities.read,
   joinActivity: actions.activities.join,
 };
 

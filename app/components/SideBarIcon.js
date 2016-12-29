@@ -1,10 +1,10 @@
 import React, { PropTypes } from 'react';
+import { Link } from 'react-router';
 
 // TODO: Add more links and "connect" to view
 
 const icon = {
   marginBottom: 10.5,
-  cursor: 'pointer',
   borderLeftWidth: '5px',
   borderLeftStyle: 'solid',
 };
@@ -54,22 +54,26 @@ class SideBarIcon extends React.Component {
 
   render() {
     return (
-      <div
-        style={this.props.hoverStatus ? {...iconItemHover, borderLeftColor: this.props.activity.style.backgroundColor}
-          : {...iconItem, borderLeftColor: this.props.activity.style.backgroundColor}}
-        onMouseOver={this.props.toggleHover}
-        onMouseLeave={this.props.removeHover}
+      <Link
+        to={this.props.link}
       >
-        <img
-          style={this.props.hoverStatus ? iconImgHover : iconImg}
-          src="https://maxcdn.icons8.com/Color/PNG/512/Logos/overwatch-512.png"
-        />
-        <span
-          style={this.props.hoverStatus ? iconTxtHover : iconTxt}
+        <div
+          style={this.props.hoverStatus ? {...iconItemHover, borderLeftColor: this.props.activity.style.backgroundColor}
+            : {...iconItem, borderLeftColor: this.props.activity.style.backgroundColor}}
+          onMouseOver={this.props.toggleHover}
+          onMouseLeave={this.props.removeHover}
         >
-          {this.props.activity.name}
-        </span>
-      </div>
+          <img
+            style={this.props.hoverStatus ? iconImgHover : iconImg}
+            src={this.props.activity.style.Icon}
+          />
+          <span
+            style={this.props.hoverStatus ? iconTxtHover : iconTxt}
+          >
+            {this.props.activity.name}
+          </span>
+        </div>
+      </Link>
     );
   }
 }

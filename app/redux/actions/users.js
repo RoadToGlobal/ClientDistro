@@ -1,4 +1,5 @@
 import enhancedFetch from '../../helpers/enhancedFetch';
+import { readMyGroups } from './groups';
 
 export const readCurrentUser = (token) => {
   // TODO: Reimplement with "real token".
@@ -13,6 +14,7 @@ export const readCurrentUser = (token) => {
       headers: { 'Authorization': 'Basic ' + token }
     })
     .then(res => dispatch(readCurrentUserSuccess(res, token)))
+    .then(() => dispatch(readMyGroups()))
     .catch(res => dispatch(readCurrentUserError(res)))
   };
 };

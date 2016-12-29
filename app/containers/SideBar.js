@@ -43,6 +43,7 @@ const scrollHider = {
 class SideBar extends React.Component {
   static propTypes = {
     CurrentUser: PropTypes.object,
+    myGroups: PropTypes.object,
   };
 
   constructor() {
@@ -66,19 +67,17 @@ class SideBar extends React.Component {
         </Link>
         <div style={sideBarIconContainer}>
           <div style={scrollHider}>
-           {
-            this.props.CurrentUser.user.groupSearches ?
-            this.props.CurrentUser.user.groupSearches.map((groupSearch, index) => (
+            {this.props.myGroups.groups.map((group, index) => (
               <SideBarIcon
-                key={groupSearch.activity.name}
-                activity={groupSearch.activity}
+                link={'/group/' + group._id}
+                key={group._id}
+                activity={group.parentActivity}
                 hoverStatus={this.state.hover === index}
                 toggleHover={() => this.toggleHover(index)}
                 removeHover={() => this.toggleHover(false)}
               />
-            )) : null
-          }
-          {this.props.CurrentUser.isLoading ? <GeneralSpinner /> : null}
+            ))}
+            {this.props.CurrentUser.isLoading ? <GeneralSpinner /> : null}
           </div>
         </div>
         <SideBarLinks />
@@ -90,6 +89,7 @@ class SideBar extends React.Component {
 const mapStateToProps = (state) => {
   return {
     CurrentUser: state.CurrentUser,
+    myGroups: state.myGroups,
   };
 };
 
