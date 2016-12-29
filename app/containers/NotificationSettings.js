@@ -16,10 +16,16 @@ const notificationSelectStyle = {
 
 class NotificationSettings extends React.Component {
   static propTypes = {
-    CurrentGroupSearch: PropTypes.object,
+    CurrentGroup: PropTypes.object,
   };
 
   render() {
+    let NotificationSettingsMock = {
+      newMessage: 'beep',
+      newMember: 'beep',
+      GroupFilled: 'email',
+    };
+
     return (
       <div style={notificationContainer}>
       <h3 style={{marginTop: '0'}}>Notification Settings:</h3>
@@ -27,7 +33,7 @@ class NotificationSettings extends React.Component {
         <p>Notify me with:
           <select style={notificationSelectStyle}>
             <option>
-              {this.props.CurrentGroupSearch.NotificationSettings.newMessage}
+              {NotificationSettingsMock.newMessage}
             </option>
           </select>
         </p>
@@ -35,7 +41,7 @@ class NotificationSettings extends React.Component {
         <p>Notify me with:
           <select style={notificationSelectStyle}>
             <option>
-              {this.props.CurrentGroupSearch.NotificationSettings.newMember}
+              {NotificationSettingsMock.newMember}
             </option>
           </select>
         </p>
@@ -43,7 +49,7 @@ class NotificationSettings extends React.Component {
         <p>Notify me with:
           <select style={notificationSelectStyle}>
             <option>
-              {this.props.CurrentGroupSearch.NotificationSettings.GroupFilled}
+              {NotificationSettingsMock.GroupFilled}
             </option>
           </select>
         </p>
@@ -54,17 +60,12 @@ class NotificationSettings extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    CurrentGroupSearch: state.CurrentGroupSearch,
+    CurrentGroup: state.CurrentGroup,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return {
-    fetchSettings: (settings) => (dispatch({
-      type: 'CURRENT_GROUP_SEARCH_EXAMPLE',
-      data: 'current group search action triggered',
-    })),
-  };
+  return {};
 };
 
 export default connect(

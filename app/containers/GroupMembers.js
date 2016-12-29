@@ -7,21 +7,20 @@ import UserCard from '../components/UserCard';
 class GroupMembers extends React.Component {
   static propTypes = {
     CurrentGroup: PropTypes.object,
-    fetchMembers: PropTypes.func,
   };
 
   render() {
     return (
       <div style={{display: 'flex', justifyContent: 'center'}}>
         {
-          this.props.CurrentGroup.members.map((member) => (
+          this.props.CurrentGroup.group.applications.map((application) => (
             <UserCard
-              key={member.name}
-              member={member}
+              key={application.member.username}
+              member={application.member}
             />
           ))
         }
-        {this.props.CurrentGroup.members.length === 0 ? <p>No members to show</p> : null}
+        {this.props.CurrentGroup.group.applications.length === 0 ? <p>No members to show</p> : null}
       </div>
     );
   }
@@ -34,12 +33,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return {
-    fetchMembers: (members) => dispatch(({
-      type: 'CURRENT_GROUP_EXAMPLE',
-      data: 'current group action triggered',
-    }))
-  };
+  return {};
 };
 
 export default connect(

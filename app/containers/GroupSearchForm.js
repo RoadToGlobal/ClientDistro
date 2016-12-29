@@ -68,15 +68,15 @@ class GroupSearchForm extends React.Component {
             threshold: '0.2',
             localProps: [
               { key: 'name', value: 'rickisen'},
-              { key: 'likes', value: 'icecream'},
-              { key: 'aged', value: '30'},
+              { key: 'likes', value: 'pizza'},
+              { key: 'age', value: '30'},
             ],
             requirements: [{
-              name: 'aged',
-              type: 'number',
-              action: 'equals',
-              relatedProp: 'aged',
-              inputValues: ['30'],
+              name: 'speaks',
+              type: 'word',
+              action: 'includes',
+              relatedProp: 'language',
+              inputValues: ['swedish'],
             }],
           })}
         />
