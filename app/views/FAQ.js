@@ -1,7 +1,6 @@
 import React from 'react';
 
 import { FFFContainer } from '../DynamicStyles/common';
-import GroupSearchForm from '../containers/GroupSearchForm';
 import FFFWindow from '../containers/FFFWindow';
 
 const faqParagraph = {

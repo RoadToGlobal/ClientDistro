@@ -4,11 +4,12 @@ import { Route, IndexRoute } from 'react-router';
 import App from './components/App';
 import LandingForm from './views/LandingForm';
 
-
-import Group from './views/group';
+import Group from          './views/group';
 import CreateActivity from './views/CreateActivity';
 import ActivityStatus from './views/ActivityStatus';
-import FAQ from './views/FAQ';
+import FAQ from            './views/FAQ';
+import About from          './views/About';
+
 
 
 export default (
@@ -18,5 +19,6 @@ export default (
     <Route path="/group/:groupId" component={Group} />
     <Route path="/createactivity" component={CreateActivity} />
     <Route path="/FAQ"            component={FAQ} />
+    <Route path="/About"          component={About} />
   </Route>
 );
