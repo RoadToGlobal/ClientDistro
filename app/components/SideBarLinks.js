@@ -30,7 +30,7 @@ class SideBarLinks extends React.Component {
         <h3 style={footerLinks}>About</h3>
         <Link to="/group/1234" style={footerLinks}><h3>Group</h3></Link>
         <Link to="/createactivity" style={footerLinks}><h3>Create Activity</h3></Link>
-        <h3 style={footerLinks}>More</h3>
+        <Link to="/FAQ" style={footerLinks}><h3>FAQ</h3></Link>
       </div>
     );
   }
