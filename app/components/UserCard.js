@@ -19,17 +19,17 @@ class UserCard extends React.Component {
       <div style={MemberCard}>
         <img
           style={ProfileImage}
-          src={this.props.member.globalProps.imgUrl}
+          src={this.props.application.member.globalProps.imgUrl}
         />
-        <p><b>Name:</b> {this.props.member.globalProps.name}</p>
-        <p><b>Age:</b> {this.props.member.globalProps.age}</p>
+        <p><b>Name:</b> {this.props.application.member.globalProps.name}</p>
+        <p><b>Age:</b> {this.props.application.member.globalProps.age}</p>
       </div>
     );
   }
 }
 
 UserCard.propTypes = {
-  member: PropTypes.object,
+  application: PropTypes.object,
 };
 
 export default UserCard;

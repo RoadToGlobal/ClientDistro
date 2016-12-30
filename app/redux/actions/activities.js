@@ -1,25 +1,18 @@
-import fetch from 'isomorphic-fetch';
+import { browserHistory } from 'react-router';
 
-// TODO: Figure out another way to catch "fetch errors".
+import enhancedFetch from '../../helpers/enhancedFetch';
+
 export const index = (filter) => {
   return (dispatch, getState) => {
     dispatch(indexActivitiesRequest());
-    let url = 'http://127.0.0.1:8080/activities';
-    if (filter) {
-      url = `http://127.0.0.1:8080/activities/?filter=${filter}`;
-    }
 
-    return fetch(url, {
-      method: 'GET',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      }
-      // , body: JSON.stringify({}),
-    })
-    .then(raw => raw.json())
+    const url = filter ?
+    `http://127.0.0.1:8080/activities/?filter=${filter}` :
+    'http://127.0.0.1:8080/activities' ;
+
+    return enhancedFetch(url, { method: 'GET' })
     .then(res => dispatch(indexActivitiesSuccess(res)))
-    // .catch(res => dispatch(indexActivitiesError(res)));
+    .catch(err => dispatch(indexActivitiesError(err)));
   };
 };
 
@@ -36,8 +29,8 @@ const indexActivitiesSuccess = (res) => {
   };
 };
 
-const indexActivitiesError = (res) => {
-  let error = res || true;
+const indexActivitiesError = (err) => {
+  let error = err.message || true;
 
   return {
     type: 'indexActivitiesError',
@@ -45,26 +38,58 @@ const indexActivitiesError = (res) => {
   };
 }
 
+export const read = (id) => {
+  return (dispatch, getState) => {
+    dispatch(readActivityRequest());
+
+    const url = `http://127.0.0.1:8080/activities/${id}`;
+
+    return enhancedFetch(url, { method: 'GET' })
+    .then(res => dispatch(readActivitySuccess(res)))
+    .catch(err => dispatch(readActivityError(err)));
+  };
+};
+
+const readActivityRequest = () => {
+  return {
+    type: 'readActivityRequest',
+  };
+};
+
+const readActivitySuccess = (res) => {
+  return {
+    type: 'readActivitySuccess',
+    activity: res,
+  };
+};
+
+const readActivityError = (err) => {
+  let error = err.message || true;
+
+  return {
+    type: 'readActivityError',
+    error,
+  };
+}
+
 export const join = (groupSearch) => {
   return (dispatch, getState) => {
     dispatch(joinActivityRequest());
-    let url = `http://127.0.0.1:8080/activities/${groupSearch.activity._id}/userPool`;
-    return fetch(url, {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        'Authorization': 'Basic ' + btoa('Marta98:123')
-      },
-      body: JSON.stringify({
-        localProps: groupSearch.props,
-        requirements: groupSearch.requirements,
-      }),
-    })
-    .then(raw => raw.json())
-    .then(res => dispatch(joinActivitySuccess(res)))
-    .catch(res => dispatch(joinActivityError(res)))
-  };
+
+    if (getState().CurrentUser.token) {
+      let url = `http://127.0.0.1:8080/activities/${groupSearch.activity._id}/groups`;
+
+      return enhancedFetch( url, {
+        method: 'POST',
+        headers: { 'Authorization': 'Basic ' + getState().CurrentUser.token },
+        body: groupSearch,
+      })
+      .then(res => dispatch(joinActivitySuccess(res)))
+      .catch(err => dispatch(joinActivityError(err)))
+    } else {
+      dispatch(joinActivityError('Need to login'));
+    }
+  }
 }
 
 const joinActivityRequest = () => {
@@ -74,15 +99,17 @@ const joinActivityRequest = () => {
 }
 
 const joinActivitySuccess = (res) => {
+  // forcefully navigate user to the new group now
+  browserHistory.push('/group/' + res.group._id);
   return {
     type: 'joinActivitySuccess',
     payload: res,
   };
 }
 
-const joinActivityError = (res) => {
-  let error = res || true;
-
+const joinActivityError = (err) => {
+  let error = err.message || true;
+  console.log(err);
   return {
     type: 'joinActivityError',
     error,

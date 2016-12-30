@@ -4,6 +4,7 @@ import React, { PropTypes } from 'react';
 import {FFFWindowStyle} from '../DynamicStyles/common';
 
 const contentStyle = {
+  flex: 1,
   display: 'flex',
   opacity: '1',
   flexDirection: 'column',
@@ -65,13 +66,18 @@ export default class FFFWindow extends React.Component {
             </h1>
           </header>
         : null }
-        <div style={this.state.maximized ? {contentStyle, ...this.state.showContent} : {...contentStyle, ...this.state.showContent, opacity: '0'}}>
+        <div style={
+          this.state.maximized ?
+          {...contentStyle, ...this.state.showContent}
+          :
+          {...contentStyle, ...this.state.showContent, opacity: '0'}}>
           {this.props.children}
         </div>
       </div>
     );
   }
 }
+
 FFFWindow.propTypes = {
   header: PropTypes.bool,
   title: PropTypes.string,

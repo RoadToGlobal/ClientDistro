@@ -1,47 +1,18 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
+
 import * as actions from '../redux/actions';
-
 import GeneralSpinner from '../components/GeneralSpinner';
-import GeneralInput from '../components/GeneralInput';
-
-const suggestionList = {
-  backgroundColor: 'white',
-  listStyle: 'none',
-  border: '1px solid #dfdfdf',
-  margin: '0',
-  padding: '0',
-  position: 'absolute',
-  width: '20em',
-};
-
-const userInputContainer = {
-  display: 'flex',
-  flexDirection: 'column',
-  justifyContent: 'center',
-};
-
-const singleRowContainer = {
-  display: 'flex',
-  flexDirection: 'row',
-  fontSize: '24px',
-  fontWeight: '600',
-};
-
-const toggleFilterDisplay = {
-  show: {
-    display: 'block',
-  },
-  hide: {
-    display: 'none',
-  }
-};
+import GeneralButton from '../components/GeneralButton';
+import MagicInput from '../components/MagicInput';
+import RequirementSection from '../components/RequirementSection'
+import PropSection from '../components/PropSection'
 
 class GroupSearchForm extends React.Component {
   static propTypes = {
     foundActivities: PropTypes.object,
-    Props: PropTypes.array,
-    Reqs: PropTypes.array,
+    foundProps: PropTypes.array,
+    foundReqs: PropTypes.array,
     SearchActivities: PropTypes.func,
     SearchProps: PropTypes.func,
     SearchReqs: PropTypes.func,
@@ -50,112 +21,91 @@ class GroupSearchForm extends React.Component {
   constructor() {
     super();
     this.state = {
-      userInput: '',
-      selectedActivity: false,
-      toggleShow: false,
+      threshold: 0.5,
+      requirements: [],
+      localProps: [],
     };
   }
 
-  handleOnChange = (event) => {
-    this.props.indexActivities(event.currentTarget.value);
-    this.setState({userInput: event.currentTarget.value});
-    if(event.currentTarget.value === '') {
-      this.setState({toggleShow: false});
-    } else {
-      this.setState({toggleShow: true});
-    }
+  componentWillMount() {
+    this.props.indexActivities()
   }
 
   render() {
     return (
-      <div>
-        <p>
-          Fill the empty fields below and choose what activity you want to do. You will be placed in a search pool until we find someone that meets your requirements.
-        </p>
-        <p>
-          Join us and meet strangers!
-        </p>
-        <div style={singleRowContainer}>
-          <p>I want to: </p>
-          <div style={{...userInputContainer, width: '20em', marginLeft: '10px'}}>
-            <div style={userInputContainer}>
-              {
-                this.state.selectedActivity ?
-                  <GeneralInput
-                    inputStyle={{height: '32px'}}
-                    inputValue={this.state.selectedActivity.prefix + ' ' + this.state.selectedActivity.name}
-                    onChange={() => this.setState({selectedActivity: false})}
-                    inputType={'text'}
-                  />
-                :
-                  <GeneralInput
-                    inputStyle={{height: '32px'}}
-                    onChange={this.handleOnChange}
-                    inputType={'text'}
-                  />
-              }
-            </div>
-            <div>
-              <ul
-                style={
-                  this.state.toggleShow ?
-                  {...suggestionList, ...toggleFilterDisplay.show}
-                  :
-                  {...suggestionList, ...toggleFilterDisplay.hide}
-                }
-               >
-                { this.props.foundActivities.isLoading ? <li><GeneralSpinner spinnerStyle={{transform: 'scale(1)'}}/></li> :
-                  this.props.foundActivities.results.map((activity) => {
-                    return (
-                      <li
-                        onClick={() => this.setState({selectedActivity: activity})}
-                        key={activity._id}
-                      >
-                        {activity.prefix} {activity.name}
-                      </li>
-                    );
-                  })
-                }
-              </ul>
-            </div>
-          </div>
-        </div>
-        <button
-          onClick={this.props.SearchProps}
-        >
-          SearchProps
-        </button>
-        <button
-          onClick={this.props.SearchReqs}
-        >
-          SearchReqs
-        </button>
-        <button
-          onClick={() => this.props.indexActivities()}
-        >
-          SearchActivities
-        </button>
-        <button
-          onClick={() => this.props.joinActivity({activity: this.state.selectedActivity, requirements: {}, localProps: {} })}
-        >
-          JoinActivity
-        </button>
-      </div>
+      <main
+        style={styles.main}
+      >
+        <MagicInput
+          prefix='I want to:'
+          search={this.props.indexActivities}
+          onSelect={(a) => this.props.readActivity(a._id)}
+          source={this.props.foundActivities.found}
+          style={{ marginBottom: '1em' }}
+        />
+
+        <hr style={styles.line}/>
+
+        <RequirementSection
+          reqs={this.props.foundReqs.found}
+          onSelect={(reqs) => this.setState({requirements: reqs})}
+        />
+
+        <hr style={styles.line}/>
+
+        <PropSection
+          availableProps={this.props.foundProps.found}
+          onSelect={(props) => this.setState({localProps: props})}
+        />
+
+        <hr style={styles.line}/>
+
+        <GeneralButton
+          buttonContent='Do the thing!'
+          onClick={() =>{
+            console.log(this.state);
+            this.props.joinActivity({
+              requirements: this.state.requirements,
+              activity: this.props.CurrentActivity.activity,
+              threshold: this.state.threshold,
+              localProps: this.state.localProps,
+            });
+          }}
+        />
+      </main>
     );
   }
+}
+
+const styles = {
+  main: {
+    display: 'flex',
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingTop: '2em',
+  },
+  line: {
+    margin: '1em auto',
+    border: 'none',
+    borderBottom: '1px solid lightGrey',
+    width: '50%',
+  },
 }
 
 const mapStateToProps = (state) => {
   return {
     foundActivities: state.foundActivities,
-    Props: state.Props,
-    Reqs: state.Reqs,
     CurrentActivity: state.CurrentActivity,
+    foundProps: state.foundProps,
+    foundReqs: state.foundReqs,
   };
 };
 
 const mapDispatchToProps = {
   indexActivities: actions.activities.index,
+  readActivity: actions.activities.read,
   joinActivity: actions.activities.join,
 };
 

@@ -26,18 +26,20 @@ class GroupChat extends React.Component {
   };
 
   render() {
+    let members = this.props.CurrentGroup.group.applications.map((application) =>{
+      return application.member;
+    });
+
     return (
       <div style={{display: 'flex'}}>
-
         <div style={chatLeft}>
-          <MemberPanel chatMembers={this.props.CurrentGroup.members}/>
+          <MemberPanel members={members}/>
         </div>
 
         <div style={chatRight}>
           <Chat />
           <SendLine />
         </div>
-
       </div>
     );
   }
@@ -51,10 +53,6 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchMembers: (members) => dispatch(({
-      type: 'CURRENT_GROUP_EXAMPLE',
-      data: 'current group action triggered',
-    }))
   };
 };
 

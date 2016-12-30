@@ -1,20 +1,30 @@
-const fakeInitialState = [
-  {
-    id: '1duadasdfdfd',
-    text: 'aged above',
-    type: 'number',
-  },
-  {
-    id: '1duadasdfd',
-    text: 'Name does not contain',
-    type: 'string',
-  },
-  {
-    id: '1duadasdfd',
-    text: 'Has played for',
-    type: 'time',
-  },
-];
+const fakeInitialState = {
+  isLoading: false,
+  error: false,
+  found: [
+    {
+      name: 'aged',
+      type: 'number',
+      action: 'equals',
+      relatedProp: 'aged',
+      inputValues: [''],
+    },
+    {
+      name: 'named',
+      type: 'word',
+      action: 'equals',
+      relatedProp: 'name',
+      inputValues: [''],
+    },
+    {
+      name: 'speaks',
+      type: 'word',
+      action: 'includes',
+      relatedProp: 'language',
+      inputValues: [''],
+    }
+  ]
+};
 
 export default function foundReqs(state = fakeInitialState, action) {
   switch (action.type) {
