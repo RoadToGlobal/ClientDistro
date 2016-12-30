@@ -65,7 +65,7 @@ class SideBarIcon extends React.Component {
         >
           <img
             style={this.props.hoverStatus ? iconImgHover : iconImg}
-            src={this.props.activity.style.Icon}
+            src={this.props.activity.style.icon}
           />
           <span
             style={this.props.hoverStatus ? iconTxtHover : iconTxt}
