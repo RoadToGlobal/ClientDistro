@@ -1,13 +1,9 @@
 import React, { PropTypes } from 'react';
 
-class ReqInputValues extends React.Component {
+class PropInput extends React.Component {
   static propTypes = {
     onSelect: PropTypes.func,
     type: PropTypes.string,
-  };
-
-  static defaultProps = {
-    type: 'word',
   };
 
   constructor(props) {
@@ -34,7 +30,7 @@ class ReqInputValues extends React.Component {
           ...styles.inputStyle,
           width: '' + Math.max(2, this.state.value.length * 0.5 + 2) + 'rem'
         }}
-        type={this.props.type === 'word' ? 'text' : 'number'}
+        type='text'
         value={this.state.value}
         onChange={(e) => this.handleChange(e.target.value)}
         onKeyPress={(e) => this.handleKeypress(e)}
@@ -57,4 +53,4 @@ const styles = {
   },
 };
 
-export default ReqInputValues;
+export default PropInput;

@@ -17,7 +17,7 @@ class MagicInput extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selected: {name: '', prefix: ''},
+      selected: {name: '', prefix: '', key: ''},
       highlighted: false,
       value: '',
       focused: false,
@@ -40,7 +40,10 @@ class MagicInput extends React.Component {
 
   select(element) {
     if (element) {
-      this.setState({selected: element, value: (element.prefix || '') + ' ' + element.name}, () => {
+      this.setState({
+        selected: element,
+        value: (element.prefix ? element.prefix + ' ' : '') + (element.name || element.key)
+      }, () => {
         this.refs.currentInput.blur();
         this.props.onSelect(element);
       });
@@ -82,7 +85,10 @@ class MagicInput extends React.Component {
         <div style={styles.main}>
           <input
             ref='currentInput'
-            style={styles.inputStyle}
+            style={{
+              ...styles.inputStyle,
+              width: '' + Math.max(2, this.state.value.length * 0.5 + 2) + 'rem'
+            }}
             value={this.state.value}
             onChange={(e) => this.handleChange(e.target.value)}
             onKeyPress={(e) => this.handleKeypress(e)}
@@ -105,15 +111,15 @@ class MagicInput extends React.Component {
                 { this.props.isLoading ?
                   <li>loading...</li>
                   :
-                  this.props.source.map((element) => (
+                  this.props.source.map((element, index) => (
                     <li
                       onMouseLeave={() => this.setState({highlighted: false})}
                       onMouseOver={() => this.setState({highlighted: element})}
                       onClick={() => this.select(element)}
-                      key={element.name}
-                      style={ this.suggestionStyler(element) }
+                      key={element.name || element.key || index}
+                      style={this.suggestionStyler(element)}
                     >
-                      {element.prefix || ''} {element.name}
+                      {element.prefix || ''} {element.name || ''} {element.key || ''}
                     </li>
                   ))
                 }
@@ -141,11 +147,12 @@ const styles = {
     minWidth: '14em',
   },
   inputStyle: {
-    backgroundColor: 'transparent',
+    marginRight: '0.5em',
+    backgroundColor: 'rgba(0,0,0,0.05)',
+    textAlign: 'center',
     color: 'black',
     border: 'none',
-    outline: '1px solid orange',
-    paddingLeft: '0.5em',
+    borderBottom: '2px solid #acf',
   },
   wrapperStyle: {
     display: 'flex',

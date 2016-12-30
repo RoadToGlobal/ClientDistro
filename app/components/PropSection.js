@@ -1,34 +1,34 @@
 import React, { PropTypes } from 'react';
 
 import MagicInput from './MagicInput';
-import ReqInputValues from './ReqInputValues';
+import PropInput from './PropInput';
 
-class RequirementSection extends React.Component {
+class PropSection extends React.Component {
   static propTypes = {
     isLoading: PropTypes.bool,
     onSelect: PropTypes.func,
-    reqs: PropTypes.array,
+    availableProps: PropTypes.array,
   };
 
   static defaultProps = {
     isLoading: false,
-    reqs: [],
+    availableProps: [],
   };
 
   constructor(props) {
     super(props);
     this.state = {
-      reqs: [],
-      slots: [props.reqs[0] || 'no reqs found'],
+      availableProps: [],
+      slots: [props.availableProps[0] || 'no availableProps found'],
     };
   }
 
   componentWillMount() {
-    this.setState({reqs: this.props.reqs});
+    this.setState({availableProps: this.props.availableProps});
   }
 
   componentWillReceiveProps(nextProps) {
-    this.setState({reqs: nextProps.reqs});
+    this.setState({availableProps: nextProps.availableProps});
   }
 
   select() {
@@ -38,38 +38,36 @@ class RequirementSection extends React.Component {
   render() {
     return (
       <section style={styles.col}>
-        <p>With someone</p>
+        <p>I am someone who</p>
         {
-          this.state.slots.map((slotReq, slotIndex, slots) => (
+          this.state.slots.map((slotProp, slotIndex, slots) => (
             <div style={styles.row}>
               <MagicInput
-                prefix='Who'
-                source={this.state.reqs}
-                onSelect={(req) => {
-                  slots[slotIndex] = req;
+                prefix='Is'
+                source={this.state.availableProps}
+                onSelect={(p) => {
+                  slots[slotIndex] = p;
                   this.setState({slots: slots});
                 }}
                 search={(query) => {
                   const regEx = new RegExp(query, 'i');
-                  let reqs = this.props.reqs.filter((req) => (req.name.match(regEx) !== null));
-                  this.setState({reqs});
+                  let availableProps = this.props.availableProps.filter((p) => (p.key.match(regEx) !== null));
+                  this.setState({availableProps});
                 }}
               />
-              {
-                slotReq.inputValues.map((val, valIndex) => (
-                  <ReqInputValues
-                    type={slotReq.type}
-                    onSelect={(val) => {
-                      let slots = this.state.slots;
-                      slots[slotIndex].inputValues[valIndex] = '' + val;
-                      this.setState({slots}, () => this.select())
-                    }}
-                  />
-                ))
-              }
+
+              <PropInput
+                type={slotProp.type}
+                onSelect={(val) => {
+                  let slots = this.state.slots;
+                  slots[slotIndex].value = '' + val;
+                  this.setState({slots}, () => this.select())
+                }}
+              />
+
               <span
                 style={styles.chainStyle}
-                onClick={(e) => this.setState({slots: [ ...this.state.slots, this.props.reqs[0] ]})}
+                onClick={(e) => this.setState({slots: [ ...this.state.slots, this.props.availableProps[0] ]})}
                 onMouseOver={(e) => e.currentTarget.style = 'color: black; cursor: pointer;'}
                 onMouseLeave={(e) => e.currentTarget.style = 'color: #999; cursor: pointer;'}
               >
@@ -101,4 +99,4 @@ const styles = {
   }
 };
 
-export default RequirementSection;
+export default PropSection;

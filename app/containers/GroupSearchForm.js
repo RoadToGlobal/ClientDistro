@@ -7,6 +7,7 @@ import GeneralSpinner from '../components/GeneralSpinner';
 import GeneralButton from '../components/GeneralButton';
 import MagicInput from '../components/MagicInput';
 import RequirementSection from '../components/RequirementSection'
+import PropSection from '../components/PropSection'
 
 class GroupSearchForm extends React.Component {
   static propTypes = {
@@ -53,24 +54,24 @@ class GroupSearchForm extends React.Component {
 
         <hr style={styles.line}/>
 
-        <MagicInput
-          prefix='I am someone who:'
-          onSelect={(v) => console.log('selected', v)}
-          source={this.props.foundProps.found}
-          style={{ marginBottom: '1em' }}
+        <PropSection
+          availableProps={this.props.foundProps.found}
+          onSelect={(props) => this.setState({localProps: props})}
         />
+
+        <hr style={styles.line}/>
 
         <GeneralButton
           buttonContent='Do the thing!'
-          onClick={() => this.props.joinActivity({
-            requirements: this.state.requirements,
-            activity: this.props.CurrentActivity.activity,
-            localProps: [
-              { key: 'name', value: 'rickisen'},
-              { key: 'likes', value: 'pizza'},
-              { key: 'age', value: '30'},
-            ],
-          })}
+          onClick={() =>{
+            console.log(this.state);
+            this.props.joinActivity({
+              requirements: this.state.requirements,
+              activity: this.props.CurrentActivity.activity,
+              threshold: this.state.threshold,
+              localProps: this.state.localProps,
+            })
+          }}
         />
       </main>
     );
