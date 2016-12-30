@@ -5,7 +5,6 @@ class MagicInput extends React.Component {
     isLoading: PropTypes.bool,
     source: PropTypes.array,
     search: PropTypes.func,
-    values: PropTypes.number,
     onSelect: PropTypes.func,
     prefix: PropTypes.string,
   };
@@ -13,7 +12,6 @@ class MagicInput extends React.Component {
   static defaultProps = {
     isLoading: false,
     source: [],
-    values: 1,
   };
 
   constructor(props) {
@@ -26,12 +24,12 @@ class MagicInput extends React.Component {
     };
   }
 
-  ComponentWillMount() {
+  componentWillMount() {
     this.setState({source: this.props.source});
   }
 
-  ComponentWillReceiveProps(nextProps) {
-    this.setState({source: nextProps.source});
+  componentWillReceiveProps(nextProps) {
+    this.setState({source: nextProps.source, highlighted: nextProps.source[0]});
   }
 
   handleKeypress(event) {
@@ -112,7 +110,7 @@ class MagicInput extends React.Component {
                       onMouseLeave={() => this.setState({highlighted: false})}
                       onMouseOver={() => this.setState({highlighted: element})}
                       onClick={() => this.select(element)}
-                      key={element._id}
+                      key={element.name}
                       style={ this.suggestionStyler(element) }
                     >
                       {element.prefix || ''} {element.name}
@@ -147,7 +145,6 @@ const styles = {
     color: 'black',
     border: 'none',
     outline: '1px solid orange',
-    minWidth: '14em',
     paddingLeft: '0.5em',
   },
   wrapperStyle: {

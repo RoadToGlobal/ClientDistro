@@ -6,12 +6,13 @@ import * as actions from '../redux/actions';
 import GeneralSpinner from '../components/GeneralSpinner';
 import GeneralButton from '../components/GeneralButton';
 import MagicInput from '../components/MagicInput';
+import RequirementSection from '../components/RequirementSection'
 
 class GroupSearchForm extends React.Component {
   static propTypes = {
     foundActivities: PropTypes.object,
-    Props: PropTypes.array,
-    Reqs: PropTypes.array,
+    foundProps: PropTypes.array,
+    foundReqs: PropTypes.array,
     SearchActivities: PropTypes.func,
     SearchProps: PropTypes.func,
     SearchReqs: PropTypes.func,
@@ -20,20 +21,14 @@ class GroupSearchForm extends React.Component {
   constructor() {
     super();
     this.state = {
-      userInput: '',
-      selectedActivity: false,
-      toggleShow: false,
+      threshold: 0.5,
+      requirements: [],
+      localProps: [],
     };
   }
 
-  handleOnChange = (event) => {
-    this.props.indexActivities(event.currentTarget.value);
-    this.setState({userInput: event.currentTarget.value});
-    if(event.currentTarget.value === '') {
-      this.setState({toggleShow: false});
-    } else {
-      this.setState({toggleShow: true});
-    }
+  componentWillMount() {
+    this.props.indexActivities()
   }
 
   render() {
@@ -48,37 +43,33 @@ class GroupSearchForm extends React.Component {
           source={this.props.foundActivities.found}
           style={{ marginBottom: '1em' }}
         />
+
         <hr style={styles.line}/>
-        <MagicInput
-          prefix='Together with people who is:'
-          onSelect={(v) => console.log('selected', v)}
-          source={this.props.foundReqs.found}
-          style={{ marginBottom: '1em' }}
+
+        <RequirementSection
+          reqs={this.props.foundReqs.found}
+          onSelect={(reqs) => this.setState({requirements: reqs})}
         />
+
         <hr style={styles.line}/>
+
         <MagicInput
           prefix='I am someone who:'
           onSelect={(v) => console.log('selected', v)}
           source={this.props.foundProps.found}
           style={{ marginBottom: '1em' }}
         />
+
         <GeneralButton
           buttonContent='Do the thing!'
           onClick={() => this.props.joinActivity({
+            requirements: this.state.requirements,
             activity: this.props.CurrentActivity.activity,
-            threshold: '0.2',
             localProps: [
               { key: 'name', value: 'rickisen'},
               { key: 'likes', value: 'pizza'},
               { key: 'age', value: '30'},
             ],
-            requirements: [{
-              name: 'speaks',
-              type: 'word',
-              action: 'includes',
-              relatedProp: 'language',
-              inputValues: ['swedish'],
-            }],
           })}
         />
       </main>

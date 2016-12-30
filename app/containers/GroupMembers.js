@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react';
 import {connect} from 'react-redux';
 // Uncomment this import when you're going to use ReactCSSTransitionGroup
 // import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+
 import UserCard from '../components/UserCard';
 
 class GroupMembers extends React.Component {

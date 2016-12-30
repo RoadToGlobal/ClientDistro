@@ -23,7 +23,6 @@ class Group extends React.Component {
   };
 
   componentWillMount() {
-    console.log(this.props.params.groupId);
     this.props.readGroup(this.props.params.groupId);
   }
 
@@ -43,6 +42,7 @@ class Group extends React.Component {
         <FFFWindow title={"Members"} header={true}>
           <GroupMembers />
         </FFFWindow>
+
         { !this.props.CurrentUser.token ?
           <SignInButton />
           :

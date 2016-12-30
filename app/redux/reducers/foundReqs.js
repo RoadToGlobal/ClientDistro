@@ -7,21 +7,21 @@ const fakeInitialState = {
       type: 'number',
       action: 'equals',
       relatedProp: 'aged',
-      inputValues: '',
+      inputValues: [''],
     },
     {
       name: 'named',
       type: 'word',
       action: 'equals',
       relatedProp: 'name',
-      inputValues: '',
+      inputValues: [''],
     },
     {
       name: 'speaks',
       type: 'word',
       action: 'includes',
       relatedProp: 'language',
-      inputValues: '',
+      inputValues: [''],
     }
   ]
 };
