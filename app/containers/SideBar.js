@@ -76,8 +76,7 @@ class SideBar extends React.Component {
                 toggleHover={() => this.toggleHover(index)}
                 removeHover={() => this.toggleHover(false)}
               />
-            )) : null
-          }
+            ))}
           {this.props.CurrentUser.isLoading ? <GeneralSpinner spinnerStyle={{transform: 'scale(1)'}}/> : null}
           </div>
         </div>
