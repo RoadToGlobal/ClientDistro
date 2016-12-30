@@ -12,9 +12,10 @@ import { verticalContainer } from '../DynamicStyles/common';
 const loginContainer = {
   ...verticalContainer,
   boxShadow: 'none',
+  padding: '0 10vw',
+  marginLeft: '5em',
 };
 const loginStyle = {
-  margin: 'auto',
   minHeight: 'initial',
 };
 
@@ -84,6 +85,9 @@ class Login extends React.Component {
         <div style={loginStyle}>
           <FFFWindow title="" header={Boolean(false)} specStyle={{height: 'inherit'}}>
             <LoginPill
+              showGroupAppLogin={this.state.showGroupAppLogin}
+              showGoogleLogin={this.state.showGoogleLogin}
+              showFacebookLogin={this.state.showFacebookLogin}
               closeLogin={this.props.clickLogin}
               closeShowLogin={() => this.closeShowLogin()}
               clickGroupApp={() => this.clickGroupAppPill()}

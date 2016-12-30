@@ -43,8 +43,7 @@ class Group extends React.Component {
         <FFFWindow title={"Members"} header={true}>
           <GroupMembers />
         </FFFWindow>
-
-        { this.props.CurrentUser.token ?
+        { !this.props.CurrentUser.token ?
           <SignInButton />
           :
           null

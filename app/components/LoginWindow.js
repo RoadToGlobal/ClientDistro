@@ -1,21 +1,38 @@
 import React, { PropTypes } from 'react';
 import GeneralButton from '../components/GeneralButton';
+import GeneralInput from '../components/GeneralInput';
 
 const windowContainer = {
   flex: 1,
 
   display: 'flex',
-  flexDirection: 'row',
-  justifyContent: 'center',
+  flexDirection: 'column',
+
+  marginTop: '10px',
+};
+const windowItemContainer = {
+  flex: 1,
+
+  display: 'flex',
+  flexDirection: 'column',
   alignItems: 'center',
 
-  margin: 'auto',
-  backgroundColor: '#fff',
-  minHeight: 0,
+  marginBottom: '10px',
 };
 const windowItem = {
-  flex: 1,
-  padding: '0.5em',
+  height: '50px',
+  width: '40%',
+  minWidth: '150px',
+  fontSize: '1.4em',
+  textAlign: 'center',
+};
+const loginButton = {
+  backgroundColor: '#28b50e',
+  height: '56px',
+  fontSize: '1.4em',
+  width: '40%',
+  minWidth: '150px',
+  padding: 0,
 };
 
 class LoginWindow extends React.Component {
@@ -39,19 +56,29 @@ class LoginWindow extends React.Component {
       <div>
         {this.props.showGroupAppLogin ?
           <div style={windowContainer}>
-            <div style={windowItem}>
-              <label>Username:</label>
-              <input onChange={(event) => this.setState({username: event.currentTarget.value})} type="text"/>
+            <div style={windowItemContainer}>
+              <GeneralInput
+                inputType={'text'}
+                inputPlaceholder={'Username'}
+                inputStyle={windowItem}
+                onChange={(event) => this.setState({username: event.currentTarget.value})}
+              />
             </div>
-            <div style={windowItem}>
-              <label>Password:</label>
-              <input onChange={(event) => this.setState({password: event.currentTarget.value})} type="password"/>
+            <div style={windowItemContainer}>
+              <GeneralInput
+                inputType={'password'}
+                inputPlaceholder={'Password'}
+                inputStyle={windowItem}
+                onChange={(event) => this.setState({password: event.currentTarget.value})}
+              />
             </div>
-            <GeneralButton
-              buttonStyle={windowItem}
-              buttonContent={'Submit'}
-              onClick={ () => this.props.userLoginInput(btoa(this.state.username + ':' + this.state.password)) }
-            />
+            <div style={windowItemContainer}>
+              <GeneralButton
+                buttonStyle={loginButton}
+                buttonContent={'Sign in'}
+                onClick={ () => this.props.userLoginInput(btoa(this.state.username + ':' + this.state.password)) }
+              />
+            </div>
           </div>
           : null}
 

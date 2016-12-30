@@ -14,6 +14,7 @@ const linksContainer = {
   bottom: '0px',
   textAlign: 'center',
   alignItems: 'flex-start',
+  textDecoration: 'none',
 };
 class SideBarLinks extends React.Component {
   static propTypes = {
@@ -26,10 +27,10 @@ class SideBarLinks extends React.Component {
   render() {
     return (
       <div style={linksContainer}>
-        <h3 style={footerLinks}>About</h3>
-        <Link to="/group/1234"><h3 style={footerLinks}>Group</h3></Link>
-        <Link to="/createactivity"><h3 style={footerLinks}>Create Activity</h3></Link>
-        <h3 style={footerLinks}>More</h3>
+        <Link to="/about" style={footerLinks}><h3>About</h3></Link>
+        <Link to="/group/1234" style={footerLinks}><h3>Group</h3></Link>
+        <Link to="/createactivity" style={footerLinks}><h3>Create Activity</h3></Link>
+        <Link to="/FAQ" style={footerLinks}><h3>FAQ</h3></Link>
       </div>
     );
   }

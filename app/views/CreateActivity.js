@@ -30,7 +30,7 @@ class CreateActivity extends React.Component {
         <FFFWindow
           title={"Register new Activity"}
           header={Boolean(true)}
-          specStyle={{height: '18em'}}>
+          specStyle={{height: '17em'}}>
           <RegisterActivity
             showCustomize={this.state.showCustomize}
             toggleCustomize={() => this.toggleCustomize()}
@@ -40,7 +40,7 @@ class CreateActivity extends React.Component {
         <FFFWindow
           title={"Customize theme"}
           header={Boolean(true)}
-          specStyle={{height: '44em'}}>
+          specStyle={{height: '46em'}}>
           <CustomizeTheme
             showCustomize={this.state.showCustomize}
             toggleCustomize={() => this.toggleCustomize()}

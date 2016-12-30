@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 
 import * as actions from '../redux/actions';
+
 import GeneralSpinner from '../components/GeneralSpinner';
 import GeneralButton from '../components/GeneralButton';
 import MagicInput from '../components/MagicInput';

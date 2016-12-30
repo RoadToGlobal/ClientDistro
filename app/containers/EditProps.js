@@ -1,4 +1,6 @@
 import React from 'react';
+
+import GeneralInput from '../components/GeneralInput';
 import {verticalContainer} from '../DynamicStyles/common';
 
 const editContainer = {
@@ -22,7 +24,11 @@ export default class EditProps extends React.Component {
             aged
           </option>
         </select>
-        <input value="22" style={{width: '1.4em', marginLeft: '10px'}}/>
+        <GeneralInput
+          inputStyle={{width: '2em', height: '30px', marginLeft: '10px'}}
+          inputType={'text'}
+          inputPlaceholder={' 22'}
+        />
       </p>
       <p>
         and
@@ -57,7 +63,11 @@ export default class EditProps extends React.Component {
             my email is
           </option>
         </select>
-        <input value="supertester@email.com" style={{width: '8em', marginLeft: '10px'}}/>
+        <GeneralInput
+          inputStyle={{height: '30px', width: '12em', marginLeft: '10px'}}
+          inputType={'text'}
+          inputPlaceholder={' supertester@email.com'}
+        />
       </p>
       </div>
     );
