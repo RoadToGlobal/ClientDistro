@@ -19,10 +19,9 @@ class MemberPanel extends React.Component {
         <li style={memberList}><h3>Members:</h3></li>
         <ul style={memberList}>
           {
-            this.props.chatMembers.map((member) => (
+            this.props.members.map((member) => (
               <li
                 key={member.globalProps.name}
-                member={member.globalProps.name}
                 style={singleMember}
               >
                 {member.globalProps.name}
@@ -37,7 +36,7 @@ class MemberPanel extends React.Component {
 }
 
 MemberPanel.propTypes = {
-  chatMembers: PropTypes.object,
+  members: PropTypes.object,
 };
 
 export default MemberPanel;

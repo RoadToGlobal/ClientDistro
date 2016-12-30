@@ -16,7 +16,7 @@ class GroupMembers extends React.Component {
           this.props.CurrentGroup.group.applications.map((application) => (
             <UserCard
               key={application.member.username}
-              member={application.member}
+              application={application}
             />
           ))
         }

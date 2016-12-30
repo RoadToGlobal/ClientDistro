@@ -33,7 +33,7 @@ class GroupChat extends React.Component {
     return (
       <div style={{display: 'flex'}}>
         <div style={chatLeft}>
-          <MemberPanel chatMembers={members}/>
+          <MemberPanel members={members}/>
         </div>
 
         <div style={chatRight}>
