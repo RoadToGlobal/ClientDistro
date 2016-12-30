@@ -1,3 +1,5 @@
+import { browserHistory } from 'react-router';
+
 import enhancedFetch from '../../helpers/enhancedFetch';
 
 export const index = (filter) => {
@@ -97,6 +99,8 @@ const joinActivityRequest = () => {
 }
 
 const joinActivitySuccess = (res) => {
+  // forcefully navigate user to the new group now
+  browserHistory.push('/group/' + res.group._id);
   return {
     type: 'joinActivitySuccess',
     payload: res,

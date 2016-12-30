@@ -8,7 +8,10 @@ export default class LandingForm extends React.Component {
   render() {
     return (
       <div style={FFFContainer}>
-        <FFFWindow title={'Do a thing together'} header={Boolean(true)}>
+        <FFFWindow
+          specStyle={{ height: '40em' }}
+          title={'Do a thing together'}
+          header={Boolean(true)}>
           <GroupSearchForm/>
         </FFFWindow>
       </div>

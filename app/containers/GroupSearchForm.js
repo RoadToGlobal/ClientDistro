@@ -2,7 +2,6 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 
 import * as actions from '../redux/actions';
-
 import GeneralSpinner from '../components/GeneralSpinner';
 import GeneralButton from '../components/GeneralButton';
 import MagicInput from '../components/MagicInput';
@@ -70,7 +69,7 @@ class GroupSearchForm extends React.Component {
               activity: this.props.CurrentActivity.activity,
               threshold: this.state.threshold,
               localProps: this.state.localProps,
-            })
+            });
           }}
         />
       </main>
@@ -81,7 +80,9 @@ class GroupSearchForm extends React.Component {
 const styles = {
   main: {
     display: 'flex',
+    flex: 1,
     flexDirection: 'column',
+    justifyContent: 'center',
     alignItems: 'center',
     paddingTop: '2em',
   },

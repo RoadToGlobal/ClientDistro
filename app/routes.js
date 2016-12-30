@@ -10,8 +10,6 @@ import ActivityStatus from './views/ActivityStatus';
 import FAQ from            './views/FAQ';
 import About from          './views/About';
 
-
-
 export default (
   <Route path="/" component={App}>
     <IndexRoute component={LandingForm} />
