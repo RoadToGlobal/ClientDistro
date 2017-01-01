@@ -2,6 +2,7 @@ const fakeInitialState = {
   isLoading: false,
   error: false,
   messages: [],
+  otherUsers: [],
   rooms: new Map(),
 };
 
@@ -10,8 +11,8 @@ export default function socketIo(state = fakeInitialState, action) {
     case 'server/joinRoom':
       let messages = [];
 
-      if (state.rooms.has(action.data)) {
-        messages = state.rooms.get(action.data);
+      if (state.rooms.has(action.room)) {
+        messages = state.rooms.get(action.room);
       }
 
       return {
@@ -19,8 +20,17 @@ export default function socketIo(state = fakeInitialState, action) {
         messages,
       };
       break;
+    case 'userStatus':
+    case 'joinSuccess':
+      return {
+        ...state,
+        otherUsers: [
+          ...action.otherUsers,
+        ],
+      };
+      break;
     case 'server/leaveRoom':
-      state.rooms.set(action.data, state.messages);
+      state.rooms.set(action.room, state.messages);
 
       return {
         ...state,
@@ -32,8 +42,17 @@ export default function socketIo(state = fakeInitialState, action) {
         ...state,
         messages: [
           ...state.messages,
-          action.data,
+          {
+            message: action.message,
+            username: action.username,
+          },
         ],
+      };
+      break;
+    case 'error':
+      return {
+        ...state,
+        error: action.message,
       };
       break;
     default:

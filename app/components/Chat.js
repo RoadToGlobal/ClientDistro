@@ -3,6 +3,7 @@ import React, { PropTypes } from 'react';
 class Chat extends React.Component {
   static propTypes = {
     messages: PropTypes.array,
+    connectedUsers: PropTypes.array,
   };
 
   static deafultProps = {
@@ -14,7 +15,7 @@ class Chat extends React.Component {
       <div style={chatContainer}>
         <div style={chatWindow}>
           {this.props.messages.map((message, index) =>(
-            <p key={index}> {message}</p>
+            <p key={index}><b>{message.username + ': '}</b>{message.message}</p>
           ))}
         </div>
       </div>

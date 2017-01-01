@@ -2,16 +2,17 @@ export const joinRoom = (room) => {
   return (dispatch, getState) => {
     return dispatch({
       type: 'server/join',
-      data: room,
+      room,
+      username: getState().CurrentUser.user.username,
     });
   };
 };
 
-export const leaveRoom = () => {
+export const leaveRoom = (room) => {
   return (dispatch, getState) => {
     return dispatch({
       type: 'server/leave',
-      data: '',
+      room: room,
     });
   };
 };
@@ -20,7 +21,7 @@ export const postMessage = (message) => {
   return (dispatch, getState) => {
     return dispatch({
       type: 'server/message',
-      data: message,
+      message,
     });
   };
 };

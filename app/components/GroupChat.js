@@ -6,9 +6,10 @@ import SendLine from '../components/SendLine';
 
 class GroupChat extends React.Component {
   static propTypes = {
+    postMessage: PropTypes.func,
     group: PropTypes.object,
     messages: PropTypes.array,
-    postMessage: PropTypes.func,
+    connectedUsers: PropTypes.array,
   };
 
   render() {
@@ -19,6 +20,7 @@ class GroupChat extends React.Component {
         <div style={chatLeft}>
           <MemberPanel
             members={members}
+            connectedUsers={this.props.connectedUsers}
           />
         </div>
 

@@ -30,12 +30,13 @@ class Group extends React.Component {
   componentWillReceiveProps(nextProps) {
     if (nextProps.params.groupId !== this.props.params.groupId) {
       this.props.readGroup(nextProps.params.groupId);
+      this.props.leaveRoom(this.props.params.groupId);
       this.props.joinRoom(nextProps.params.groupId);
     }
   }
 
   componentWillUnMount() {
-    this.props.leaveRoom();
+    this.props.leaveRoom(this.props.params.groupId);
   }
 
   render() {
@@ -60,6 +61,7 @@ class Group extends React.Component {
             group={this.props.CurrentGroup.group}
             postMessage={this.props.postMessage}
             messages={this.props.socketIo.messages}
+            connectedUsers={this.props.socketIo.otherUsers}
           />
         </FFFWindow>
 

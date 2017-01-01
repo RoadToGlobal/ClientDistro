@@ -1,20 +1,14 @@
 import React, { PropTypes } from 'react';
 
-const chatMembersContainer = {
-  flex: '1',
-  borderRight: '1px solid #cccccc',
-};
-const memberList = {
-  listStyle: 'none',
-  padding: '0',
-};
-const singleMember = {
-  marginBottom: '5px',
-};
-
 class MemberPanel extends React.Component {
   static propTypes = {
     members: PropTypes.array,
+    connectedUsers: PropTypes.array,
+  }
+
+  static defaultProps = {
+    members: [],
+    connectedUsers: [],
   }
 
   render() {
@@ -25,18 +19,36 @@ class MemberPanel extends React.Component {
           {
             this.props.members.map((member) => (
               <li
-                key={member.globalProps.name}
-                style={singleMember}
+                key={member.username}
+                style={this.props.connectedUsers.includes(member.username) ? connectedmember : singleMember}
               >
-                {member.globalProps.name}
+                {member.username}
               </li>
             ))
           }
-          <li style={singleMember}>Awaiting 3...</li>
         </ul>
       </div>
     );
   }
 }
+
+const chatMembersContainer = {
+  flex: '1',
+  borderRight: '1px solid #cccccc',
+};
+
+const memberList = {
+  listStyle: 'none',
+  padding: '0',
+};
+
+const connectedmember = {
+  marginBottom: '5px',
+  fontWeight: 'Bold',
+};
+
+const singleMember = {
+  marginBottom: '5px',
+};
 
 export default MemberPanel;
