@@ -6,6 +6,8 @@
   "scripts": {
     "test": "",
     "start": "nodemon -L server.js",
+    "prestart": "npm run -s build",
+    "dev": "nodemon -L server.js",
     "build": "rimraf dist && webpack --config ./webpack.production.config.js --progress --profile --colors",
     "eslint": "eslint ."
   },

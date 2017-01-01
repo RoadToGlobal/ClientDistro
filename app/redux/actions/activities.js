@@ -7,8 +7,8 @@ export const index = (filter) => {
     dispatch(indexActivitiesRequest());
 
     const url = filter ?
-    `http://127.0.0.1:8080/activities/?filter=${filter}` :
-    'http://127.0.0.1:8080/activities' ;
+    `http://api.groupapp.io/activities/?filter=${filter}` :
+    'http://api.groupapp.io/activities' ;
 
     return enhancedFetch(url, { method: 'GET' })
     .then(res => dispatch(indexActivitiesSuccess(res)))
@@ -42,7 +42,7 @@ export const read = (id) => {
   return (dispatch, getState) => {
     dispatch(readActivityRequest());
 
-    const url = `http://127.0.0.1:8080/activities/${id}`;
+    const url = `http://api.groupapp.io/activities/${id}`;
 
     return enhancedFetch(url, { method: 'GET' })
     .then(res => dispatch(readActivitySuccess(res)))
@@ -77,7 +77,7 @@ export const join = (groupSearch) => {
     dispatch(joinActivityRequest());
 
     if (getState().CurrentUser.token) {
-      let url = `http://127.0.0.1:8080/activities/${groupSearch.activity._id}/groups`;
+      let url = `http://api.groupapp.io/activities/${groupSearch.activity._id}/groups`;
 
       return enhancedFetch( url, {
         method: 'POST',

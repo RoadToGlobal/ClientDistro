@@ -4,7 +4,7 @@ export const readMyGroups = () => {
   return (dispatch, getState) => {
     dispatch(readMyGroupsRequest());
 
-    let url = 'http://127.0.0.1:8080/my/groups';
+    let url = 'http://api.groupapp.io/my/groups';
 
     return enhancedFetch( url, {
       method: 'GET',
@@ -42,7 +42,7 @@ export const readGroup = (id) => {
   return (dispatch, getState) => {
     dispatch(readGroupRequest());
 
-    let url = 'http://127.0.0.1:8080/groups/' + id;
+    let url = 'http://api.groupapp.io/groups/' + id;
 
     return enhancedFetch( url, {
       method: 'GET',

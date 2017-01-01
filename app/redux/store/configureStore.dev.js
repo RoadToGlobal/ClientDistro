@@ -10,7 +10,7 @@ import {
 import rootReducer from '../reducers';
 import DevTools    from '../../containers/DevTools';
 
-let socket             = io('http://localhost:8081');
+let socket = io('http://chat.groupapp.io');
 let socketIoMiddleware = createSocketIoMiddleware(socket, "server/");
 
 export default function configureStore(initialState = {}) {

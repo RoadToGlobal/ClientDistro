@@ -9,8 +9,5 @@
     "./server.js",
     "./webpack.config.js",
     "./webpack.production.config.js"
-  ],
-  "env": {
-    "NODE_ENV": "development"
-  }
+  ]
 }

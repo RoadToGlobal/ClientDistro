@@ -1,6 +1,13 @@
 var webpack = require('webpack');
 var WebpackDevServer = require('webpack-dev-server');
-var config = require('./webpack.config');
+
+var config = {};
+
+if (process.env.NODE_ENV === 'development') {
+  config = require('./webpack.config');
+} else {
+  config = require('./webpack.production.config');
+}
 
 new WebpackDevServer(webpack(config), {
   publicPath: config.output.publicPath,
@@ -21,4 +28,10 @@ new WebpackDevServer(webpack(config), {
     chunks: false,
     chunkModules: false
   }
-}).listen(8000);
+}).listen(process.env.PORT, (err) => {
+  if (err) {
+    console.log(err);
+  }
+
+  console.log(`listening on port ${process.env.PORT} in ${process.env.NODE_ENV} mode`);
+});

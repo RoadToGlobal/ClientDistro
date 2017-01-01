@@ -7,7 +7,7 @@ export const readCurrentUser = (token) => {
   return (dispatch, getState) => {
     dispatch(readCurrentUserRequest());
 
-    let url = 'http://127.0.0.1:8080/my/user';
+    let url = 'http://api.groupapp.io/my/user';
 
     return enhancedFetch( url, {
       method: 'GET',

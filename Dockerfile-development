@@ -12,4 +12,4 @@ ADD nodemon.json /src/app/nodemon.json
 
 EXPOSE 80
 
-CMD npm run start
+CMD npm run dev

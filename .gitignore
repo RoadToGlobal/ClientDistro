@@ -38,3 +38,6 @@ ngrok
 
 #tern
 .tern-port
+
+#npm
+dist/

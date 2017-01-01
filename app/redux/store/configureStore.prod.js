@@ -5,7 +5,7 @@ import io from 'socket.io-client';
 
 import rootReducer from '../reducers';
 
-let socket = io('http://localhost:8081');
+let socket = io('http://chat.groupapp.io');
 let socketIoMiddleware = createSocketIoMiddleware(socket, "server/");
 
 export default function configureStore(initialState = {}) {
