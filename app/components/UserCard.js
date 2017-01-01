@@ -1,19 +1,10 @@
 import React, { PropTypes } from 'react';
 
-const MemberCard = {
-  margin: '10px',
-  padding: '1em',
-  boxShadow: '1px 1px 6px #888888',
-  borderRadius: '3px',
-  flexShrink: '1',
-};
-
-const ProfileImage = {
-  width: '8em',
-  height: 'auto',
-};
-
 class UserCard extends React.Component {
+  static propTypes = {
+    application: PropTypes.object,
+  }
+
   render() {
     return (
       <div style={MemberCard}>
@@ -21,15 +12,36 @@ class UserCard extends React.Component {
           style={ProfileImage}
           src={this.props.application.member.globalProps.imgUrl}
         />
-        <p><b>Name:</b> {this.props.application.member.globalProps.name}</p>
-        <p><b>Age:</b> {this.props.application.member.globalProps.age}</p>
+        <span><b>Name:</b> {this.props.application.member.globalProps.name}</span>
+        <ul style={localProps}>
+          {this.props.application.localProps.map((prop) => (
+            <li><b>{prop.key + ': '}</b>{prop.value}</li>
+          ))}
+        </ul>
       </div>
     );
   }
 }
 
-UserCard.propTypes = {
-  application: PropTypes.object,
+const localProps = {
+  listStyle: 'none',
+  margin: 0,
+  padding: 0,
+};
+
+const MemberCard = {
+  margin: '10px',
+  padding: '1em',
+  boxShadow: '1px 1px 6px #888888',
+  borderRadius: '3px',
+  flexShrink: '1',
+  maxHeight: '15.4em',
+  overflow: 'hidden',
+};
+
+const ProfileImage = {
+  width: '8em',
+  height: 'auto',
 };
 
 export default UserCard;
