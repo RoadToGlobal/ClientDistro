@@ -63,7 +63,6 @@ class GroupSearchForm extends React.Component {
         <GeneralButton
           buttonContent='Do the thing!'
           onClick={() =>{
-            console.log(this.state);
             this.props.joinActivity({
               requirements: this.state.requirements,
               activity: this.props.CurrentActivity.activity,

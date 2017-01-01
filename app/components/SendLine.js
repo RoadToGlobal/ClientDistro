@@ -1,18 +1,20 @@
 import React, { PropTypes } from 'react';
+
 import GeneralInput from '../components/GeneralInput';
 import GeneralButton from '../components/GeneralButton';
 
-const sendLineContainer = {
-  display: 'flex',
-  height: '2em',
-};
-const chatItems = {
-  height: '100%',
-  width: '100%',
-};
-
-
 class SendLine extends React.Component {
+  static propTypes = {
+    postMessage: PropTypes.func,
+  };
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      message: '',
+    }
+  }
+
   render() {
     return (
       <div style={sendLineContainer}>
@@ -20,12 +22,17 @@ class SendLine extends React.Component {
           <GeneralInput
             inputStyle={chatItems}
             inputPlaceholder=" text here plz.."
+            onChange={(e) => this.setState({message: e.currentTarget.value})}
+            onEnter={(e) => this.props.postMessage(this.state.message)}
           />
         </div>
         <div style={{flex: 1}}>
           <GeneralButton
             buttonStyle={chatItems}
             buttonContent={'Send'}
+            onClick={() => {
+              this.props.postMessage(this.state.message);
+            }}
           />
         </div>
       </div>
@@ -33,8 +40,14 @@ class SendLine extends React.Component {
   }
 }
 
-SendLine.propTypes = {
-  member: PropTypes.object,
+const sendLineContainer = {
+  display: 'flex',
+  height: '2em',
+};
+
+const chatItems = {
+  height: '100%',
+  width: '100%',
 };
 
 export default SendLine;

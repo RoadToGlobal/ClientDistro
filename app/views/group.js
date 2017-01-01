@@ -5,7 +5,7 @@ import * as actions         from '../redux/actions';
 import GeneralSpinner       from '../components/GeneralSpinner';
 import GroupMembers         from '../containers/GroupMembers';
 import SignInButton         from '../containers/SignInButton';
-import GroupChat            from '../containers/GroupChat';
+import GroupChat            from '../components/GroupChat';
 import ActivityShare        from '../containers/ActivityShare';
 import ActivityStatusMini   from '../containers/ActivityStatusMini';
 import NotificationSettings from '../containers/NotificationSettings';
@@ -24,12 +24,18 @@ class Group extends React.Component {
 
   componentWillMount() {
     this.props.readGroup(this.props.params.groupId);
+    this.props.joinRoom(this.props.params.groupId);
   }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.params.groupId !== this.props.params.groupId) {
       this.props.readGroup(nextProps.params.groupId);
+      this.props.joinRoom(nextProps.params.groupId);
     }
+  }
+
+  componentWillUnMount() {
+    this.props.leaveRoom();
   }
 
   render() {
@@ -50,7 +56,11 @@ class Group extends React.Component {
         }
 
         <FFFWindow title={"Group Chat"} header={true}>
-          <GroupChat />
+          <GroupChat
+            group={this.props.CurrentGroup.group}
+            postMessage={this.props.postMessage}
+            messages={this.props.socketIo.messages}
+          />
         </FFFWindow>
 
         <ActivityShare />
@@ -83,11 +93,15 @@ const mapStateToProps = (state) => {
   return {
     CurrentUser: state.CurrentUser,
     CurrentGroup: state.CurrentGroup,
+    socketIo: state.socketIo,
   };
 };
 
 const mapDispatchToProps = {
   readGroup: actions.groups.readGroup,
+  joinRoom: actions.chat.joinRoom,
+  leaveRoom: actions.chat.leaveRoom,
+  postMessage: actions.chat.postMessage,
 };
 
 export default connect(

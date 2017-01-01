@@ -1,5 +1,27 @@
 import React, { PropTypes } from 'react';
 
+class Chat extends React.Component {
+  static propTypes = {
+    messages: PropTypes.array,
+  };
+
+  static deafultProps = {
+    messages: [],
+  };
+
+  render() {
+    return (
+      <div style={chatContainer}>
+        <div style={chatWindow}>
+          {this.props.messages.map((message, index) =>(
+            <p key={index}> {message}</p>
+          ))}
+        </div>
+      </div>
+    );
+  }
+}
+
 const chatContainer = {
   height: '16em',
 };
@@ -8,23 +30,7 @@ const chatWindow = {
   padding: '0.4em',
   overflow: 'hidden',
   height: '15em',
-};
-
-class Chat extends React.Component {
-  render() {
-    return (
-      <div style={chatContainer}>
-        <div style={chatWindow}>
-          <p><b>Mr.Miagi: </b> Ryū ga waga teki wo kurau! </p>
-          <p><b>Frasse: </b> Öh, va saru!?</p>
-        </div>
-      </div>
-    );
-  }
-}
-
-Chat.propTypes = {
-  member: PropTypes.object,
+  overflowY: 'scroll',
 };
 
 export default Chat;

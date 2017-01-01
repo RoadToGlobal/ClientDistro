@@ -1,11 +1,23 @@
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
+import createSocketIoMiddleware from 'redux-socket.io';
+import io from 'socket.io-client';
+
 import rootReducer from '../reducers';
 
-export default function configureStore(initialState) {
-  return createStore(
+let socket = io('http://localhost:8081');
+let socketIoMiddleware = createSocketIoMiddleware(socket, "server/");
+
+export default function configureStore(initialState = {}) {
+  const store = createStore(
     rootReducer,
     initialState,
-    applyMiddleware(thunk)
+    compose(
+      applyMiddleware(thunk),
+      applyMiddleware(socketIoMiddleware),
+    )
   );
+
+  return store;
 }
+

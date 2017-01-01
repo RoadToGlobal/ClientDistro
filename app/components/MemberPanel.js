@@ -13,6 +13,10 @@ const singleMember = {
 };
 
 class MemberPanel extends React.Component {
+  static propTypes = {
+    members: PropTypes.array,
+  }
+
   render() {
     return (
       <div style={chatMembersContainer}>
@@ -34,9 +38,5 @@ class MemberPanel extends React.Component {
     );
   }
 }
-
-MemberPanel.propTypes = {
-  members: PropTypes.object,
-};
 
 export default MemberPanel;

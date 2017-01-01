@@ -7,7 +7,7 @@ const generalInput = {
   boxSizing: 'border-box',
 };
 
-class GeneralButton extends React.Component {
+class GeneralInput extends React.Component {
   static propTypes = {
     inputType: PropTypes.string,
     inputPlaceholder: PropTypes.string,
@@ -15,10 +15,17 @@ class GeneralButton extends React.Component {
     inputStyle: PropTypes.object,
     inputRef: PropTypes.string,
     onChange: PropTypes.func,
+    onEnter: PropTypes.func,
   };
 
   constructor(props) {
     super(props);
+  }
+
+  handleKeypress(event) {
+    if (event.key === 'Enter') {
+      this.props.onEnter(event);
+    }
   }
 
   render() {
@@ -30,9 +37,10 @@ class GeneralButton extends React.Component {
         placeholder={this.props.inputPlaceholder}
         ref={this.props.inputRef}
         onChange={this.props.onChange}
+        onKeyPress={(e) => this.handleKeypress(e)}
       />
     );
   }
 }
 
-export default GeneralButton;
+export default GeneralInput;
