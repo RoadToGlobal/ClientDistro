@@ -32,7 +32,7 @@ class ReqInputValues extends React.Component {
       <input
         style={{
           ...styles.inputStyle,
-          width: '' + Math.max(2, this.state.value.length * 0.5 + 2) + 'rem'
+          width: '' + Math.max(4, this.state.value.length * 1 + 2) + 'rem'
         }}
         type={this.props.type === 'word' ? 'text' : 'number'}
         value={this.state.value}
@@ -54,6 +54,9 @@ const styles = {
     color: 'black',
     border: 'none',
     borderBottom: '2px solid #9ba',
+    fontSize: '1.5rem',
+    height: '2em',
+    borderRadius: '3px',
   },
 };
 

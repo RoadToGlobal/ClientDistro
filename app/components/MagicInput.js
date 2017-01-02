@@ -81,13 +81,13 @@ class MagicInput extends React.Component {
   render() {
     return (
       <div style={{ ...styles.wrapperStyle, ...this.props.style }}>
-        <label>{this.props.prefix || ''}</label>
+        <label style={styles.prefixText}>{this.props.prefix || ''}</label>
         <div style={styles.main}>
           <input
             ref='currentInput'
             style={{
               ...styles.inputStyle,
-              width: '' + Math.max(2, this.state.value.length * 0.5 + 2) + 'rem'
+              width: '' + Math.max(4, this.state.value.length * 1 + 2) + 'rem'
             }}
             value={this.state.value}
             onChange={(e) => this.handleChange(e.target.value)}
@@ -153,9 +153,15 @@ const styles = {
     color: 'black',
     border: 'none',
     borderBottom: '2px solid #acf',
+    fontSize: '1.5rem',
+    height: '2em',
+    borderRadius: '3px',
   },
   wrapperStyle: {
     display: 'flex',
+  },
+  prefixText: {
+    fontSize: '2.5em',
   },
 };
 
