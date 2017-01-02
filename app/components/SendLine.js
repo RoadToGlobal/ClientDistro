@@ -15,15 +15,23 @@ class SendLine extends React.Component {
     }
   }
 
+  handleKeypress(event) {
+    if (event.key === 'Enter' && this.state.message !== '') {
+      this.props.postMessage(this.state.message);
+      this.setState({message: ''});
+    }
+  }
+
   render() {
     return (
       <div style={sendLineContainer}>
         <div style={{flex: 6}}>
-          <GeneralInput
-            inputStyle={chatItems}
+          <input
+            style={{ ...generalInput, ...chatItems, }}
             inputPlaceholder=" text here plz.."
+            value={this.state.message}
             onChange={(e) => this.setState({message: e.currentTarget.value})}
-            onEnter={(e) => this.props.postMessage(this.state.message)}
+            onKeyPress={(e) => this.handleKeypress(e)}
           />
         </div>
         <div style={{flex: 1}}>
@@ -31,7 +39,10 @@ class SendLine extends React.Component {
             buttonStyle={chatItems}
             buttonContent={'Send'}
             onClick={() => {
-              this.props.postMessage(this.state.message);
+              if (this.state.message !== ''){
+                this.props.postMessage(this.state.message);
+                this.setState({message: ''});
+              }
             }}
           />
         </div>
@@ -49,5 +60,13 @@ const chatItems = {
   height: '100%',
   width: '100%',
 };
+
+const generalInput = {
+  fontFamily: 'Nunito',
+  padding: 0,
+  border: '1px solid rgba(60, 73, 89, 0.3)',
+  boxSizing: 'border-box',
+};
+
 
 export default SendLine;
