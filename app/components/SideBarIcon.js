@@ -29,15 +29,21 @@ const iconImgHover = {
   ...iconImg,
   width: 75,
 };
+
 const iconTxt = {
   display: 'block',
+  color: 'white',
   fontSize: 12,
   textAlign: 'center',
   transition: 'all 0.2s',
+  textDecoration: 'none',
 };
+
 const iconTxtHover = {
+  color: 'white',
   ...iconTxt,
   fontSize: 14,
+  textDecoration: 'none',
 };
 
 class SideBarIcon extends React.Component {
@@ -55,6 +61,7 @@ class SideBarIcon extends React.Component {
   render() {
     return (
       <Link
+        style={{textDecoration: 'none'}}
         to={this.props.link}
       >
         <div
@@ -63,14 +70,16 @@ class SideBarIcon extends React.Component {
           onMouseOver={this.props.toggleHover}
           onMouseLeave={this.props.removeHover}
         >
+          {/* src={this.props.activity.style.icon} */}
           <img
             style={this.props.hoverStatus ? iconImgHover : iconImg}
-            src={this.props.activity.style.icon}
+            src={'http://i.imgur.com/Zd41RUt.png'}
           />
+
           <span
             style={this.props.hoverStatus ? iconTxtHover : iconTxt}
           >
-            {this.props.activity.name}
+            {this.props.activity.prefix} {this.props.activity.name}
           </span>
         </div>
       </Link>
