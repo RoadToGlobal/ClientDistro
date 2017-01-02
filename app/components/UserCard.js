@@ -12,7 +12,7 @@ class UserCard extends React.Component {
           style={ProfileImage}
           src={this.props.application.member.globalProps.imgUrl}
         />
-        <span><b>Name:</b> {this.props.application.member.globalProps.name}</span>
+        <span><b>Name:</b> {this.props.application.member.username }</span>
         <ul style={localProps}>
           {this.props.application.localProps.map((prop) => (
             <li><b>{prop.key + ': '}</b>{prop.value}</li>
