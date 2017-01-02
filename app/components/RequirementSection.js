@@ -43,7 +43,7 @@ class RequirementSection extends React.Component {
           this.state.slots.map((slotReq, slotIndex, slots) => (
             <div style={styles.row}>
               <MagicInput
-                prefix='Who'
+                prefix='who'
                 source={this.state.reqs}
                 onSelect={(req) => {
                   slots[slotIndex] = req;
