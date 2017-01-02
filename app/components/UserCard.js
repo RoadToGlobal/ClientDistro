@@ -15,7 +15,7 @@ class UserCard extends React.Component {
           />
         </div>
         <div style={userContentContainer}>
-        <span><b>Name:</b> {this.props.application.member.globalProps.name}</span>
+          <span><b>Username:</b> {this.props.application.member.username }</span>
           <ul style={localProps}>
             {this.props.application.localProps.map((prop) => (
               <li><b>{prop.key + ': '}</b>{prop.value}</li>
