@@ -51,23 +51,21 @@ class LoginWindow extends React.Component {
     };
   }
 
-  handleSubmit = (event) => {
-    event.preventDefault();
-
-    this.props.userLoginInput(event, btoa(this.state.username + ':' + this.state.password));
-  }
-
   render() {
     return (
       <div>
         {this.props.showGroupAppLogin ?
-          <form onSubmit={this.handleSubmit} style={windowContainer}>
+          <div style={windowContainer}>
             <div style={windowItemContainer}>
               <GeneralInput
                 inputType={'text'}
                 inputPlaceholder={'Username'}
                 inputStyle={windowItem}
                 onChange={(event) => this.setState({username: event.currentTarget.value})}
+                onEnter={() =>{
+                  console.log('running click');
+                  this.props.userLoginInput(btoa(this.state.username + ':' + this.state.password))
+                }}
               />
             </div>
             <div style={windowItemContainer}>
@@ -76,17 +74,23 @@ class LoginWindow extends React.Component {
                 inputPlaceholder={'Password'}
                 inputStyle={windowItem}
                 onChange={(event) => this.setState({password: event.currentTarget.value})}
+                onEnter={(e) =>{
+                  console.log('running click');
+                  this.props.userLoginInput(btoa(this.state.username + ':' + this.state.password))
+                }}
               />
             </div>
             <div style={windowItemContainer}>
               <GeneralButton
-                buttonType={'submit'}
                 buttonStyle={loginButton}
                 buttonContent={'Sign in'}
-                onClick={ () => this.props.userLoginInput(btoa(this.state.username + ':' + this.state.password)) }
+                onEnter={(e) =>{
+                  console.log('running click');
+                  this.props.userLoginInput(btoa(this.state.username + ':' + this.state.password))
+                }}
               />
             </div>
-          </form>
+          </div>
           : null}
 
         {this.props.showGoogleLogin ?

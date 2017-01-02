@@ -43,7 +43,7 @@ class PropSection extends React.Component {
           this.state.slots.map((slotProp, slotIndex, slots) => (
             <div style={styles.row}>
               <MagicInput
-                prefix='Is'
+                prefix='who'
                 source={this.state.availableProps}
                 onSelect={(p) => {
                   slots[slotIndex] = p;

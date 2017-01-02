@@ -21,6 +21,7 @@ class GroupSearchForm extends React.Component {
   constructor() {
     super();
     this.state = {
+      warning: false,
       threshold: 0.5,
       requirements: [],
       localProps: [],
@@ -61,14 +62,18 @@ class GroupSearchForm extends React.Component {
         <hr style={styles.line}/>
 
         <GeneralButton
-          buttonContent='Do the thing!'
+          buttonContent={ this.state.warning ? this.props.CurrentUser.token ? 'Do the thing' : 'Log in first' : 'Do the thing!' }
           onClick={() =>{
-            this.props.joinActivity({
-              requirements: this.state.requirements,
-              activity: this.props.CurrentActivity.activity,
-              threshold: this.state.threshold,
-              localProps: this.state.localProps,
-            });
+            if (this.props.CurrentUser.token) {
+              this.props.joinActivity({
+                requirements: this.state.requirements,
+                activity: this.props.CurrentActivity.activity,
+                threshold: this.state.threshold,
+                localProps: this.state.localProps,
+              });
+            } else {
+              this.setState({warning: true})
+            }
           }}
         />
       </main>
@@ -97,6 +102,7 @@ const mapStateToProps = (state) => {
   return {
     foundActivities: state.foundActivities,
     CurrentActivity: state.CurrentActivity,
+    CurrentUser: state.CurrentUser,
     foundProps: state.foundProps,
     foundReqs: state.foundReqs,
   };

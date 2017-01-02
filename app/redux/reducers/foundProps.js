@@ -2,11 +2,14 @@ const fakeInitialState = {
   isLoading: false,
   error: false,
   found: [
-    { key: 'name', type: 'word' },
-    { key: 'likes', type: 'word' },
-    { key: 'language', type: 'wordMultiple' },
-    { key: 'aged', type: 'number' },
-    { key: 'years of experience', type: 'number' },
+    { key: 'is named', type: 'word' },
+    { key: 'is a fan of', type: 'word' },
+    { key: 'has rank', type: 'word' },
+    { key: 'can speak', type: 'wordMultiple' },
+    { key: 'has kids', type: 'number' },
+    { key: 'is aged', type: 'number' },
+    { key: 'is around level', type: 'number' },
+    { key: 'has years of experience', type: 'number' },
   ]
 };
 

@@ -11,7 +11,7 @@ export default class FAQ extends React.Component {
   render() {
     return (
       <div style={FFFContainer}>
-        <FFFWindow title={'FAQ'} header={Boolean(true)} specStyle={{height: '34em'}}>
+        <FFFWindow title={'FAQ'} header={Boolean(true)} specStyle={{height: '44em'}}>
           <h3>How do I create a new activity?</h3>
           <p style={faqParagraph}>There are two ways to create a new activity. From the landingpage you will find an alternative inside the field "I want to" that says "create a new activity". The other alternative is in the sidebar, just click the "create activity"-button.</p>
           <h3>Do I have to be logged in during the whole time while searching a group?</h3>
