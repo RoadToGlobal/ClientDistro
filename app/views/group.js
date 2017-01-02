@@ -41,7 +41,7 @@ class Group extends React.Component {
 
   render() {
     if (this.props.CurrentGroup.isLoading || this.props.CurrentGroup.error) {
-      return ( <GeneralSpinner/> );
+      return ( <GeneralSpinner spinnerStyle={{transform: 'scale(2)'}} /> );
     }
 
     return (

@@ -27,9 +27,9 @@ class SideBarLinks extends React.Component {
   render() {
     return (
       <div style={linksContainer}>
-        <Link to="/about" style={footerLinks}><h3>About</h3></Link>
         <Link to="/createactivity" style={footerLinks}><h3>Create Activity</h3></Link>
         <Link to="/FAQ" style={footerLinks}><h3>FAQ</h3></Link>
+        <Link to="/about" style={footerLinks}><h3>About</h3></Link>
       </div>
     );
   }

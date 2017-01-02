@@ -3,6 +3,8 @@ import React, { PropTypes } from 'react';
 const generalInput = {
   fontFamily: 'Nunito',
   padding: 0,
+  backgroundColor: '#fff',
+  color: '#7b7d7f',
   border: '1px solid rgba(60, 73, 89, 0.3)',
   boxSizing: 'border-box',
 };
