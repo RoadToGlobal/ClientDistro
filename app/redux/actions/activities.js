@@ -1,14 +1,18 @@
 import { browserHistory } from 'react-router';
 
 import enhancedFetch from '../../helpers/enhancedFetch';
+import apiHost from '../../helpers/apiHost';
 
 export const index = (filter) => {
   return (dispatch, getState) => {
     dispatch(indexActivitiesRequest());
 
-    const url = filter ?
-    `http://api.groupapp.io/activities/?filter=${filter}` :
-    'http://api.groupapp.io/activities' ;
+    let url = '';
+    if (filter) {
+      url = `http://${apiHost}/activities/?filter=${filter}`;
+    } else {
+      url = `http://${apiHost}/activities`;
+    }
 
     return enhancedFetch(url, { method: 'GET' })
     .then(res => dispatch(indexActivitiesSuccess(res)))
@@ -42,7 +46,7 @@ export const read = (id) => {
   return (dispatch, getState) => {
     dispatch(readActivityRequest());
 
-    const url = `http://api.groupapp.io/activities/${id}`;
+    const url = `http://${apiHost}/activities/${id}`;
 
     return enhancedFetch(url, { method: 'GET' })
     .then(res => dispatch(readActivitySuccess(res)))
@@ -77,7 +81,7 @@ export const join = (groupSearch) => {
     dispatch(joinActivityRequest());
 
     if (getState().CurrentUser.token) {
-      let url = `http://api.groupapp.io/activities/${groupSearch.activity._id}/groups`;
+      let url = `http://${apiHost}/activities/${groupSearch.activity._id}/groups`;
 
       return enhancedFetch( url, {
         method: 'POST',

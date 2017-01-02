@@ -1,10 +1,11 @@
 import enhancedFetch from '../../helpers/enhancedFetch';
+import apiHost from '../../helpers/apiHost';
 
 export const readMyGroups = () => {
   return (dispatch, getState) => {
     dispatch(readMyGroupsRequest());
 
-    let url = 'http://api.groupapp.io/my/groups';
+    let url = `http://${apiHost}/my/groups`;
 
     return enhancedFetch( url, {
       method: 'GET',
@@ -42,7 +43,7 @@ export const readGroup = (id) => {
   return (dispatch, getState) => {
     dispatch(readGroupRequest());
 
-    let url = 'http://api.groupapp.io/groups/' + id;
+    let url = `http://${apiHost}/groups/` + id;
 
     return enhancedFetch( url, {
       method: 'GET',

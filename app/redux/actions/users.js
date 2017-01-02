@@ -1,4 +1,5 @@
 import enhancedFetch from '../../helpers/enhancedFetch';
+import apiHost from '../../helpers/apiHost';
 import { readMyGroups } from './groups';
 
 export const readCurrentUser = (token) => {
@@ -7,7 +8,7 @@ export const readCurrentUser = (token) => {
   return (dispatch, getState) => {
     dispatch(readCurrentUserRequest());
 
-    let url = 'http://api.groupapp.io/my/user';
+    let url = `http://${apiHost}/my/user`;
 
     return enhancedFetch( url, {
       method: 'GET',
