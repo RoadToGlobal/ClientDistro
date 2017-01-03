@@ -92,6 +92,7 @@ const styles = {
     marginBottom: '0.5em',
     display: 'flex',
     flexDirection: 'row',
+    minHeight: '3em',
   },
   chainStyle: {
     color: '#999',
