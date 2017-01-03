@@ -29,7 +29,16 @@ class GroupSearchForm extends React.Component {
   }
 
   componentWillMount() {
-    this.props.indexActivities()
+    this.props.indexActivities();
+    if (this.props.CurrentUser.token) {
+      this.props.readMyGroups();
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.props.CurrentUser.token || nextProps.CurrentUser.token) {
+      this.props.readMyGroups();
+    }
   }
 
   render() {
@@ -112,6 +121,7 @@ const mapDispatchToProps = {
   indexActivities: actions.activities.index,
   readActivity: actions.activities.read,
   joinActivity: actions.activities.join,
+  readMyGroups: actions.groups.readMyGroups,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(GroupSearchForm);

@@ -6,6 +6,13 @@ const fakeInitialState = {
 
 export default function myGroups(state = fakeInitialState, action) {
   switch (action.type) {
+    case 'groupRemoved':
+      return {
+        isLoading: false,
+        error: false,
+        groups: state.groups.filter((group) => (group._id !== action.groupId)),
+      }
+      break;
     case 'readMyGroupsRequest':
       return {
         isLoading: true,
