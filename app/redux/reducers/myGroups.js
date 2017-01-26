@@ -6,11 +6,22 @@ const fakeInitialState = {
 
 export default function myGroups(state = fakeInitialState, action) {
   switch (action.type) {
-    case 'groupRemoved':
+    case 'groupAbsorbedInto':
+      const replacedGroups = state.groups.map((group) => (
+        group._id === action.absorbeeId ? action.absorber : group
+      ));
       return {
-        isLoading: false,
-        error: false,
-        groups: state.groups.filter((group) => (group._id !== action.groupId)),
+        ...state,
+        groups: replacedGroups,
+      }
+      break;
+    case 'groupAbsorbed':
+      const refreshedGroups = state.groups.map((group) => (
+        group._id === action.absorber_.id ? action.absorber : group
+      ));
+      return {
+        ...state,
+        groups: refreshedGroups,
       }
       break;
     case 'readMyGroupsRequest':

@@ -39,7 +39,6 @@ const readMyGroupsError = (res) => {
 }
 
 export const readGroup = (id) => {
-  console.log(id);
   return (dispatch, getState) => {
     dispatch(readGroupRequest());
 
