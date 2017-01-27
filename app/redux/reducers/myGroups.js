@@ -17,7 +17,7 @@ export default function myGroups(state = fakeInitialState, action) {
       break;
     case 'groupAbsorbed':
       const refreshedGroups = state.groups.map((group) => (
-        group._id === action.absorber_.id ? action.absorber : group
+        group._id === action.absorber._id ? action.absorber : group
       ));
       return {
         ...state,
