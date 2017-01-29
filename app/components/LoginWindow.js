@@ -63,8 +63,7 @@ class LoginWindow extends React.Component {
                 inputStyle={windowItem}
                 onChange={(event) => this.setState({username: event.currentTarget.value})}
                 onEnter={() =>{
-                  console.log('running click');
-                  this.props.userLoginInput(btoa(this.state.username + ':' + this.state.password))
+                  this.props.userLoginInput(this.state.username, this.state.password);
                 }}
               />
             </div>
@@ -75,8 +74,7 @@ class LoginWindow extends React.Component {
                 inputStyle={windowItem}
                 onChange={(event) => this.setState({password: event.currentTarget.value})}
                 onEnter={(e) =>{
-                  console.log('running click');
-                  this.props.userLoginInput(btoa(this.state.username + ':' + this.state.password))
+                  this.props.userLoginInput(this.state.username, this.state.password);
                 }}
               />
             </div>
@@ -85,8 +83,10 @@ class LoginWindow extends React.Component {
                 buttonStyle={loginButton}
                 buttonContent={'Sign in'}
                 onEnter={(e) =>{
-                  console.log('running click');
-                  this.props.userLoginInput(btoa(this.state.username + ':' + this.state.password))
+                  this.props.userLoginInput(this.state.username, this.state.password);
+                }}
+                onClick={(e) =>{
+                  this.props.userLoginInput(this.state.username, this.state.password);
                 }}
               />
             </div>

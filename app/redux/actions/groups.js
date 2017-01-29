@@ -9,7 +9,7 @@ export const readMyGroups = () => {
 
     return enhancedFetch( url, {
       method: 'GET',
-      headers: { 'Authorization': 'Basic ' + getState().CurrentUser.token }
+      headers: { 'Authorization': 'JWT ' + getState().CurrentUser.token },
     })
     .then(res => dispatch(readMyGroupsSuccess(res)))
     .catch(res => dispatch(readMyGroupsError(res)))
@@ -46,7 +46,7 @@ export const readGroup = (id) => {
 
     return enhancedFetch( url, {
       method: 'GET',
-      headers: { 'Authorization': 'Basic ' + getState().CurrentUser.token }
+      headers: { 'Authorization': 'JWT ' + getState().CurrentUser.token },
     })
     .then(res => dispatch(readGroupSuccess(res)))
     .catch(res => dispatch(readGroupError(res)))

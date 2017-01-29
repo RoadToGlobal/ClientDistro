@@ -10,26 +10,46 @@ export default function CurrentUser(state = fakeInitialState, action) {
   switch (action.type) {
     case 'readCurrentUserRequest':
       return {
+        ...state,
         isLoading: true,
-        error: false,
-        user: false,
-        token: false,
+      }
+      break;
+    case 'readTokenRequest':
+      return {
+        ...state,
+        isLoading: true
+      }
+      break;
+    case 'setToken':
+      return {
+        ...state,
+        token: action.token,
+      }
+      break;
+    case 'readTokenSuccess':
+      return {
+        ...state,
+        token: action.token,
+      }
+      break;
+    case 'readTokenError':
+      return {
+        ...state,
+        error: action.error,
       }
       break;
     case 'readCurrentUserSuccess':
       return {
+        ...state,
         isLoading: false,
-        error: false,
         user: action.user,
-        token: action.token,
       }
       break;
     case 'readCurrentUserError':
       return {
+        ...state,
         isLoading: false,
         error: action.error,
-        user: false,
-        token: false,
       }
       break;
     case 'logoutCurrentUser':
