@@ -1,8 +1,9 @@
-const fakeInitialState = {
-  Group: '1dasdasjdksdj',
-  Activity: '1dasdasjkdahsd',
-  Requirements: [
-    {
+// Isn't this replaced by CurrentGroup?
+
+const initialState = {
+  Group: false,
+  Activity: false,
+  Requirements: [{
       inteDefinieradAn: 'inteDefinieradAn',
     },
   ],
@@ -18,13 +19,17 @@ const fakeInitialState = {
   },
 };
 
-export default function CurrentGroupSearch(state = fakeInitialState, action) {
+export default function CurrentGroupSearch(state = initialState, action) {
   switch (action.type) {
     case 'CURRENT_GROUP_SEARCH_EXAMPLE':
-      // console.log(action.data);
       return {
         ...state,
       };
+    case 'logoutCurrentUser':
+      return {
+        ...initialState,
+      }
+      break;
     default:
       return state;
   }

@@ -1,10 +1,10 @@
-const fakeInitialState = {
+const initialState = {
   isLoading: false,
   error: false,
   found: [],
 };
 
-export default function foundActivities(state = fakeInitialState, action) {
+export default function foundActivities(state = initialState, action) {
   switch (action.type) {
     case 'indexActivitiesRequest':
       return {
@@ -24,6 +24,11 @@ export default function foundActivities(state = fakeInitialState, action) {
         error: action.error,
         found: [],
       };
+    case 'logoutCurrentUser':
+      return {
+        ...initialState,
+      }
+      break;
     default:
       return state;
   }

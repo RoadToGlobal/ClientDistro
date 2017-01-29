@@ -1,10 +1,10 @@
-const fakeInitialState = {
+const initialState = {
   isLoading: false,
   error: false,
   groups: [],
 }
 
-export default function myGroups(state = fakeInitialState, action) {
+export default function myGroups(state = initialState, action) {
   switch (action.type) {
     case 'groupAbsorbedInto':
       const replacedGroups = state.groups.map((group) => (
@@ -52,6 +52,11 @@ export default function myGroups(state = fakeInitialState, action) {
           ...state.groups,
           action.payload.group,
         ],
+      }
+      break;
+    case 'logoutCurrentUser':
+      return {
+        ...initialState,
       }
       break;
     default:

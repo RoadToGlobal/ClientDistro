@@ -1,22 +1,10 @@
-const fakeInitialState = {
+const initialState = {
   isLoading: false,
   error: false,
-  activity: {
-    id: '1dfdfdhhd',
-    name: 'Overwatch',
-    prefix: 'Play the Game',
-    userPool: 100,
-    groups: 10,
-    style: {
-      fontColor: '#000',
-      windowColor: '#aaa',
-      accentColor: '#f00',
-      backgroundColor: '#fff',
-    },
-  },
+  activity: false,
 };
 
-export default function CurrentActivity(state = fakeInitialState, action) {
+export default function CurrentActivity(state = initialState, action) {
   switch (action.type) {
     case 'readActivityRequest':
       return {
@@ -65,6 +53,11 @@ export default function CurrentActivity(state = fakeInitialState, action) {
         isLoading: false,
         error: true,
         activity: state.activity,
+      }
+      break;
+    case 'logoutCurrentUser':
+      return {
+        ...initialState,
       }
       break;
     default:

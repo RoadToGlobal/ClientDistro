@@ -1,12 +1,11 @@
-
-const fakeInitialState = {
+const initialState = {
   isLoading: false,
   error: false,
   user: false,
   token: false,
 }
 
-export default function CurrentUser(state = fakeInitialState, action) {
+export default function CurrentUser(state = initialState, action) {
   switch (action.type) {
     case 'readCurrentUserRequest':
       return {
@@ -58,6 +57,11 @@ export default function CurrentUser(state = fakeInitialState, action) {
         error: false,
         user: false,
         token: false,
+      }
+      break;
+    case 'logoutCurrentUser':
+      return {
+        ...initialState,
       }
       break;
     default:

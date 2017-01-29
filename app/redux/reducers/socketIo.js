@@ -1,4 +1,4 @@
-const fakeInitialState = {
+const initialState = {
   isLoading: false,
   error: false,
   messages: [],
@@ -6,7 +6,7 @@ const fakeInitialState = {
   rooms: new Map(),
 };
 
-export default function socketIo(state = fakeInitialState, action) {
+export default function socketIo(state = initialState, action) {
   switch (action.type) {
     case 'server/joinRoom':
       let messages = [];
@@ -54,6 +54,11 @@ export default function socketIo(state = fakeInitialState, action) {
         ...state,
         error: action.message,
       };
+      break;
+    case 'logoutCurrentUser':
+      return {
+        ...initialState,
+      }
       break;
     default:
       return state;
