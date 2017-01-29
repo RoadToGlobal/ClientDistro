@@ -1,9 +1,9 @@
 // Isn't this replaced by CurrentGroup?
-
 const initialState = {
   Group: false,
   Activity: false,
-  Requirements: [{
+  Requirements: [
+    {
       inteDefinieradAn: 'inteDefinieradAn',
     },
   ],
