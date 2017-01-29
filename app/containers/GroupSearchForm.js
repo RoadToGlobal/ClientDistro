@@ -5,17 +5,23 @@ import * as actions from '../redux/actions';
 import GeneralSpinner from '../components/GeneralSpinner';
 import GeneralButton from '../components/GeneralButton';
 import MagicInput from '../components/MagicInput';
-import RequirementSection from '../components/RequirementSection'
-import PropSection from '../components/PropSection'
+import RequirementSection from '../components/RequirementSection';
+import PropSection from '../components/PropSection';
 
 class GroupSearchForm extends React.Component {
   static propTypes = {
+    CurrentUser: PropTypes.object,
+    CurrentActivity: PropTypes.object,
     foundActivities: PropTypes.object,
     foundProps: PropTypes.array,
     foundReqs: PropTypes.array,
     SearchActivities: PropTypes.func,
     SearchProps: PropTypes.func,
     SearchReqs: PropTypes.func,
+    indexActivities: PropTypes.func,
+    readMyGroups: PropTypes.func,
+    readActivity: PropTypes.func,
+    joinActivity: PropTypes.func,
   };
 
   constructor() {
@@ -47,7 +53,7 @@ class GroupSearchForm extends React.Component {
         style={styles.main}
       >
         <MagicInput
-          prefix='I want to:'
+          prefix="I want to:"
           search={this.props.indexActivities}
           onSelect={(a) => this.props.readActivity(a._id)}
           source={this.props.foundActivities.found}
@@ -81,7 +87,7 @@ class GroupSearchForm extends React.Component {
                 localProps: this.state.localProps,
               });
             } else {
-              this.setState({warning: true})
+              this.setState({warning: true});
             }
           }}
         />
@@ -105,7 +111,7 @@ const styles = {
     borderBottom: '1px solid lightGrey',
     width: '50%',
   },
-}
+};
 
 const mapStateToProps = (state) => {
   return {

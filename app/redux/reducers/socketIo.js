@@ -58,7 +58,7 @@ export default function socketIo(state = initialState, action) {
     case 'logoutCurrentUser':
       return {
         ...initialState,
-      }
+      };
       break;
     default:
       return state;

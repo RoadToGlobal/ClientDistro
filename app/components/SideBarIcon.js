@@ -52,6 +52,7 @@ class SideBarIcon extends React.Component {
     hoverStatus: PropTypes.bool,
     toggleHover: PropTypes.func,
     removeHover: PropTypes.func,
+    link: PropTypes.func,
   };
 
   constructor(props) {

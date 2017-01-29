@@ -24,6 +24,9 @@ class Login extends React.Component {
     readCurrentUser: PropTypes.func,
     showLoginPills: PropTypes.bool,
     clickLogin: PropTypes.func,
+    setToken: PropTypes.func,
+    login: PropTypes.string,
+
   };
 
   constructor() {
@@ -37,11 +40,11 @@ class Login extends React.Component {
   }
 
   componentWillMount() {
-    const token = localStorage['token'];
+    const token = localStorage.token;
 
-    if(token){
+    if(token) {
       this.props.setToken(token);
-      this.props.readCurrentUser(); //Will in turn read mygroups too
+      this.props.readCurrentUser(); // Will in turn read mygroups too
     }
   }
 

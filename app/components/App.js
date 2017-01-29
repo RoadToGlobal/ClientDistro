@@ -11,12 +11,22 @@ import { verticalContainer, horizontalContainer } from '../DynamicStyles/common'
 class App extends React.Component {
   static propTypes = {
     children: PropTypes.object,
+    CurrentUser: PropTypes.object,
+    logoutCurrentUser: PropTypes.func,
   };
 
   constructor() {
     super();
     this.state = {
       showLoginPills: false,
+    };
+  }
+
+  componentWillReceiveProps(newProps) {
+    if(newProps.CurrentUser.user) {
+      this.setState({
+        showLoginPills: false,
+      });
     }
   }
 
@@ -24,14 +34,6 @@ class App extends React.Component {
     this.setState({
       showLoginPills: !this.state.showLoginPills,
     });
-  }
-
-  componentWillReceiveProps(newProps) {
-    if(newProps.CurrentUser.user){
-      this.setState({
-        showLoginPills: false,
-      });
-    }
   }
 
   render() {

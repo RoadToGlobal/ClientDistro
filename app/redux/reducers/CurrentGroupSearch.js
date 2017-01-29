@@ -28,7 +28,7 @@ export default function CurrentGroupSearch(state = initialState, action) {
     case 'logoutCurrentUser':
       return {
         ...initialState,
-      }
+      };
       break;
     default:
       return state;

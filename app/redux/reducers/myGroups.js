@@ -2,7 +2,7 @@ const initialState = {
   isLoading: false,
   error: false,
   groups: [],
-}
+};
 
 export default function myGroups(state = initialState, action) {
   switch (action.type) {
@@ -13,7 +13,7 @@ export default function myGroups(state = initialState, action) {
       return {
         ...state,
         groups: replacedGroups,
-      }
+      };
       break;
     case 'groupAbsorbed':
       const refreshedGroups = state.groups.map((group) => (
@@ -22,28 +22,28 @@ export default function myGroups(state = initialState, action) {
       return {
         ...state,
         groups: refreshedGroups,
-      }
+      };
       break;
     case 'readMyGroupsRequest':
       return {
         isLoading: true,
         error: false,
         groups: [],
-      }
+      };
       break;
     case 'readMyGroupsSuccess':
       return {
         isLoading: false,
         error: false,
         groups: action.payload,
-      }
+      };
       break;
     case 'readMyGroupsError':
       return {
         isLoading: false,
         error: action.error,
         groups: [],
-      }
+      };
       break;
     case 'joinActivitySuccess':
       return {
@@ -52,12 +52,12 @@ export default function myGroups(state = initialState, action) {
           ...state.groups,
           action.payload.group,
         ],
-      }
+      };
       break;
     case 'logoutCurrentUser':
       return {
         ...initialState,
-      }
+      };
       break;
     default:
       return state;

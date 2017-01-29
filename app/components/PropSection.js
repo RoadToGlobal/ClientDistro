@@ -43,7 +43,7 @@ class PropSection extends React.Component {
           this.state.slots.map((slotProp, slotIndex, slots) => (
             <div style={styles.row}>
               <MagicInput
-                prefix='who'
+                prefix="who"
                 source={this.state.availableProps}
                 onSelect={(p) => {
                   slots[slotIndex] = p;
@@ -51,7 +51,7 @@ class PropSection extends React.Component {
                 }}
                 search={(query) => {
                   const regEx = new RegExp(query, 'i');
-                  let availableProps = this.props.availableProps.filter((p) => (p.key.match(regEx) !== null));
+                  const availableProps = this.props.availableProps.filter((p) => (p.key.match(regEx) !== null));
                   this.setState({availableProps});
                 }}
               />
@@ -59,9 +59,9 @@ class PropSection extends React.Component {
               <PropInput
                 type={slotProp.type}
                 onSelect={(val) => {
-                  let slots = this.state.slots;
+                  const slots = this.state.slots;
                   slots[slotIndex].value = '' + val;
-                  this.setState({slots}, () => this.select())
+                  this.setState({slots}, () => this.select());
                 }}
               />
 

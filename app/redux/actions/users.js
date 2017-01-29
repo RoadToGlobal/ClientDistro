@@ -8,7 +8,7 @@ export const login = (username, password) => {
   return (dispatch, getState) => {
     dispatch(readTokenRequest());
 
-    let url = `http://${apiHost}/my/token`;
+    const url = `http://${apiHost}/my/token`;
 
     return enhancedFetch( url, {
       method: 'GET',
@@ -16,7 +16,7 @@ export const login = (username, password) => {
     })
     .then(res => dispatch(readTokenSuccess(res)))
     .then(() => dispatch(readCurrentUser()))
-    .catch(res => dispatch(readTokenError(res)))
+    .catch(res => dispatch(readTokenError(res)));
   };
 };
 
@@ -35,18 +35,18 @@ const readTokenSuccess = (res) => {
 };
 
 const readTokenError = (res) => {
-  let error = res.message || true;
+  const error = res.message || true;
   return {
     type: 'readTokenError',
     error,
   };
-}
+};
 
 export const readCurrentUser = () => {
   return (dispatch, getState) => {
     dispatch(readCurrentUserRequest());
 
-    let url = `http://${apiHost}/my/user`;
+    const url = `http://${apiHost}/my/user`;
 
     return enhancedFetch( url, {
       method: 'GET',
@@ -54,7 +54,7 @@ export const readCurrentUser = () => {
     })
     .then(res => dispatch(readCurrentUserSuccess(res)))
     .then(() => dispatch(readMyGroups()))
-    .catch(res => dispatch(readCurrentUserError(res)))
+    .catch(res => dispatch(readCurrentUserError(res)));
   };
 };
 
@@ -73,12 +73,12 @@ const readCurrentUserSuccess = (res) => {
 };
 
 const readCurrentUserError = (res) => {
-  let error = res.message || true;
+  const error = res.message || true;
   return {
     type: 'readCurrentUserError',
     error,
   };
-}
+};
 
 export const setToken = (token) => {
   return (dispatch, getState) => {

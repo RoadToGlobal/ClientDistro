@@ -30,7 +30,7 @@ class PropInput extends React.Component {
           ...styles.inputStyle,
           width: '' + Math.max(4, this.state.value.length * 1 + 2) + 'rem'
         }}
-        type='text'
+        type="text"
         value={this.state.value}
         onChange={(e) => this.handleChange(e.target.value)}
         onKeyPress={(e) => this.handleKeypress(e)}

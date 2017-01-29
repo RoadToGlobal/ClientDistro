@@ -18,14 +18,14 @@ export default function CurrentActivity(state = initialState, action) {
         isLoading: false,
         error: false,
         activity: action.activity,
-      }
+      };
       break;
     case 'readActivityError':
       return {
         isLoading: false,
         error: true,
         activity: {},
-      }
+      };
       break;
     case 'joinActivityRequest':
       return {
@@ -35,7 +35,7 @@ export default function CurrentActivity(state = initialState, action) {
       };
       break;
     case 'joinActivitySuccess':
-      let newActivity = state.activity
+      const newActivity = state.activity;
       if (newActivity.groups) {
         newActivity.groups.push(action.payload.group);
       } else {
@@ -46,19 +46,19 @@ export default function CurrentActivity(state = initialState, action) {
         isLoading: false,
         error: false,
         activitiy: newActivity,
-      }
+      };
       break;
     case 'joinActivityError':
       return {
         isLoading: false,
         error: true,
         activity: state.activity,
-      }
+      };
       break;
     case 'logoutCurrentUser':
       return {
         ...initialState,
-      }
+      };
       break;
     default:
       return state;

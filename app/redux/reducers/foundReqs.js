@@ -1,4 +1,4 @@
-//TODO: connect to api endpoint when ready
+// TODO: connect to api endpoint when ready
 const initialState = {
   isLoading: false,
   error: false,
@@ -70,7 +70,7 @@ export default function foundReqs(state = initialState, action) {
     case 'logoutCurrentUser':
       return {
         ...initialState,
-      }
+      };
       break;
     default:
       return state;

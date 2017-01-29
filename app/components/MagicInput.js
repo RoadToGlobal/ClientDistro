@@ -7,6 +7,7 @@ class MagicInput extends React.Component {
     search: PropTypes.func,
     onSelect: PropTypes.func,
     prefix: PropTypes.string,
+    style: PropTypes.object,
   };
 
   static defaultProps = {
@@ -54,12 +55,12 @@ class MagicInput extends React.Component {
   handleChange(value) {
     this.setState({value});
 
-    if (value){
+    if (value) {
       this.props.search(value);
     }
   }
 
-  suggestionStyler(element){
+  suggestionStyler(element) {
     const base = {
       cursor: 'pointer',
       paddingBottom: '0.3em',
@@ -84,7 +85,7 @@ class MagicInput extends React.Component {
         <label style={styles.prefixText}>{this.props.prefix || ''}</label>
         <div style={styles.main}>
           <input
-            ref='currentInput'
+            ref="currentInput"
             style={{
               ...styles.inputStyle,
               width: '' + Math.max(4, this.state.value.length * 1 + 2) + 'rem'

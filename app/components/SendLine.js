@@ -12,7 +12,7 @@ class SendLine extends React.Component {
     super(props);
     this.state = {
       message: '',
-    }
+    };
   }
 
   handleKeypress(event) {
@@ -39,7 +39,7 @@ class SendLine extends React.Component {
             buttonStyle={chatItems}
             buttonContent={'Send'}
             onClick={() => {
-              if (this.state.message !== ''){
+              if (this.state.message !== '') {
                 this.props.postMessage(this.state.message);
                 this.setState({message: ''});
               }
@@ -67,6 +67,5 @@ const generalInput = {
   border: '1px solid rgba(60, 73, 89, 0.3)',
   boxSizing: 'border-box',
 };
-
 
 export default SendLine;

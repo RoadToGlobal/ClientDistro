@@ -20,6 +20,13 @@ import {
 class Group extends React.Component {
   static propTypes = {
     CurrentUser: PropTypes.object.isRequired,
+    CurrentGroup: PropTypes.object,
+    params: PropTypes.object,
+    socketIo: PropTypes.object,
+    joinRoom: PropTypes.func,
+    readGroup: PropTypes.func,
+    leaveRoom: PropTypes.func,
+    postMessage: PropTypes.func,
   };
 
   componentWillMount() {

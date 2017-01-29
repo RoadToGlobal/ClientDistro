@@ -43,7 +43,7 @@ class RequirementSection extends React.Component {
           this.state.slots.map((slotReq, slotIndex, slots) => (
             <div style={styles.row}>
               <MagicInput
-                prefix='who'
+                prefix="who"
                 source={this.state.reqs}
                 onSelect={(req) => {
                   slots[slotIndex] = req;
@@ -51,7 +51,7 @@ class RequirementSection extends React.Component {
                 }}
                 search={(query) => {
                   const regEx = new RegExp(query, 'i');
-                  let reqs = this.props.reqs.filter((req) => (req.name.match(regEx) !== null));
+                  const reqs = this.props.reqs.filter((req) => (req.name.match(regEx) !== null));
                   this.setState({reqs});
                 }}
               />
@@ -60,9 +60,9 @@ class RequirementSection extends React.Component {
                   <ReqInputValues
                     type={slotReq.type}
                     onSelect={(val) => {
-                      let slots = this.state.slots;
+                      const slots = this.state.slots;
                       slots[slotIndex].inputValues[valIndex] = '' + val;
-                      this.setState({slots}, () => this.select())
+                      this.setState({slots}, () => this.select());
                     }}
                   />
                 ))

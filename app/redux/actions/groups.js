@@ -5,14 +5,14 @@ export const readMyGroups = () => {
   return (dispatch, getState) => {
     dispatch(readMyGroupsRequest());
 
-    let url = `http://${apiHost}/my/groups`;
+    const url = `http://${apiHost}/my/groups`;
 
     return enhancedFetch( url, {
       method: 'GET',
       headers: { 'Authorization': 'JWT ' + getState().CurrentUser.token },
     })
     .then(res => dispatch(readMyGroupsSuccess(res)))
-    .catch(res => dispatch(readMyGroupsError(res)))
+    .catch(res => dispatch(readMyGroupsError(res)));
   };
 };
 
@@ -30,26 +30,26 @@ const readMyGroupsSuccess = (res) => {
 };
 
 const readMyGroupsError = (res) => {
-  let error = res.message || true;
+  const error = res.message || true;
 
   return {
     type: 'readMyGroupsError',
     error,
   };
-}
+};
 
 export const readGroup = (id) => {
   return (dispatch, getState) => {
     dispatch(readGroupRequest());
 
-    let url = `http://${apiHost}/groups/` + id;
+    const url = `http://${apiHost}/groups/` + id;
 
     return enhancedFetch( url, {
       method: 'GET',
       headers: { 'Authorization': 'JWT ' + getState().CurrentUser.token },
     })
     .then(res => dispatch(readGroupSuccess(res)))
-    .catch(res => dispatch(readGroupError(res)))
+    .catch(res => dispatch(readGroupError(res)));
   };
 };
 
@@ -67,10 +67,10 @@ const readGroupSuccess = (res) => {
 };
 
 const readGroupError = (res) => {
-  let error = res.message || true;
+  const error = res.message || true;
 
   return {
     type: 'readGroupError',
     error,
   };
-}
+};

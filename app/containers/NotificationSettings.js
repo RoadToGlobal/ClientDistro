@@ -20,7 +20,7 @@ class NotificationSettings extends React.Component {
   };
 
   render() {
-    let NotificationSettingsMock = {
+    const NotificationSettingsMock = {
       newMessage: 'beep',
       newMember: 'beep',
       GroupFilled: 'email',

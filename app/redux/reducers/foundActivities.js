@@ -27,7 +27,7 @@ export default function foundActivities(state = initialState, action) {
     case 'logoutCurrentUser':
       return {
         ...initialState,
-      }
+      };
       break;
     default:
       return state;

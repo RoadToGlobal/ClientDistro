@@ -34,13 +34,13 @@ const indexActivitiesSuccess = (res) => {
 };
 
 const indexActivitiesError = (err) => {
-  let error = err.message || true;
+  const error = err.message || true;
 
   return {
     type: 'indexActivitiesError',
     error,
   };
-}
+};
 
 export const read = (id) => {
   return (dispatch, getState) => {
@@ -68,20 +68,20 @@ const readActivitySuccess = (res) => {
 };
 
 const readActivityError = (err) => {
-  let error = err.message || true;
+  const error = err.message || true;
 
   return {
     type: 'readActivityError',
     error,
   };
-}
+};
 
 export const join = (groupSearch) => {
   return (dispatch, getState) => {
     dispatch(joinActivityRequest());
 
     if (getState().CurrentUser.token) {
-      let url = `http://${apiHost}/activities/${groupSearch.activity._id}/groups`;
+      const url = `http://${apiHost}/activities/${groupSearch.activity._id}/groups`;
 
       return enhancedFetch( url, {
         method: 'POST',
@@ -89,18 +89,18 @@ export const join = (groupSearch) => {
         body: groupSearch,
       })
       .then(res => dispatch(joinActivitySuccess(res)))
-      .catch(err => dispatch(joinActivityError(err)))
+      .catch(err => dispatch(joinActivityError(err)));
     } else {
       dispatch(joinActivityError('Need to login'));
     }
-  }
-}
+  };
+};
 
 const joinActivityRequest = () => {
   return {
     type: `joinActivityRequest`,
   };
-}
+};
 
 const joinActivitySuccess = (res) => {
   // forcefully navigate user to the new group now
@@ -109,11 +109,10 @@ const joinActivitySuccess = (res) => {
     type: 'joinActivitySuccess',
     payload: res,
   };
-}
+};
 
 const joinActivityError = (err) => {
-  let error = err.message || true;
-  console.log(err);
+  const error = err.message || true;
   return {
     type: 'joinActivityError',
     error,
