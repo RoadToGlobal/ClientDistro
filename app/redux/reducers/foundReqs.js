@@ -1,4 +1,5 @@
-const fakeInitialState = {
+//TODO: connect to api endpoint when ready
+const initialState = {
   isLoading: false,
   error: false,
   found: [
@@ -61,11 +62,16 @@ const fakeInitialState = {
   ]
 };
 
-export default function foundReqs(state = fakeInitialState, action) {
+export default function foundReqs(state = initialState, action) {
   switch (action.type) {
     case 'REQS_EXAMPLE':
       // console.log(action.data);
       return [...state];
+    case 'logoutCurrentUser':
+      return {
+        ...initialState,
+      }
+      break;
     default:
       return state;
   }

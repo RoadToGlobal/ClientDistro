@@ -8,7 +8,6 @@ import FFFWindow from '../containers/FFFWindow';
 import { verticalContainer } from '../DynamicStyles/common';
 
 // TODO: Animate the login
-
 const loginContainer = {
   ...verticalContainer,
   boxShadow: 'none',
@@ -41,7 +40,8 @@ class Login extends React.Component {
     const token = localStorage['token'];
 
     if(token){
-      this.props.readCurrentUser(token);
+      this.props.setToken(token);
+      this.props.readCurrentUser(); //Will in turn read mygroups too
     }
   }
 
@@ -99,7 +99,7 @@ class Login extends React.Component {
               showGroupAppLogin={this.state.showGroupAppLogin}
               showGoogleLogin={this.state.showGoogleLogin}
               showFacebookLogin={this.state.showFacebookLogin}
-              userLoginInput={this.props.readCurrentUser}
+              userLoginInput={this.props.login}
             />
             : null}
             </FFFWindow>
@@ -118,6 +118,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = {
   readCurrentUser: actions.users.readCurrentUser,
+  setToken: actions.users.setToken,
+  login: actions.users.login,
 };
 
 export default connect(

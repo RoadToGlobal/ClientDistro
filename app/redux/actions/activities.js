@@ -85,7 +85,7 @@ export const join = (groupSearch) => {
 
       return enhancedFetch( url, {
         method: 'POST',
-        headers: { 'Authorization': 'Basic ' + getState().CurrentUser.token },
+        headers: { 'Authorization': 'JWT ' + getState().CurrentUser.token },
         body: groupSearch,
       })
       .then(res => dispatch(joinActivitySuccess(res)))

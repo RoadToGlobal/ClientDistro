@@ -1,12 +1,12 @@
 import { browserHistory } from 'react-router';
 
-const fakeInitialState = {
+const initialState = {
   isLoading: true,
   error: false,
   group: {},
 };
 
-export default function CurrentGroup(state = fakeInitialState, action) {
+export default function CurrentGroup(state = initialState, action) {
   switch (action.type) {
     case 'groupAbsorbedInto':
       console.log('groupAbsorbedInto', action, state.group);
@@ -55,6 +55,11 @@ export default function CurrentGroup(state = fakeInitialState, action) {
         isLoading: false,
         error: action.error,
         group: state.group,
+      }
+      break;
+    case 'logoutCurrentUser':
+      return {
+        ...initialState,
       }
       break;
     default:
