@@ -26,7 +26,7 @@ const readTokenRequest = () => {
   };
 };
 
-const readTokenSuccess = (res) => {
+export const readTokenSuccess = (res) => {
   localStorage.setItem('token', res.token);
   return {
     type: 'readTokenSuccess',

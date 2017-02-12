@@ -7,11 +7,13 @@ const pillContainer = {
   justifyContent: 'flex-start',
   flex: 1,
 };
+
 const pillItemText = {
   textAlign: 'center',
   padding: 5,
   flex: 1,
 };
+
 const pillItemContainer = {
   backgroundColor: '#3c4959',
   border: '3px solid #3c4959',
@@ -24,14 +26,17 @@ const pillItemContainer = {
   flex: 1,
   transition: 'all 0.2s'
 };
+
 const activeItemContainer = {
   ...pillItemContainer,
   opacity: 0.5,
 };
+
 const pillItemLink = {
   color: '#fff',
   textDecoration: 'none',
 };
+
 const closeCross = {
   margin: '-0.5em',
   display: 'block',
@@ -65,12 +70,12 @@ class LoginPill extends React.Component {
         <h2
           style={!this.props.showGroupAppLogin ? pillItemContainer : activeItemContainer}
           onClick={this.props.clickGroupApp}>
-            <span style={pillItemLink}>Group app</span>
+            <span style={pillItemLink}>GroupApp</span>
         </h2>
         <h2
           style={!this.props.showGoogleLogin ? pillItemContainer : activeItemContainer}
           onClick={this.props.clickGoogle}>
-            <span style={pillItemLink}>Google+</span>
+            <span style={pillItemLink}>Google</span>
         </h2>
         <h2
           style={!this.props.showFacebookLogin ? pillItemContainer : activeItemContainer}

@@ -1,4 +1,6 @@
 import React, { PropTypes } from 'react';
+
+import apiHost from '../helpers/apiHost'
 import GeneralButton from '../components/GeneralButton';
 import GeneralInput from '../components/GeneralInput';
 
@@ -10,6 +12,7 @@ const windowContainer = {
 
   marginTop: '10px',
 };
+
 const windowItemContainer = {
   flex: 1,
 
@@ -19,6 +22,7 @@ const windowItemContainer = {
 
   marginBottom: '10px',
 };
+
 const windowItem = {
   height: '50px',
   width: '40%',
@@ -26,6 +30,7 @@ const windowItem = {
   fontSize: '1.4em',
   textAlign: 'center',
 };
+
 const loginButton = {
   backgroundColor: '#28b50e',
   height: '56px',
@@ -33,6 +38,29 @@ const loginButton = {
   width: '40%',
   minWidth: '150px',
   padding: 0,
+};
+
+const googlePlusButton = {
+  display: 'inline-block',
+  width: '40%',
+  minWidth: '150px',
+  cursor: 'pointer',
+
+  fontFamily: 'Nunito',
+  fontSize: '1.4em',
+  fontWeight: 700,
+  textAlign: 'center',
+  textDecoration: 'none',
+  padding: '0.6em',
+
+  backgroundColor: '#dd4b39',
+  color: '#fff',
+};
+
+const facebookButton = {
+  ...googlePlusButton,
+  backgroundColor: '#3b5998',
+  color: '#fff',
 };
 
 class LoginWindow extends React.Component {
@@ -94,14 +122,28 @@ class LoginWindow extends React.Component {
           : null}
 
         {this.props.showGoogleLogin ?
-          <div>
-            <span>Implementera Google+ login.</span>
+          <div style={windowContainer}>
+            <div style={windowItemContainer}>
+              <a
+                href={`http://${apiHost}/groupapp/auth/google`}
+                style={googlePlusButton}
+              >
+                Sign in with Google
+              </a>
+            </div>
           </div>
           : null}
 
         {this.props.showFacebookLogin ?
-          <div>
-            <span>Implementera Facebook login.</span>
+          <div style={windowContainer}>
+            <div style={windowItemContainer}>
+              {/* <a */}
+              {/*   href={`http://${apiHost}/groupapp/auth/facebook`} */}
+              {/*   style={facebookButton} */}
+              {/* > */}
+              {/*   Sign in with facebook */}
+              {/* </a> */}
+            </div>
           </div>
           : null}
       </div>
